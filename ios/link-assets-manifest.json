@@ -1,0 +1,21 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/fonts/HSSantokki.otf",
+      "sha1": "a1f02db07e721492ba3f7467b70cfb165731d174"
+    },
+    {
+      "path": "assets/fonts/NotoSansCJKkr-Bold.otf",
+      "sha1": "463ee210b3e6fd8758901fab115b7e8ea9813348"
+    },
+    {
+      "path": "assets/fonts/NotoSansCJKkr-Medium.otf",
+      "sha1": "f7966c6ed581f11fe36e005f2fa2fe11fd5fc614"
+    },
+    {
+      "path": "assets/fonts/NotoSansCJKkr-Regular.otf",
+      "sha1": "ebdf9b5886cf6f69a23e890b20f54a90384e0914"
+    }
+  ]
+}
