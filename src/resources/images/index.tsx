@@ -5,6 +5,11 @@ export const images = {
     img_seegnal_logo: require('./img_seegnal_logo.png'),
     img_seegnal_invite: require('./img_seegnal_invite.png'),
     img_seegnal_noseegnal: require('./img_seegnal_noseegnal.png'),
+    img_statistics_seegnal_send: require('./img_statistics_seegnal_send.png'),
+    img_statistics_seegnal_receive: require('./img_statistics_seegnal_receive.png'),
+
+    //여러 사이즈 아이콘
+    icon_profile_default: require('./icon_profile_default.png'),
 
     //감정 이미지
     img_emotion_despressed: require('./emotion/img_emotion_depressed.png'),

@@ -20,3 +20,4 @@ export { default as SquareCalendar } from './SquareCalendar'
 
 //seegnal
 export { UserHeader, CommentInput } from './seegnal'
+export { default as StatisticsSeegnalItem } from './seegnal/StatisticsSeegnalItem'

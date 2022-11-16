@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import FastImage from 'react-native-fast-image'
-import { themeColor, themeFonts } from '../../resources'
+import { images, themeColor, themeFonts } from '../../resources'
 import createRootStore from '../../stores'
 import { sizeConverter } from '../../utils'
 
@@ -9,7 +9,8 @@ const stores = createRootStore()
 const theme = stores.appStateStore.selectedTheme.get()
 
 type Props = {
-    isText?: boolean
+    isText?: boolean,
+    user?:object
 }
 
 const UserImage = ({ isText }: Props) => {
@@ -32,7 +33,7 @@ const UserImage = ({ isText }: Props) => {
     })
     return (
         <TouchableOpacity style={styles.container}>
-            <FastImage style={styles.imageStyle} />
+            <FastImage source={images.icon_profile_default} style={styles.imageStyle} />
             {
                 isText &&
                 <Text style={styles.textStyle}>123</Text>

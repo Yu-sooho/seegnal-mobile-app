@@ -53,6 +53,8 @@ const SeegnalGraphScreen = ({ navigation, route }: Props) => {
     }
   })
 
+  const radTemp = Math.floor(Math.random() * 100);
+
   return (
     <CustomSafeAreaView style={styles.container} edges={{ top: false, bottom: false }}>
       <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContainer}>
@@ -62,8 +64,8 @@ const SeegnalGraphScreen = ({ navigation, route }: Props) => {
           subTitle={`총 ${0}번`}
           textImage1={<Icon16Safe imageStyle={{ marginRight: sizeConverter(4) }} />}
           textImage2={<Icon16NonSafe imageStyle={{ marginRight: sizeConverter(4) }} />}
-          percent1={60}
-          percent2={40}
+          percent1={radTemp}
+          percent2={100-radTemp}
           color1={themeColor[theme].seegnal_secondary_1}
           color2={themeColor[theme].seegnal_secondary_2}
           contentContainerStyle={{marginTop:sizeConverter(24)}}
