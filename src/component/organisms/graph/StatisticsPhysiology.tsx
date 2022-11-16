@@ -16,11 +16,7 @@ type Props = {
 }
 
 const StatisticsPhysiology = ({ title1, title2, contentContainerStyle }: Props) => {
-
-  const isFocused = useIsFocused();
-
-  const [maxWidth, setMaxWidth] = useState(sizeConverter(296))
-
+  
   const styles = StyleSheet.create({
     container: {
       marginTop: sizeConverter(24)
@@ -33,12 +29,6 @@ const StatisticsPhysiology = ({ title1, title2, contentContainerStyle }: Props) 
       alignItems: 'center',
       justifyContent:'space-between',
       padding:sizeConverter(16)
-    },
-    colorBarView: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      marginTop: sizeConverter(12),
-      width: maxWidth
     },
     textView: {
       marginTop: sizeConverter(16),

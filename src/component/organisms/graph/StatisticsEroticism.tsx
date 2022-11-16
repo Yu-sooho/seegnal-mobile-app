@@ -5,7 +5,6 @@ import { themeColor, themeFonts } from '../../../resources'
 import createRootStore from '../../../stores'
 import { sizeConverter } from '../../../utils'
 import { ColorBar, TitleText, UserImage } from '../../atoms'
-import ColorBarView from '../../molecules/graph/ColorBarView'
 
 const stores = createRootStore()
 const theme = stores.appStateStore.selectedTheme.get()
@@ -29,12 +28,6 @@ const StatisticsEroticism = () => {
       height: sizeConverter(96),
       backgroundColor: themeColor[theme].seegnal_lwhite_gray,
       borderRadius: sizeConverter(12)
-    },
-    colorBarView: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      marginTop: sizeConverter(12),
-      width: maxWidth
     },
     textView:{
       marginTop:sizeConverter(16),

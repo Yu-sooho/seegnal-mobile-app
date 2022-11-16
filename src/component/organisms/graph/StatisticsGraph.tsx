@@ -1,70 +1,78 @@
 import { useIsFocused } from '@react-navigation/native'
 import React from 'react'
-import { FlatList, StyleProp, StyleSheet, Text, View, ViewStyle } from 'react-native'
-import { themeColor } from '../../../resources'
+import { FlatList, FlatListProps, ListRenderItem, StyleSheet, View } from 'react-native'
+import { EMOTION_TYPE } from '../../../resources'
 import createRootStore from '../../../stores'
 import { sizeConverter } from '../../../utils'
-import { ColorBar, ColorBarVertical, TitleText } from '../../atoms'
-import ColorBarView from '../../molecules/graph/ColorBarView'
+import { TitleText } from '../../atoms'
+import { GraphView } from '../../molecules'
 
 type Props = {
     title?: string,
-    contentContainerStyle?: StyleProp<ViewStyle>
 }
 
+type GraphItem = {
+    item: {
+        date: number,
+        month: number
+    },
+    index: number
+}
 
-const stores = createRootStore()
-const theme = stores.appStateStore.selectedTheme.get()
 
 const temp = () => {
     const data = []
     for (let i = 0; i < 12; i++) {
-        data.push({
+        const t = {
             month: i + 1,
-            tempData: Math.floor(Math.random() * (50 - 0))
-        })
+            date: Math.floor(Math.random() * (50 - 0))
+        }
+        data.push(t)
     }
     return data
 }
 
-const StatisticsGraph = ({ title, contentContainerStyle, }: Props) => {
+const dummy = temp()
+
+const stores = createRootStore()
+const theme = stores.appStateStore.selectedTheme.get()
+
+const StatisticsGraph = ({ title }: Props) => {
     const isFocused = useIsFocused();
 
-    const dummy = temp()
-
-    console.log(dummy, 'FUFU')
-
     const styles = StyleSheet.create({
-        container: {
-
+        textViewStyle: {
+            paddingHorizontal: sizeConverter(16)
         },
-        contentView: {
-            minHeight: sizeConverter(198),
-            minWidth: sizeConverter(328),
-            borderRadius: sizeConverter(12),
-            backgroundColor: themeColor[theme].seegnal_lwhite_gray,
+        listStyle: {
             marginTop: sizeConverter(16)
         }
     })
 
-    const RenderHorizontalValue = () => {
+    const RenderGraphItem = ({ item, index }: { item: number, index: number }) => {
+        return (
+            <View style={{ width: sizeConverter(360), paddingHorizontal: sizeConverter(16) }}>
+                <GraphView item={item} />
+            </View>
+        )
     }
 
-    const RenderVerticalValue = () => {
-
-    }
-
-    const RenderColorBar = () => {
-
-    }
+    const temp2 = [0, 1, 2, 3, 4, 5]
 
     return (
-        <View style={[styles.container, contentContainerStyle]}>
-            <TitleText text={title} />
-            <View style={styles.contentView}>
-                {/* <ColorBarView action  percent={60} color={themeColor[theme].seegnal_secondary_1} /> */}
-                <ColorBarVertical action={isFocused} color={themeColor[theme].seegnal_apple_login} maxHeight={sizeConverter(360)} percent={100} />
-            </View>
+        <View>
+            <TitleText 
+                viewStyle={styles.textViewStyle} 
+                text={title} 
+            />
+            <FlatList
+                initialScrollIndex={temp2?.length-1}
+                style={styles.listStyle}
+                horizontal data={temp2}
+                renderItem={RenderGraphItem}
+                pagingEnabled
+                showsHorizontalScrollIndicator={false}
+            />
         </View>
     )
 }

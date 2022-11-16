@@ -6,7 +6,7 @@ import createRootStore from '../../../stores'
 import { sizeConverter } from '../../../utils'
 import { ColorBar, TitleText } from '../../atoms'
 import { Icon16NonSafe, Icon16Safe } from '../../icons'
-import ColorBarView from '../../molecules/graph/ColorBarView'
+import { ColorBarView } from '../../molecules'
 
 const stores = createRootStore()
 const theme = stores.appStateStore.selectedTheme.get()

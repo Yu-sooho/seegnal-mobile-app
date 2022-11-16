@@ -20,4 +20,5 @@ export { default as SquareCalendar } from './SquareCalendar'
 
 //seegnal
 export { UserHeader, CommentInput } from './seegnal'
+export { ColorBarView, GraphView} from './graph'
 export { default as StatisticsSeegnalItem } from './seegnal/StatisticsSeegnalItem'
