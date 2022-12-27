@@ -31,52 +31,52 @@ export const TAB_BAR_LABEL = {
 export const STATUS_BUTTONS = {
     WOMAN: [
         {
-            image: images.img_seegnal_invite,
+            image: images.icon_16_plus_seegnal,
             keyword: '오늘의 씨그날',
             id: 0
         },
         {
-            image: images.img_seegnal_hi,
+            image: images.icon_16_nonsafe,
             keyword: '피임 안했어요',
             id: 1
         },
         {
-            image: images.img_seegnal_hi,
+            image: images.icon_16_safe,
             keyword: '피임 했어요',
             id: 2
         },
         {
-            image: images.img_seegnal_hi,
+            image: images.icon_16_plus_pill,
             keyword: '피임약 복용',
             id: 3
         },
         {
-            image: images.img_seegnal_hi,
+            image: images.icon_16_plus_end,
             keyword: '생리 종료',
             id: 4
         },
         {
-            image: images.img_seegnal_hi,
+            image: images.icon_16_plus_start,
             keyword: '생리 시작',
             id: 5
         },
     ],
     MAN: [
         {
-            image: images.img_seegnal_hi,
+            image: images.icon_16_plus_seegnal,
             keyword: '오늘의 씨그날',
             id: 0
         },
         {
-            image: images.img_seegnal_hi,
+            image: images.icon_16_nonsafe,
             keyword: '피임 안했어요',
             id: 1
         },
         {
-            image: images.img_seegnal_hi,
+            image: images.icon_16_safe,
             keyword: '피임 했어요',
             id: 2
-        }
+        },
     ]
 }
 

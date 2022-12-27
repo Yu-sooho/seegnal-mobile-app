@@ -49,7 +49,7 @@ const StatisticsGraph = ({ title }: Props) => {
         }
     })
 
-    const RenderGraphItem = ({ item, index }: { item: number, index: number }) => {
+    const RenderGraphItem = ({ item, index }: { item: object, index: number }) => {
         return (
             <View style={{ width: sizeConverter(360), paddingHorizontal: sizeConverter(16) }}>
                 <GraphView item={item} />
@@ -68,7 +68,8 @@ const StatisticsGraph = ({ title }: Props) => {
             <FlatList
                 initialScrollIndex={temp2?.length-1}
                 style={styles.listStyle}
-                horizontal data={temp2}
+                horizontal
+                data={temp2}
                 renderItem={RenderGraphItem}
                 pagingEnabled
                 showsHorizontalScrollIndicator={false}

@@ -40,6 +40,10 @@ export const images = {
     //버튼
     icon_16_drop: require('./button/icon_16_drop.png'),
     icon_16_safe: require('./button/icon_16_safe.png'),
+    icon_16_plus_end: require('./button/icon_16_plus_end.png'),
+    icon_16_plus_pill: require('./button/icon_16_plus_pill.png'),
+    icon_16_plus_seegnal: require('./button/icon_16_plus_seegnal.png'),
+    icon_16_plus_start: require('./button/icon_16_plus_start.png'),
     icon_16_nonsafe: require('./button/icon_16_nonsafe.png'),
     icon_32_plus: require('./button/icon_32_plus.png'),
 

@@ -10,8 +10,13 @@ export { default as Icon16CheckBox } from './Icon16CheckBox'
 
 export { default as Icon32Plus } from './Icon32Plus'
 export { default as Icon16Drop } from './Icon16Drop'
+
 export { default as Icon16Safe } from './Icon16Safe'
 export { default as Icon16NonSafe } from './Icon16NonSafe'
+export { default as Icon16PlusEnd } from './Icon16PlusEnd'
+export { default as Icon16PlusPill } from './Icon16PlusPill'
+export { default as Icon16PlusStart } from './Icon16PlusStart'
+export { default as Icon16PlusSeegnall } from './Icon16PlusSeegnal'
 
 //탭바
 export { default as Icon40DefaultHome } from './tabbar/Icon40DefaultHome'
