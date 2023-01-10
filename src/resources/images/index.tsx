@@ -7,6 +7,8 @@ export const images = {
     img_seegnal_noseegnal: require('./img_seegnal_noseegnal.png'),
     img_statistics_seegnal_send: require('./img_statistics_seegnal_send.png'),
     img_statistics_seegnal_receive: require('./img_statistics_seegnal_receive.png'),
+    img_seegnal_theme:require('./img_seegnal_theme.png'),
+    img_seegnal_alram:require('./img_seegnal_alram.png'),
 
     //여러 사이즈 아이콘
     icon_profile_default: require('./icon_profile_default.png'),
@@ -34,6 +36,7 @@ export const images = {
     img_condition_tired: require('./condition/img_condition_tired.png'),
 
     icon_24_arrow_right: require('./icon_24_arrow_right.png'),
+    icon_16_arrow_right: require('./icon_16_arrow_right.png'),
     icon_24_arrow_left: require('./icon_24_arrow_left.png'),
     icon_16_check: require('./icon_16_check_box.png'),
 

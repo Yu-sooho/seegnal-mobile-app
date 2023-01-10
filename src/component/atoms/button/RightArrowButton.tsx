@@ -1,33 +1,42 @@
 
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { ImageStyle, StyleProp, StyleSheet, Text, TextStyle, ViewStyle } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { sizeConverter } from '../../../utils';
 import { Icon24ArrowRight } from '../../icons';
 
 type RightArrowStyle = {
-    buttonStyle?: object,
-    imageStyle?: object,
-    onPress?: () => void
+    buttonStyle?: StyleProp<ViewStyle>,
+    imageStyle?: StyleProp<ImageStyle>,
+    textStyle?: StyleProp<TextStyle>,
+    onPress?: () => void,
+    text?: string,
 }
 
-const RightArrowButton = ({ buttonStyle, imageStyle, onPress }: RightArrowStyle) => {
+const RightArrowButton = ({ buttonStyle, imageStyle, text, textStyle, onPress }: RightArrowStyle) => {
     const arrowStyles = StyleSheet.create({
         button: {
-            width: sizeConverter(24),
-            height: sizeConverter(24),
-            justifyContent: 'center',
+            width: !!text? '100%' : sizeConverter(24),
+            height: !!text? sizeConverter(48) : sizeConverter(24),
+            justifyContent: !!text? 'space-between' : 'center',
             alignItems: 'center',
-            paddingBottom: sizeConverter(2)
+            paddingBottom: sizeConverter(2),
+            flexDirection: 'row'
         },
         image: {
             width: sizeConverter(16),
             height: sizeConverter(16)
-        }
+        },
     })
     return (
-        <TouchableOpacity onPress={onPress} style={{ ...arrowStyles.button, ...buttonStyle }}>
-            <Icon24ArrowRight imageStyle={{ ...arrowStyles.image, ...imageStyle }} />
+        <TouchableOpacity onPress={onPress} style={[arrowStyles.button, buttonStyle]}>
+            {
+                text &&
+                <Text style={[textStyle]}>
+                    {text}
+                </Text>
+            }
+            <Icon24ArrowRight imageStyle={[arrowStyles.image, imageStyle]} />
         </TouchableOpacity>
     )
 }

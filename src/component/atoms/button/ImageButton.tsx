@@ -9,8 +9,11 @@ type ImageButtonProps = {
     style?: StyleProp<ViewStyle>,
     textStyle?: StyleProp<TextStyle>,
     imageStyle?: StyleProp<ImageStyle>,
+    imageViewStyle?: StyleProp<ViewStyle>,
+    textViewStyle?: StyleProp<ViewStyle>,
     disabled?: boolean,
     image?: Object
+    text: string,
     onPress?: () => void
 }
 
@@ -22,8 +25,11 @@ const ImageButton = ({
     style,
     disabled,
     textStyle,
+    textViewStyle,
+    imageViewStyle,
     imageStyle,
     image,
+    text,
     onPress,
 }: ImageButtonProps) => {
 
@@ -54,17 +60,28 @@ const ImageButton = ({
 
     return (
         <TouchableOpacity onPress={onPress} disabled={disabled} style={[styles.container, style]}>
-            {item && item?.image ?
-                <Image resizeMode={'contain'} source={item?.image} style={[styles.imageActive, imageStyle]} />
-                :
-                image ?
-                    <Image resizeMode={'contain'} source={image} style={[styles.imageActive, imageStyle]} />
+            <View style={imageViewStyle}>
+                {item && item?.image ?
+                    <Image resizeMode={'contain'} source={item?.image} style={[styles.imageActive, imageStyle]} />
                     :
-                    <View style={styles.imageDefault} />
-            }
+                    image ?
+                        <Image resizeMode={'contain'} source={image} style={[styles.imageActive, imageStyle]} />
+                        :
+                        <View style={styles.imageDefault} />
+                }
+
+            </View>
             {
                 item && item?.keyword &&
-                <Text style={[styles.text, textStyle]}>{item?.keyword}</Text>
+                <View style={textViewStyle}>
+                    <Text style={[styles.text, textStyle]}>{item?.keyword}</Text>
+                </View>
+            }
+            {
+                !!text &&
+                <View style={textViewStyle}>
+                    <Text style={[styles.text, textStyle]}>{text}</Text>
+                </View>
             }
         </TouchableOpacity>
     )
