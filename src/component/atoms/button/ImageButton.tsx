@@ -13,7 +13,7 @@ type ImageButtonProps = {
     textViewStyle?: StyleProp<ViewStyle>,
     disabled?: boolean,
     image?: Object
-    text: string,
+    text?: string,
     onPress?: () => void
 }
 
