@@ -1,19 +1,22 @@
 
+import { CompositeScreenProps } from '@react-navigation/native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import React from 'react';
 import {
   ScrollView,
   StyleSheet,
-  Text,
   View,
 } from 'react-native';
-import { MainTabParamList } from '../../../navigation';
+import { MainTabParamList, RootStackParamList } from '../../../navigation';
 import { images, themeColor, themeFonts } from '../../../resources';
 import createRootStore from '../../../stores';
 import { sizeConverter } from '../../../utils';
 import { CustomButton, CustomSafeAreaView, ImageButton, RightArrowButton, TitleText, UserImage } from '../../atoms';
 
-type Props = NativeStackScreenProps<MainTabParamList, 'SettingScreen'>;
+type Props = CompositeScreenProps<
+  NativeStackScreenProps<MainTabParamList, 'SettingScreen'>,
+  NativeStackScreenProps<RootStackParamList>
+>
 
 const stores = createRootStore()
 const theme = stores.appStateStore.selectedTheme.get()
@@ -26,8 +29,8 @@ const SettingScreen = ({ navigation, route }: Props) => {
       justifyContent: 'center',
       paddingHorizontal: sizeConverter(16)
     },
-    contentContainer:{
-      paddingHorizontal:sizeConverter(16)
+    contentContainer: {
+      paddingHorizontal: sizeConverter(16)
     },
     userNameStyle: {
       ...themeFonts.notosans_bold_16,
@@ -40,13 +43,13 @@ const SettingScreen = ({ navigation, route }: Props) => {
       color: themeColor[theme].seegnal_dark_gray,
       lineHeight: sizeConverter(20),
     },
-    viewDivide:{
-      marginTop:sizeConverter(24)
+    viewDivide: {
+      marginTop: sizeConverter(24)
     },
     imageButtonView: {
       flexDirection: 'row',
       justifyContent: 'space-between',
-      marginTop:sizeConverter(24)
+      marginTop: sizeConverter(24)
     },
     imageButtonStyle: {
       width: sizeConverter(156),
@@ -89,11 +92,11 @@ const SettingScreen = ({ navigation, route }: Props) => {
     paymentImageStyle: {
       width: sizeConverter(328),
     },
-    infoTextStyle:{
+    infoTextStyle: {
       ...themeFonts.notosans_bold_16,
       color: themeColor[theme].seegnal_dark_gray,
       letterSpacing: -sizeConverter(0.05),
-      marginLeft:sizeConverter(6)
+      marginLeft: sizeConverter(6)
     }
   })
 
@@ -124,12 +127,18 @@ const SettingScreen = ({ navigation, route }: Props) => {
         </View>
         <View style={styles.imageButtonView}>
           <ImageButton
+            onPress={() => {
+              navigation.navigate('ThemeSettingScreen')
+            }}
             text={'테마'}
             textStyle={styles.buttonTextStyle}
             style={styles.imageButtonStyle}
             imageStyle={styles.buttonImageStyle}
             image={images.img_seegnal_theme} />
           <ImageButton
+            onPress={() => {
+              navigation.navigate('AlarmSettingScreen')
+            }}
             text={'알림'}
             textStyle={styles.buttonTextStyle}
             style={styles.imageButtonStyle}
@@ -137,8 +146,14 @@ const SettingScreen = ({ navigation, route }: Props) => {
             image={images.img_seegnal_alram} />
         </View>
         <View style={styles.viewDivide}>
-          <RightArrowButton  text={'앱 정보'} textStyle={styles.infoTextStyle} />
-          </View>
+          <RightArrowButton
+            onPress={() => {
+              navigation.navigate('AppInfoScreen')
+            }}
+            text={'앱 정보'}
+            textStyle={styles.infoTextStyle}
+          />
+        </View>
       </ScrollView>
     </CustomSafeAreaView>
   );

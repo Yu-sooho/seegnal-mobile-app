@@ -31,6 +31,11 @@ export type RootStackParamList = {
     SendSeegnalScreen: undefined,
     AdvertisementScreen: undefined,
 
+    //Setting
+    ThemeSettingScreen:undefined
+    AlarmSettingScreen:undefined
+    AppInfoScreen:undefined
+
     //Modal
     LoginModalScreen: undefined,
     ImageButtonModalScreen: {

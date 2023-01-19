@@ -17,7 +17,12 @@ export {
     //메인 탭
     HomeScreen,
     HistoryScreen,
+
+    //옵션
     SettingScreen,
+    AppInfoScreen,
+    AlarmSettingScreen,
+    ThemeSettingScreen,
 
     //그래프 탭
     PhysiologyGraphScreen,

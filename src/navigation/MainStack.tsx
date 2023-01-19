@@ -7,6 +7,7 @@ import createRootStore from '../stores';
 import LoginStackNavigator from './LoginStack';
 import MainTabNavigator from './MainTab';
 import ModalStackNavigator from './ModalStack';
+import SettingStackNavigator from './SettingStack';
 
 const MainStack = createStackNavigator<RootStackParamList>();
 
@@ -28,6 +29,7 @@ const MainStackNavigator = observer(() => {
             }
             <MainStack.Screen name="SendSeegnalScreen" options={{ headerShown: false, gestureEnabled: false }} component={SendSeegnalScreen} />
             {ModalStackNavigator(MainStack)}
+            {SettingStackNavigator(MainStack)}
         </MainStack.Navigator>
     );
 });

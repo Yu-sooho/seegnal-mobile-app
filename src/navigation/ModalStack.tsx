@@ -4,7 +4,6 @@
 * @author Yu-sooho
 */
 
-import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
 import { CustomModalScreen, ImageButtonModalScreen, LoginModalScreen, AdvertisementScreen } from '../component';
 

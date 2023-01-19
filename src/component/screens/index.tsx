@@ -12,7 +12,10 @@ export {
 export {
     HomeScreen,
     HistoryScreen,
-    SettingScreen
+    SettingScreen,
+    AppInfoScreen,
+    AlarmSettingScreen,
+    ThemeSettingScreen
 } from './MainTab'
 
 export {
