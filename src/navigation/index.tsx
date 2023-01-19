@@ -29,6 +29,7 @@ export type RootStackParamList = {
     LoginStack: NavigatorScreenParams<LoginStackParamList>,
     MainTab: NavigatorScreenParams<MainTabParamList>,
     SendSeegnalScreen: undefined,
+    AdvertisementScreen: undefined,
 
     //Modal
     LoginModalScreen: undefined,

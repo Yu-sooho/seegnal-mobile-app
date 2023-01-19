@@ -23,7 +23,8 @@ export {
 export {
     LoginModalScreen,
     CustomModalScreen,
-    ImageButtonModalScreen
+    ImageButtonModalScreen,
+    AdvertisementScreen
 } from './Modal'
 
 export { default as SendSeegnalScreen } from './SendSeegnalScreen'

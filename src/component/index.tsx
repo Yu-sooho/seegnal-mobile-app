@@ -12,6 +12,7 @@ export {
     LoginModalScreen,
     CustomModalScreen,
     ImageButtonModalScreen,
+    AdvertisementScreen,
 
     //메인 탭
     HomeScreen,

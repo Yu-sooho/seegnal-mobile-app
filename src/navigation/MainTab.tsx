@@ -21,23 +21,28 @@ const MainTab = createBottomTabNavigator<MainTabParamList>();
 const stores = createRootStore()
 const theme = stores.appStateStore.selectedTheme.get()
 
+type Props = NativeStackScreenProps<RootStackParamList>
+
 type MainTabProps = {
     hideFloatingButton: () => void,
-    showFloatingButton: () => void
+    showFloatingButton: () => void,
+    NativeStack:NativeStackScreenProps<RootStackParamList>,
 }
 
 type TabBarProps = {
     hideFloatingButton: () => void,
     showFloatingButton: () => void,
-    BottomTabBarProps: BottomTabBarProps
+    BottomTabBarProps: BottomTabBarProps,
+    NativeStack:NativeStackScreenProps<RootStackParamList>,
 }
 
 const MainTabNav = ({
     showFloatingButton,
-    hideFloatingButton
+    hideFloatingButton,
+    NativeStack
 }: MainTabProps) => {
     return (
-        <MainTab.Navigator tabBar={(props: BottomTabBarProps) => <CustomTabBar showFloatingButton={showFloatingButton} hideFloatingButton={hideFloatingButton} BottomTabBarProps={props} />} >
+        <MainTab.Navigator tabBar={(props: BottomTabBarProps) => <CustomTabBar showFloatingButton={showFloatingButton} hideFloatingButton={hideFloatingButton} BottomTabBarProps={props} NativeStack={NativeStack} />} >
             <MainTab.Screen name={'HomeScreen'} options={{ headerShown: false }} component={HomeScreen} />
             <MainTab.Screen name={'HistoryScreen'} options={{ headerShown: false }} component={HistoryScreen} />
             <MainTab.Screen name={'GraphTab'} options={{ headerShown: false }} component={GraphTabNavigator} />
@@ -46,7 +51,6 @@ const MainTabNav = ({
     );
 };
 
-type Props = NativeStackScreenProps<RootStackParamList>
 
 
 const MainTabNavigator = observer(({ navigation, route }: Props) => {
@@ -123,6 +127,7 @@ const MainTabNavigator = observer(({ navigation, route }: Props) => {
             <MainTabNav
                 hideFloatingButton={hideFloatingButton}
                 showFloatingButton={showFloatingButton}
+                NativeStack={{ navigation, route }}
             />
             <HomeFloatingButtonView
                 absolute
@@ -161,7 +166,7 @@ const TabbarImage = ({ label, active }: { label: string, active: boolean }) => {
     }
 }
 
-const CustomTabBar = ({ showFloatingButton, hideFloatingButton, BottomTabBarProps }: TabBarProps) => {
+const CustomTabBar = ({ showFloatingButton, hideFloatingButton, BottomTabBarProps, NativeStack }: TabBarProps) => {
 
     const { state, descriptors, navigation, insets } = BottomTabBarProps
 
@@ -249,12 +254,15 @@ const CustomTabBar = ({ showFloatingButton, hideFloatingButton, BottomTabBarProp
                             <TouchableOpacity onPress={() => {
                                 if (stores.appStateStore.isHomeAds.get()) {
                                     runInAction(() => {
-                                        stores.appStateStore.isHomeAds.set(false)
+                                        NativeStack.navigation.navigate('AdvertisementScreen')
+                                    
+                                        // stores.appStateStore.isHomeAds.set(false)
                                     })
                                     return
                                 }
                                 runInAction(() => {
-                                    stores.appStateStore.isHomeAds.set(true)
+                                    NativeStack.navigation.navigate('AdvertisementScreen')
+                                    // stores.appStateStore.isHomeAds.set(true)
                                 })
                             }} style={styles.adsBar}>
                                 <Text style={{ ...themeFonts.notosans_medium_16, color: themeColor[theme].seegnal_white }}>광고</Text>

@@ -1,7 +1,6 @@
 
 import React from 'react';
-import { ImageStyle, StyleProp, StyleSheet, Text, TextStyle, ViewStyle } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { ImageStyle, StyleProp, StyleSheet, Text, TextStyle, ViewStyle, TouchableOpacity } from 'react-native';
 import { sizeConverter } from '../../../utils';
 import { Icon24ArrowRight } from '../../icons';
 
@@ -16,9 +15,9 @@ type RightArrowStyle = {
 const RightArrowButton = ({ buttonStyle, imageStyle, text, textStyle, onPress }: RightArrowStyle) => {
     const arrowStyles = StyleSheet.create({
         button: {
-            width: !!text? '100%' : sizeConverter(24),
-            height: !!text? sizeConverter(48) : sizeConverter(24),
-            justifyContent: !!text? 'space-between' : 'center',
+            width: !!text ? '100%' : sizeConverter(24),
+            height: !!text ? sizeConverter(48) : sizeConverter(24),
+            justifyContent: !!text ? 'space-between' : 'center',
             alignItems: 'center',
             paddingBottom: sizeConverter(2),
             flexDirection: 'row'

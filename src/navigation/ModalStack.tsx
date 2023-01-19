@@ -6,7 +6,7 @@
 
 import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
-import { CustomModalScreen, ImageButtonModalScreen, LoginModalScreen } from '../component';
+import { CustomModalScreen, ImageButtonModalScreen, LoginModalScreen, AdvertisementScreen } from '../component';
 
 const forFade = ({ current }: { current: any }) => ({
     cardStyle: {
@@ -26,6 +26,7 @@ const ModalStackNavigator = (ModalStack: any) => {
             <ModalStack.Screen name="LoginModalScreen" options={{ headerShown: false }} component={LoginModalScreen} />
             <ModalStack.Screen name="CustomModalScreen" options={{ headerShown: false }} component={CustomModalScreen} />
             <ModalStack.Screen name="ImageButtonModalScreen" options={{ headerShown: false }} component={ImageButtonModalScreen} />
+            <ModalStack.Screen name="AdvertisementScreen" options={{headerShown:false}} component={AdvertisementScreen} />
         </ModalStack.Group>
     );
 };
