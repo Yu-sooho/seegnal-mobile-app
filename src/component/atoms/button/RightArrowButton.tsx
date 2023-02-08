@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { ImageStyle, StyleProp, StyleSheet, Text, TextStyle, ViewStyle, TouchableOpacity } from 'react-native';
 import { sizeConverter } from '../../../utils';
 import { Icon24ArrowRight } from '../../icons';
@@ -10,9 +10,10 @@ type RightArrowStyle = {
     textStyle?: StyleProp<TextStyle>,
     onPress?: () => void,
     text?: string,
+    rightContent?: () => ReactNode
 }
 
-const RightArrowButton = ({ buttonStyle, imageStyle, text, textStyle, onPress }: RightArrowStyle) => {
+const RightArrowButton = ({ buttonStyle, imageStyle, text, textStyle, onPress, rightContent }: RightArrowStyle) => {
     const arrowStyles = StyleSheet.create({
         button: {
             width: !!text ? '100%' : sizeConverter(24),
@@ -35,7 +36,12 @@ const RightArrowButton = ({ buttonStyle, imageStyle, text, textStyle, onPress }:
                     {text}
                 </Text>
             }
-            <Icon24ArrowRight imageStyle={[arrowStyles.image, imageStyle]} />
+            {
+                rightContent ?
+                    rightContent?.()
+                    :
+                    <Icon24ArrowRight imageStyle={[arrowStyles.image, imageStyle]} />
+            }
         </TouchableOpacity>
     )
 }

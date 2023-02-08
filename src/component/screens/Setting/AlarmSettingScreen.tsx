@@ -21,9 +21,9 @@ const theme = stores.appStateStore.selectedTheme.get()
 const AlarmSettingScreen = ({ navigation, route }: Props) => {
 
     return(
-        <View>
+        <CustomSafeAreaView>
             <Text>123</Text>
-        </View>
+        </CustomSafeAreaView>
     )
 }
 

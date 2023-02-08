@@ -20,9 +20,9 @@ const theme = stores.appStateStore.selectedTheme.get()
 const CustomHeader = ({ style, leftContent, centerContent, rightContent }: CustomHeaderProps) => {
     return (
         <View style={style}>
-            <View>{leftContent?.()}</View>
+            <View style={{ }}>{leftContent?.()}</View>
             <View>{centerContent?.()}</View>
-            <View>{rightContent?.()}</View>
+            <View style={{}}>{rightContent?.()}</View>
         </View>
     );
 };
@@ -34,7 +34,7 @@ CustomHeader.defaultProps = {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        paddingHorizontal:sizeConverter(16)
+        paddingHorizontal: sizeConverter(16)
     },
     leftContent: () => {
         return (
@@ -48,7 +48,7 @@ CustomHeader.defaultProps = {
     },
     rightContent: () => {
         return (
-            <View />
+            <View style={{width:sizeConverter(24)}} />
         )
     },
 

@@ -22,7 +22,8 @@ export {
     RightArrowButton,
     LeftArrowButton,
     StatusButton,
-    ImageButton
+    ImageButton,
+    SubscribeButton
 } from './button'
 
 //modals

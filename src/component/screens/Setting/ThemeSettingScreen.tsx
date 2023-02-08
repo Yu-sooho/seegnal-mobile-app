@@ -2,16 +2,18 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import React from 'react';
 import {
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
+    FlatList,
+    ScrollView,
+    StyleSheet,
+    Text,
+    View,
 } from 'react-native';
 import { RootStackParamList } from '../../../navigation';
 import { images, themeColor, themeFonts } from '../../../resources';
 import createRootStore from '../../../stores';
 import { sizeConverter } from '../../../utils';
 import { CustomButton, CustomSafeAreaView, ImageButton, RightArrowButton, TitleText, UserImage } from '../../atoms';
+import { CustomHeader, ThemeListItem } from '../../molecules';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'ThemeSettingScreen'>;
 
@@ -20,11 +22,71 @@ const theme = stores.appStateStore.selectedTheme.get()
 
 const ThemeSettingScreen = ({ navigation, route }: Props) => {
 
-    return(
-        <View>
-            <Text>123</Text>
-        </View>
+    const styles = StyleSheet.create({
+        contentContainer: {
+            paddingHorizontal: sizeConverter(16),
+            marginTop: sizeConverter(16)
+        },
+    })
+
+    const onPressItem = async() =>{
+
+    }
+
+    const Header = () => {
+        return (
+            <TitleText text='테마' textStyle={{ ...themeFonts.notosans_bold_16 }} />
+        )
+    }
+    
+    const renderItem = ({item,index}) =>{
+        return(
+            <ThemeListItem item={item} index={index} onPress={onPressItem}/>
+        )
+    }
+
+    const ItemSeparatorComponent = () =>{
+        return(
+            <View style={{height:sizeConverter(16)}} />
+        )
+    }
+
+    return (
+        <CustomSafeAreaView>
+            <CustomHeader centerContent={Header} />
+            <View style={styles.contentContainer}>
+                <FlatList ItemSeparatorComponent={ItemSeparatorComponent} data={dummy} renderItem={renderItem} />
+            </View>
+        </CustomSafeAreaView>
     )
 }
+
+
+const dummy = [
+    {
+        id:0,
+        imageUrl:'www.naver.com',
+        title:'Title',
+        description:'body',
+        isActive:false,
+        isSubscribe:false
+    },
+    {
+        id:1,
+        imageUrl:'www.naver.com',
+        title:'Title',
+        description:'body',
+        isActive:true,
+        isSubscribe:false
+    },
+    {
+        id:2,
+        imageUrl:'www.naver.com',
+        title:'Title',
+        description:'body',
+        isActive:false,
+        isSubscribe:true
+    }
+]
 
 export default ThemeSettingScreen

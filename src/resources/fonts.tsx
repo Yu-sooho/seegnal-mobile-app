@@ -59,8 +59,8 @@ export const themeFonts = StyleSheet.create({
     notosans_bold_14:{
         fontFamily:'NotoSansCJKkr-Bold',
         fontSize:sizeConverter(14),
-        letterSpacing: sizeConverter(0),
-        includeFontPadding:false
+        letterSpacing: -sizeConverter(0.04),
+        includeFontPadding:false,
     },
     notosans_bold_16:{
         fontFamily:'NotoSansCJKkr-Bold',
