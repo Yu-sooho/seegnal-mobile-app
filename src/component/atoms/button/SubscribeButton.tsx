@@ -1,19 +1,20 @@
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { themeColor, themeFonts } from "../../../resources";
+import { themeColor, themeFonts, themeType } from "../../../resources";
 import createRootStore from "../../../stores";
 import { sizeConverter } from "../../../utils";
 
 type Props = {
-    isActive?: boolean,
-    isSubscribe?: boolean
-    onPress?: (() => void)
+    item: themeType,
+    onPress: ({ item }: { item: themeType }) => void
 }
 
 const stores = createRootStore()
 const theme = stores.appStateStore.selectedTheme.get()
 
-const SubscribeButton = ({ isActive, isSubscribe }: Props) => {
+const SubscribeButton = ({ item, onPress }: Props) => {
+
+    const { isActive, isSubscribe } = item
 
     const styles = StyleSheet.create({
         contentContainer: {
@@ -21,7 +22,7 @@ const SubscribeButton = ({ isActive, isSubscribe }: Props) => {
             alignItems: 'center',
             justifyContent: 'center',
             paddingHorizontal: sizeConverter(12),
-            paddingVertical:sizeConverter(8),
+            paddingVertical: sizeConverter(8),
             borderRadius: sizeConverter(8),
             backgroundColor: themeColor[theme].seegnal_main,
         },
@@ -35,7 +36,7 @@ const SubscribeButton = ({ isActive, isSubscribe }: Props) => {
             ...themeFonts.notosans_bold_14,
             color: themeColor[theme].seegnal_white
         },
-        activeTextStyle:{
+        activeTextStyle: {
             color: themeColor[theme].seegnal_dark_gray
         },
     })
@@ -46,7 +47,7 @@ const SubscribeButton = ({ isActive, isSubscribe }: Props) => {
         return '구매'
     }
 
-    const buttonStyle = () =>{
+    const buttonStyle = () => {
         if (isActive || isSubscribe) return styles.activeTextStyle
     }
 
@@ -56,8 +57,10 @@ const SubscribeButton = ({ isActive, isSubscribe }: Props) => {
     }
 
     return (
-        <TouchableOpacity style={[styles.contentContainer, contentContainerStyle()]}>
-            <Text style={[styles.textStyle,buttonStyle()]}>{buttonText()}</Text>
+        <TouchableOpacity onPress={() => {
+            onPress({ item })
+        }} style={[styles.contentContainer, contentContainerStyle()]}>
+            <Text style={[styles.textStyle, buttonStyle()]}>{buttonText()}</Text>
         </TouchableOpacity>
     )
 }

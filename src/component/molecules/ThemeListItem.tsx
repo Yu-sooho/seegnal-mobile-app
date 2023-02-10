@@ -1,22 +1,15 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import FastImage from 'react-native-fast-image'
-import { themeColor, themeFonts } from '../../resources'
+import { themeColor, themeFonts, themeType } from '../../resources'
 import createRootStore from '../../stores'
 import { sizeConverter } from '../../utils'
 import { SubscribeButton } from '../atoms'
 
 type Props = {
-    item: {
-        id?: number,
-        imageUrl?: string,
-        title?: string,
-        description?: string,
-        isActive?: boolean,
-        isSubscribe?: boolean
-    },
+    item: themeType,
     index: number,
-    onPress?: (() => void)
+    onPress: (({ item }: { item: themeType }) => void)
 }
 
 const stores = createRootStore()
@@ -27,7 +20,7 @@ const ThemeListItem = ({ item, index, onPress }: Props) => {
     const styles = StyleSheet.create({
         contentContainer: {
             flexDirection: 'row',
-            width:sizeConverter(328),
+            width: sizeConverter(328),
             height: sizeConverter(56),
         },
         imageStyle: {
@@ -40,7 +33,7 @@ const ThemeListItem = ({ item, index, onPress }: Props) => {
             marginLeft: sizeConverter(12),
             justifyContent: 'center',
             height: sizeConverter(56),
-            flex:1
+            flex: 1
         },
         titleText: {
             ...themeFonts.notosans_bold_14,
@@ -68,7 +61,7 @@ const ThemeListItem = ({ item, index, onPress }: Props) => {
                 <Text style={styles.bodyText}>{item?.description}</Text>
             </View>
             <View style={styles.buttonView}>
-                <SubscribeButton isActive={item?.isActive} isSubscribe={item?.isSubscribe} onPress={onPress} />
+                <SubscribeButton item={item} onPress={onPress} />
             </View>
         </View>
     )

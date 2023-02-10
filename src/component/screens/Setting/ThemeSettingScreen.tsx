@@ -1,5 +1,6 @@
 
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { Observer } from 'mobx-react-lite';
 import React from 'react';
 import {
     FlatList,
@@ -9,7 +10,7 @@ import {
     View,
 } from 'react-native';
 import { RootStackParamList } from '../../../navigation';
-import { images, themeColor, themeFonts } from '../../../resources';
+import { images, themeColor, themeFonts, themeType } from '../../../resources';
 import createRootStore from '../../../stores';
 import { sizeConverter } from '../../../utils';
 import { CustomButton, CustomSafeAreaView, ImageButton, RightArrowButton, TitleText, UserImage } from '../../atoms';
@@ -18,7 +19,6 @@ import { CustomHeader, ThemeListItem } from '../../molecules';
 type Props = NativeStackScreenProps<RootStackParamList, 'ThemeSettingScreen'>;
 
 const stores = createRootStore()
-const theme = stores.appStateStore.selectedTheme.get()
 
 const ThemeSettingScreen = ({ navigation, route }: Props) => {
 
@@ -29,8 +29,13 @@ const ThemeSettingScreen = ({ navigation, route }: Props) => {
         },
     })
 
-    const onPressItem = async() =>{
-
+    const onPressItem = async ({ item }: {
+        item: themeType
+    }) => {
+        stores.appStateStore.setIsMounted(false)
+        stores.appStateStore.setTheme(item.id)
+        // stores.appStateStore.persistSelectedTheme = item?.id
+        stores.appStateStore.setIsMounted(true)
     }
 
     const Header = () => {
@@ -38,16 +43,16 @@ const ThemeSettingScreen = ({ navigation, route }: Props) => {
             <TitleText text='테마' textStyle={{ ...themeFonts.notosans_bold_16 }} />
         )
     }
-    
-    const renderItem = ({item,index}) =>{
-        return(
-            <ThemeListItem item={item} index={index} onPress={onPressItem}/>
+
+    const renderItem = ({ item, index }) => {
+        return (
+            <ThemeListItem item={item} index={index} onPress={onPressItem} />
         )
     }
 
-    const ItemSeparatorComponent = () =>{
-        return(
-            <View style={{height:sizeConverter(16)}} />
+    const ItemSeparatorComponent = () => {
+        return (
+            <View style={{ height: sizeConverter(16) }} />
         )
     }
 
@@ -64,28 +69,28 @@ const ThemeSettingScreen = ({ navigation, route }: Props) => {
 
 const dummy = [
     {
-        id:0,
-        imageUrl:'www.naver.com',
-        title:'Title',
-        description:'body',
-        isActive:false,
-        isSubscribe:false
+        id: 0,
+        imageUrl: 'www.naver.com',
+        title: 'Title',
+        description: 'body',
+        isActive: false,
+        isSubscribe: false
     },
     {
-        id:1,
-        imageUrl:'www.naver.com',
-        title:'Title',
-        description:'body',
-        isActive:true,
-        isSubscribe:false
+        id: 1,
+        imageUrl: 'www.naver.com',
+        title: 'Title',
+        description: 'body',
+        isActive: true,
+        isSubscribe: false
     },
     {
-        id:2,
-        imageUrl:'www.naver.com',
-        title:'Title',
-        description:'body',
-        isActive:false,
-        isSubscribe:true
+        id: 2,
+        imageUrl: 'www.naver.com',
+        title: 'Title',
+        description: 'body',
+        isActive: false,
+        isSubscribe: true
     }
 ]
 
