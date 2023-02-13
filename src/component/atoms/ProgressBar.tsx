@@ -1,3 +1,4 @@
+import { observer } from 'mobx-react-lite'
 import React from 'react'
 import { View, StyleSheet } from 'react-native'
 import { Gesture, GestureDetector, PanGestureHandler } from 'react-native-gesture-handler'
@@ -15,7 +16,6 @@ type ProgressBarProps = {
 }
 
 const store = createRootStore()
-const theme = store.appStateStore.selectedTheme.get()
 
 const ProgressBar = ({
     width,
@@ -24,6 +24,8 @@ const ProgressBar = ({
     onChangeValue,
     initValue,
 }: ProgressBarProps) => {
+
+    const theme = store.appStateStore.selectedTheme.get()
 
     const halfSize = size / 2
     const maxMove = width - size
@@ -130,4 +132,4 @@ ProgressBar.defaultProps = {
     initValue: 0
 }
 
-export default ProgressBar
+export default observer(ProgressBar)

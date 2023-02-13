@@ -1,4 +1,5 @@
 
+import { observer } from 'mobx-react-lite';
 import React, { ReactNode } from 'react';
 import {
     StyleProp,
@@ -33,7 +34,6 @@ type CustomButtonProps = {
 };
 
 const stores = createRootStore()
-const theme = stores.appStateStore.selectedTheme.get()
 
 const CustomButton = ({
     onPress,
@@ -49,6 +49,59 @@ const CustomButton = ({
     rightIcon,
     buttonImage,
 }: CustomButtonProps) => {
+
+    const theme = stores.appStateStore.selectedTheme.get()
+
+    const styles = StyleSheet.create({
+        containerStyle: {
+            flexDirection: 'row',
+            justifyContent: 'space-between'
+        },
+        buttonStyle: {
+            justifyContent: 'center',
+            alignItems: 'center',
+            borderWidth: sizeConverter(1),
+            width: sizeConverter(328),
+            height: sizeConverter(48),
+            borderRadius: sizeConverter(12),
+            borderColor: themeColor[theme].seegnal_main,
+            backgroundColor: themeColor[theme].seegnal_main,
+        },
+        defaultButton: {
+            justifyContent: 'center',
+            alignItems: 'center',
+            borderWidth: sizeConverter(1),
+            width: sizeConverter(328),
+            height: sizeConverter(48),
+            borderRadius: sizeConverter(12),
+            borderColor: themeColor[theme].seegnal_main,
+            backgroundColor: themeColor[theme].seegnal_main,
+        },
+        disabledButton: {
+            justifyContent: 'center',
+            alignItems: 'center',
+            borderWidth: sizeConverter(1),
+            width: sizeConverter(328),
+            height: sizeConverter(48),
+            borderRadius: sizeConverter(12),
+            borderColor: themeColor[theme].seegnal_light_gray2,
+            backgroundColor: themeColor[theme].seegnal_light_gray2
+        },
+    
+        textStyle: {
+            ...themeFonts.notosans_bold_16,
+            color: themeColor[theme].seegnal_white
+        },
+        defaultText: {
+            ...themeFonts.notosans_bold_16,
+            color: themeColor[theme].seegnal_white,
+        },
+        disabledText: {
+            ...themeFonts.notosans_bold_16,
+            color: themeColor[theme].seegnal_gray,
+        }
+    })
+
     return (
         <TouchableOpacity
             style={
@@ -103,54 +156,5 @@ CustomButton.defaultProps = {
     disabled: false
 }
 
-const styles = StyleSheet.create({
-    containerStyle: {
-        flexDirection: 'row',
-        justifyContent: 'space-between'
-    },
-    buttonStyle: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderWidth: sizeConverter(1),
-        width: sizeConverter(328),
-        height: sizeConverter(48),
-        borderRadius: sizeConverter(12),
-        borderColor: themeColor[theme].seegnal_main,
-        backgroundColor: themeColor[theme].seegnal_main,
-    },
-    defaultButton: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderWidth: sizeConverter(1),
-        width: sizeConverter(328),
-        height: sizeConverter(48),
-        borderRadius: sizeConverter(12),
-        borderColor: themeColor[theme].seegnal_main,
-        backgroundColor: themeColor[theme].seegnal_main,
-    },
-    disabledButton: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderWidth: sizeConverter(1),
-        width: sizeConverter(328),
-        height: sizeConverter(48),
-        borderRadius: sizeConverter(12),
-        borderColor: themeColor[theme].seegnal_light_gray2,
-        backgroundColor: themeColor[theme].seegnal_light_gray2
-    },
 
-    textStyle: {
-        ...themeFonts.notosans_bold_16,
-        color: themeColor[theme].seegnal_white
-    },
-    defaultText: {
-        ...themeFonts.notosans_bold_16,
-        color: themeColor[theme].seegnal_white,
-    },
-    disabledText: {
-        ...themeFonts.notosans_bold_16,
-        color: themeColor[theme].seegnal_gray,
-    }
-})
-
-export default CustomButton
+export default observer(CustomButton)

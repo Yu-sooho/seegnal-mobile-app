@@ -1,5 +1,6 @@
+import { observer } from 'mobx-react-lite'
 import React from 'react'
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity } from 'react-native'
 import { EMOTION_TYPE, images, themeColor, themeFonts } from '../../resources'
 import createRootStore from '../../stores'
 import { sizeConverter } from '../../utils'
@@ -15,7 +16,6 @@ type Props = {
 }
 
 const stores = createRootStore()
-const theme = stores.appStateStore.selectedTheme.get()
 
 const SendImageButton = ({
     title,
@@ -25,6 +25,8 @@ const SendImageButton = ({
     disabled,
     count
 }: Props) => {
+
+    const theme = stores.appStateStore.selectedTheme.get()
 
     const styles = StyleSheet.create({
         container: {
@@ -76,4 +78,4 @@ SendImageButton.defaultProps = {
     count: null
 }
 
-export default SendImageButton
+export default observer(SendImageButton)

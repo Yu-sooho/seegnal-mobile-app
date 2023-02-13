@@ -1,3 +1,4 @@
+import { observer } from 'mobx-react-lite'
 import React from 'react'
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import FastImage from 'react-native-fast-image'
@@ -12,9 +13,10 @@ type Props = {
 }
 
 const store = createRootStore()
-const theme = store.appStateStore.selectedTheme.get()
 
 const StatusButton = ({ item, onPress, bottomInset }: Props) => {
+
+    const theme = store.appStateStore.selectedTheme.get()
 
     const styles = StyleSheet.create({
         container: {
@@ -64,4 +66,4 @@ StatusButton.defaultProps = {
     text: '상태입력',
 }
 
-export default StatusButton
+export default observer(StatusButton)

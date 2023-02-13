@@ -1,3 +1,4 @@
+import { observer } from 'mobx-react-lite'
 import React from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { themeColor, themeFonts } from '../../../resources'
@@ -5,9 +6,10 @@ import createRootStore from '../../../stores'
 import { sizeConverter } from '../../../utils'
 
 const stores = createRootStore()
-const theme = stores.appStateStore.selectedTheme.get()
 
 const SeegnalDeleteButton = () => {
+
+    const theme = stores.appStateStore.selectedTheme.get()
 
     const styles = StyleSheet.create({
         container:{
@@ -31,4 +33,4 @@ const SeegnalDeleteButton = () => {
     )
 }
 
-export default SeegnalDeleteButton
+export default observer(SeegnalDeleteButton)

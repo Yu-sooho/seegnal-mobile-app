@@ -1,6 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, TouchableOpacity } from 'react-native'
-import { themeColor, themeFonts } from '../../../resources'
+import { StyleSheet, TouchableOpacity } from 'react-native'
 import createRootStore from '../../../stores'
 import { sizeConverter } from '../../../utils'
 import { Icon16Drop } from '../../icons'

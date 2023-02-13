@@ -1,4 +1,5 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
+import { observer } from 'mobx-react-lite'
 import React, { useState } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import FastImage from 'react-native-fast-image'
@@ -12,16 +13,17 @@ import { FloatingNextButton, RadioTextButton } from '../../molecules'
 type Props = NativeStackScreenProps<LoginStackParamList, 'RegistTosScreen'>;
 
 const stores = createRootStore()
-const theme = stores.appStateStore.selectedTheme.get()
 
 const RegistTosScreen = ({ navigation, route }: Props) => {
+
+    const theme = stores.appStateStore.selectedTheme.get()
 
     const styles = StyleSheet.create({
         imageView: {
             marginTop: sizeConverter(120),
             marginBottom: sizeConverter(130),
-            justifyContent:'center',
-            alignItems:'center'
+            justifyContent: 'center',
+            alignItems: 'center'
         },
         imageStyle: {
             width: sizeConverter(120),
@@ -183,4 +185,4 @@ const RegistTosScreen = ({ navigation, route }: Props) => {
     )
 }
 
-export default RegistTosScreen
+export default observer(RegistTosScreen)

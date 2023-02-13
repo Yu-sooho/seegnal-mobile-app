@@ -1,5 +1,6 @@
 
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { observer } from 'mobx-react-lite';
 import React from 'react';
 import {
     StyleSheet,
@@ -16,9 +17,10 @@ import { CustomHeader } from '../../molecules';
 type Props = NativeStackScreenProps<RootStackParamList, 'AppInfoScreen'>;
 
 const stores = createRootStore()
-const theme = stores.appStateStore.selectedTheme.get()
 
 const AppInfoScreen = ({ navigation, route }: Props) => {
+
+    const theme = stores.appStateStore.selectedTheme.get()
 
     const styles = StyleSheet.create({
         contentContainer: {
@@ -74,4 +76,4 @@ const AppInfoScreen = ({ navigation, route }: Props) => {
     )
 }
 
-export default AppInfoScreen
+export default observer(AppInfoScreen)

@@ -1,3 +1,4 @@
+import { observer } from 'mobx-react-lite'
 import React from 'react'
 import { StyleProp, StyleSheet, Text, TextStyle, View, ViewStyle } from 'react-native'
 import { themeColor, themeFonts } from '../../../resources'
@@ -12,10 +13,11 @@ type Props = {
 }
 
 const stores = createRootStore()
-const theme = stores.appStateStore.selectedTheme.get()
 
 
 const TitleText = ({ text, viewStyle, textStyle, size }: Props) => {
+    
+    const theme = stores.appStateStore.selectedTheme.get()
 
     const styles = StyleSheet.create({
         titleText: {
@@ -37,4 +39,4 @@ TitleText.defaultProps = {
     size:sizeConverter(24)
 }
 
-export default TitleText
+export default observer(TitleText)

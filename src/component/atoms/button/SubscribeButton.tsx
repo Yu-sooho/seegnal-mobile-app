@@ -1,3 +1,4 @@
+import { observer } from "mobx-react-lite";
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { themeColor, themeFonts, themeType } from "../../../resources";
@@ -10,9 +11,10 @@ type Props = {
 }
 
 const stores = createRootStore()
-const theme = stores.appStateStore.selectedTheme.get()
 
 const SubscribeButton = ({ item, onPress }: Props) => {
+
+    const theme = stores.appStateStore.selectedTheme.get()
 
     const { isActive, isSubscribe } = item
 
@@ -65,4 +67,4 @@ const SubscribeButton = ({ item, onPress }: Props) => {
     )
 }
 
-export default SubscribeButton 
+export default observer(SubscribeButton)

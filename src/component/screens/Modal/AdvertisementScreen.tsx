@@ -10,11 +10,11 @@
  * 
  */
 import { StackScreenProps } from '@react-navigation/stack';
+import { observer } from 'mobx-react-lite';
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { RootStackParamList } from '../../../navigation';
 import { themeColor, themeFonts } from '../../../resources';
-import { defaultStyles } from '../../../resources/styles';
 import createRootStore from '../../../stores';
 import { sizeConverter } from '../../../utils';
 import { BackgroundOpacity, CustomButton } from '../../atoms';
@@ -22,9 +22,10 @@ import { BackgroundOpacity, CustomButton } from '../../atoms';
 type Props = StackScreenProps<RootStackParamList, 'AdvertisementScreen'>
 
 const store = createRootStore()
-const theme = store.appStateStore.selectedTheme.get()
 
 const AdvertisementScreen = ({ navigation, route }: Props) => {
+
+    const theme = store.appStateStore.selectedTheme.get()
 
     const styles = StyleSheet.create({
         container: {
@@ -49,40 +50,40 @@ const AdvertisementScreen = ({ navigation, route }: Props) => {
         buttonView: {
             flexDirection: 'row',
             justifyContent: 'space-between',
-            alignItems:'center'
+            alignItems: 'center'
         },
-        adViewStyle:{
-            width:sizeConverter(280),
-            height:sizeConverter(418),
-            justifyContent:'center',
-            alignItems:'center',
-            backgroundColor:themeColor[theme].seegnal_gray,
-            borderTopLeftRadius:sizeConverter(8),
-            borderTopRightRadius:sizeConverter(8)
+        adViewStyle: {
+            width: sizeConverter(280),
+            height: sizeConverter(418),
+            justifyContent: 'center',
+            alignItems: 'center',
+            backgroundColor: themeColor[theme].seegnal_gray,
+            borderTopLeftRadius: sizeConverter(8),
+            borderTopRightRadius: sizeConverter(8)
         },
-        adTextStyle:{
+        adTextStyle: {
             ...themeFonts.notosans_medium_16,
-            color:themeColor[theme].seegnal_lwhite_gray,
+            color: themeColor[theme].seegnal_lwhite_gray,
         },
-        activeButton:{
-            height:sizeConverter(40),
-            backgroundColor:themeColor[theme].seegnal_lwhite_gray,
-            borderWidth:0,
-            width:sizeConverter(139.5),
-            borderRadius:0,
-            borderBottomLeftRadius:sizeConverter(8)
+        activeButton: {
+            height: sizeConverter(40),
+            backgroundColor: themeColor[theme].seegnal_lwhite_gray,
+            borderWidth: 0,
+            width: sizeConverter(139.5),
+            borderRadius: 0,
+            borderBottomLeftRadius: sizeConverter(8)
         },
-        closeButton:{
-            height:sizeConverter(40),
-            backgroundColor:themeColor[theme].seegnal_lwhite_gray,
-            borderWidth:0,
-            width:sizeConverter(139.5),
-            borderRadius:0,
-            borderBottomRightRadius:sizeConverter(8)
+        closeButton: {
+            height: sizeConverter(40),
+            backgroundColor: themeColor[theme].seegnal_lwhite_gray,
+            borderWidth: 0,
+            width: sizeConverter(139.5),
+            borderRadius: 0,
+            borderBottomRightRadius: sizeConverter(8)
         },
-        divideItem:{
-            height:sizeConverter(16),
-            width:sizeConverter(1),
+        divideItem: {
+            height: sizeConverter(16),
+            width: sizeConverter(1),
             backgroundColor: themeColor[theme].seegnal_light_gray1
         }
     })
@@ -130,4 +131,4 @@ const AdvertisementScreen = ({ navigation, route }: Props) => {
     )
 }
 
-export default AdvertisementScreen
+export default observer(AdvertisementScreen)

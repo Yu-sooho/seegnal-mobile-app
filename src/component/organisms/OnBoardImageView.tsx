@@ -10,6 +10,7 @@ import { sizeConverter } from '../../utils';
 import createRootStore from '../../stores';
 import { ImageList, ScrollingText } from '../molecules';
 import { Carosel, OnBoardImage } from '../atoms';
+import { observer } from 'mobx-react-lite';
 
 type OnBoardImageViewProps = {
     data: Array<Object>,
@@ -34,9 +35,43 @@ const renderItem = ({ item, index }: renderItemType) => {
     )
 }
 
-const theme = stores.appStateStore.selectedTheme.get()
 
 const OnBoardImageView = ({ data }: OnBoardImageViewProps) => {
+
+    const theme = stores.appStateStore.selectedTheme.get()
+
+    const styles = StyleSheet.create({
+        containerStyle: {
+            alignItems: 'center'
+        },
+        onBoardImage: {
+            width: sizeConverter(280),
+            height: sizeConverter(280),
+            justifyContent: 'center',
+            alignItems: 'center',
+            backgroundColor: themeColor[theme].seegnal_light_gray1,
+        },
+        onBoardTextView: {
+            width:sizeConverter(360),
+            minHeight:sizeConverter(112)
+        },
+        onBoardCaroselView: {
+        },
+        titleStyle: {
+            ...themeFonts.santokki_bold_18,
+            color:themeColor[theme].seegnal_dark_gray,
+            width: sizeConverter(280),
+            textAlign: 'center',
+            marginBottom:sizeConverter(8),
+        },
+        textStyle: {
+            ...themeFonts.notosans_medium_14,
+            color:themeColor[theme].seegnal_deep_gray,
+            maxWidth: sizeConverter(280),
+            textAlign: 'center',
+        },
+    });
+
     const caroselAnimatedValue = useRef(new Animated.Value(0))
     return (
         <View style={styles.containerStyle}>
@@ -63,36 +98,5 @@ OnBoardImageView.defaultProps = {
 }
 
 
-const styles = StyleSheet.create({
-    containerStyle: {
-        alignItems: 'center'
-    },
-    onBoardImage: {
-        width: sizeConverter(280),
-        height: sizeConverter(280),
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: themeColor[theme].seegnal_light_gray1,
-    },
-    onBoardTextView: {
-        width:sizeConverter(360),
-        minHeight:sizeConverter(112)
-    },
-    onBoardCaroselView: {
-    },
-    titleStyle: {
-        ...themeFonts.santokki_bold_18,
-        color:themeColor[theme].seegnal_dark_gray,
-        width: sizeConverter(280),
-        textAlign: 'center',
-        marginBottom:sizeConverter(8),
-    },
-    textStyle: {
-        ...themeFonts.notosans_medium_14,
-        color:themeColor[theme].seegnal_deep_gray,
-        maxWidth: sizeConverter(280),
-        textAlign: 'center',
-    },
-});
 
-export default OnBoardImageView
+export default observer(OnBoardImageView)

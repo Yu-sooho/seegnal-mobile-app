@@ -11,15 +11,17 @@ import { StackScreenProps } from '@react-navigation/stack';
 import { ModalHeader } from '../../molecules';
 import { EMOTION_TYPE, themeColor, themeFonts } from '../../../resources';
 import { Icon24ArrowLeft } from '../../icons';
+import { observer } from 'mobx-react-lite';
 
 
 const stores = createRootStore()
-const theme = stores.appStateStore.selectedTheme.get()
 const modalSize = sizeConverter(252)
 
 type Props = StackScreenProps<RootStackParamList, 'ImageButtonModalScreen'>
 
 const ImageButtonModalScreen = ({ navigation, route }: Props) => {
+
+    const theme = stores.appStateStore.selectedTheme.get()
 
     const styles = StyleSheet.create({
         loginButtonViewStyle: {
@@ -123,4 +125,4 @@ const ImageButtonModalScreen = ({ navigation, route }: Props) => {
     );
 };
 
-export default ImageButtonModalScreen;
+export default observer(ImageButtonModalScreen)

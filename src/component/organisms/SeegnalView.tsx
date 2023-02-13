@@ -6,11 +6,13 @@ import { sizeConverter } from '../../utils'
 import { themeColor, themeFonts } from '../../resources'
 import createRootStore from '../../stores'
 import { CommentInput, UserHeader } from '../molecules'
+import { observer } from 'mobx-react-lite'
 
 const stores = createRootStore()
-const theme = stores.appStateStore.selectedTheme.get()
 
 const SeegnalView = () => {
+
+    const theme = stores.appStateStore.selectedTheme.get()
 
     const styles = StyleSheet.create({
         container: {
@@ -96,4 +98,4 @@ const SeegnalView = () => {
     )
 }
 
-export default SeegnalView
+export default observer(SeegnalView)

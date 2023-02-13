@@ -1,11 +1,11 @@
+import { observer } from 'mobx-react-lite'
 import React, { useEffect, useState } from 'react'
-import { Dimensions, StyleProp, StyleSheet, Text, TouchableOpacity, View, ViewStyle } from 'react-native'
+import { Dimensions, StyleProp, StyleSheet, TouchableOpacity, ViewStyle } from 'react-native'
 import Animated, { Easing, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated'
-import { STATUS_BUTTONS, STATUS_BUTTONS_TYPE, themeColor } from '../../resources'
+import { STATUS_BUTTONS_TYPE, themeColor } from '../../resources'
 import createRootStore from '../../stores'
 import { sizeConverter } from '../../utils'
 import { StatusButton } from '../atoms'
-import { initialWindowMetrics } from 'react-native-safe-area-context';
 
 type Props = {
     absolute: boolean,
@@ -17,7 +17,6 @@ type Props = {
 }
 
 const store = createRootStore()
-const theme = store.appStateStore.selectedTheme.get()
 
 const HomeFloatingButtonView = ({
     absolute,
@@ -27,6 +26,8 @@ const HomeFloatingButtonView = ({
     isVisible,
     onPress
 }: Props) => {
+
+    const theme = store.appStateStore.selectedTheme.get()
 
     const fade = useSharedValue(0);
 
@@ -137,4 +138,4 @@ HomeFloatingButtonView.defaultProps = {
     bottomInset:0
 }
 
-export default HomeFloatingButtonView
+export default observer(HomeFloatingButtonView)

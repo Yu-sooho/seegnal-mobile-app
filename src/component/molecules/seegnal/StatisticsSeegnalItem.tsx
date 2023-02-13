@@ -1,3 +1,4 @@
+import { observer } from 'mobx-react-lite'
 import React from 'react'
 import { Image, ImageStyle, StyleProp, StyleSheet, Text, TextStyle, View } from 'react-native'
 import { themeColor, themeFonts } from '../../../resources'
@@ -6,7 +7,6 @@ import { sizeConverter } from '../../../utils'
 import { TitleText } from '../../atoms'
 
 const stores = createRootStore()
-const theme = stores.appStateStore.selectedTheme.get()
 
 type Props = {
     image: object,
@@ -18,6 +18,8 @@ type Props = {
 }
 
 const StatisticsSeegnalItem = ({ image, imageStyle, count, text, textStyle, countStyle }: Props) => {
+
+    const theme = stores.appStateStore.selectedTheme.get()
 
     const styles = StyleSheet.create({
         container: {
@@ -54,4 +56,4 @@ const StatisticsSeegnalItem = ({ image, imageStyle, count, text, textStyle, coun
 
 }
 
-export default StatisticsSeegnalItem
+export default observer(StatisticsSeegnalItem)

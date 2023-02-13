@@ -20,9 +20,10 @@ import { Icon16NonSafe, Icon16Safe } from '../../../icons';
 type Props = NativeStackScreenProps<GraphTabParamList, 'SeegnalGraphScreen'>;
 
 const stores = createRootStore()
-const theme = stores.appStateStore.selectedTheme.get()
 
 const SeegnalGraphScreen = ({ navigation, route }: Props) => {
+
+  const theme = stores.appStateStore.selectedTheme.get()
 
   const insets = useSafeAreaInsets()
 
@@ -65,25 +66,20 @@ const SeegnalGraphScreen = ({ navigation, route }: Props) => {
           textImage1={<Icon16Safe imageStyle={{ marginRight: sizeConverter(4) }} />}
           textImage2={<Icon16NonSafe imageStyle={{ marginRight: sizeConverter(4) }} />}
           percent1={radTemp}
-          percent2={100-radTemp}
+          percent2={100 - radTemp}
           color1={themeColor[theme].seegnal_secondary_1}
           color2={themeColor[theme].seegnal_secondary_2}
-          contentContainerStyle={{marginTop:sizeConverter(24)}}
+          contentContainerStyle={{ marginTop: sizeConverter(24) }}
           text1={`${0}번`}
           text2={`${0}번`}
         />
         <StatisticsEroticism />
       </ScrollView>
-      <LinearGradient colors={[`${themeColor[theme].seegnal_light_gray1}`, `${themeColor[theme].seegnal_light_gray1}00`]} style={styles.linearGradient}>
+      {/* <LinearGradient colors={[`${themeColor[theme].seegnal_light_gray1}`, `${themeColor[theme].seegnal_light_gray1}00`]} style={styles.linearGradient}>
         <View style={styles.linearView} />
-      </LinearGradient>
+      </LinearGradient> */}
     </CustomSafeAreaView>
   );
 };
-
-
-const styles = StyleSheet.create({
-
-});
 
 export default SeegnalGraphScreen

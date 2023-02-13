@@ -1,14 +1,13 @@
-import React, { ReactNode, useEffect, useState } from 'react'
+import { observer } from 'mobx-react-lite'
+import React, { ReactNode, useEffect } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import Animated, { Easing, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated'
 import { themeColor, themeFonts } from '../../../resources'
 import createRootStore from '../../../stores'
 import { sizeConverter } from '../../../utils'
 import { ColorBar } from '../../atoms'
-import { Icon16NonSafe, Icon16Safe } from '../../icons'
 
 const stores = createRootStore()
-const theme = stores.appStateStore.selectedTheme.get()
 
 type Props = {
     maxWidth: number,
@@ -21,6 +20,7 @@ type Props = {
 }
 
 const ColorBarView = ({ maxWidth, action, percent, color, reverse, textImage, text }: Props) => {
+    const theme = stores.appStateStore.selectedTheme.get()
 
     const styles = StyleSheet.create({
         colorBarStyle: {
@@ -86,4 +86,4 @@ const ColorBarView = ({ maxWidth, action, percent, color, reverse, textImage, te
     )
 }
 
-export default ColorBarView
+export default observer(ColorBarView)

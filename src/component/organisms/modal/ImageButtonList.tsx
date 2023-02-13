@@ -1,3 +1,4 @@
+import { observer } from 'mobx-react-lite'
 import React from 'react'
 import { FlatList, StyleSheet, Text, View } from 'react-native'
 import { initialWindowMetrics } from 'react-native-safe-area-context'
@@ -12,10 +13,11 @@ type ImageButtonListProps = {
 }
 
 const stores = createRootStore()
-const theme = stores.appStateStore.selectedTheme.get()
 
 
 const ImageButtonList = ({ dataList, onPressItem }: ImageButtonListProps) => {
+
+const theme = stores.appStateStore.selectedTheme.get()
 
 
     const insets = initialWindowMetrics?.insets
@@ -70,4 +72,4 @@ const ImageButtonList = ({ dataList, onPressItem }: ImageButtonListProps) => {
     )
 }
 
-export default ImageButtonList
+export default observer(ImageButtonList)

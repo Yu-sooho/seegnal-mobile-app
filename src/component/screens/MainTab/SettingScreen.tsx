@@ -1,6 +1,7 @@
 
 import { CompositeScreenProps } from '@react-navigation/native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { observer } from 'mobx-react-lite';
 import React from 'react';
 import {
   ScrollView,
@@ -19,9 +20,10 @@ type Props = CompositeScreenProps<
 >
 
 const stores = createRootStore()
-const theme = stores.appStateStore.selectedTheme.get()
 
 const SettingScreen = ({ navigation, route }: Props) => {
+
+  const theme = stores.appStateStore.selectedTheme.get()
 
   const styles = StyleSheet.create({
     headerStyle: {
@@ -159,8 +161,4 @@ const SettingScreen = ({ navigation, route }: Props) => {
   );
 };
 
-const styles = StyleSheet.create({
-
-});
-
-export default SettingScreen
+export default observer(SettingScreen)

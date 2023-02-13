@@ -1,4 +1,5 @@
 
+import { observer } from 'mobx-react-lite';
 import React from 'react';
 import { KeyboardType, StyleProp, StyleSheet, TextInputProps, TextStyle, View, ViewStyle } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
@@ -16,9 +17,10 @@ type CustomTextInputProps = {
 };
 
 const stores = createRootStore()
-const theme = stores.appStateStore.selectedTheme.get()
 
 const CustomTextInput = ({ value, textStyle, viewStyle, keyboardType, placeholder, onChangeText }: CustomTextInputProps) => {
+
+    const theme = stores.appStateStore.selectedTheme.get()
 
     const styles = StyleSheet.create({
         viewStyle: {
@@ -53,4 +55,4 @@ CustomTextInput.defaultProps = {
 }
 
 
-export default CustomTextInput
+export default observer(CustomTextInput)

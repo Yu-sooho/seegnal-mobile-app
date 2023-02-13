@@ -19,21 +19,20 @@ import { Icon40DefaultGraph, Icon40DefaultHistory, Icon40DefaultHome, Icon40Defa
 const MainTab = createBottomTabNavigator<MainTabParamList>();
 
 const stores = createRootStore()
-const theme = stores.appStateStore.selectedTheme.get()
 
 type Props = NativeStackScreenProps<RootStackParamList>
 
 type MainTabProps = {
     hideFloatingButton: () => void,
     showFloatingButton: () => void,
-    NativeStack:NativeStackScreenProps<RootStackParamList>,
+    NativeStack: NativeStackScreenProps<RootStackParamList>,
 }
 
 type TabBarProps = {
     hideFloatingButton: () => void,
     showFloatingButton: () => void,
     BottomTabBarProps: BottomTabBarProps,
-    NativeStack:NativeStackScreenProps<RootStackParamList>,
+    NativeStack: NativeStackScreenProps<RootStackParamList>,
 }
 
 const MainTabNav = ({
@@ -54,6 +53,8 @@ const MainTabNav = ({
 
 
 const MainTabNavigator = observer(({ navigation, route }: Props) => {
+
+    const theme = stores.appStateStore.selectedTheme.get()
 
     const insets = useSafeAreaInsets()
     const isHomeAds = stores.appStateStore.isHomeAds.get()
@@ -123,27 +124,34 @@ const MainTabNavigator = observer(({ navigation, route }: Props) => {
 
 
     return (
-        <View style={{ flex: 1, backgroundColor: themeColor[theme].seegnal_lwhite_gray }}>
-            <MainTabNav
-                hideFloatingButton={hideFloatingButton}
-                showFloatingButton={showFloatingButton}
-                NativeStack={{ navigation, route }}
-            />
-            <HomeFloatingButtonView
-                absolute
-                onPress={onPressStatusItem}
-                isVisible={isVisiableFloatingView}
-                buttonList={STATUS_BUTTONS['WOMAN']}
-                onPressBack={onPressFloatingButton}
-                bottomInset={ViewBottomInset}
-            />
-            <Animated.View pointerEvents={fadeValue.value > 0 ? 'auto' : 'none'} style={floatingButtonStyle}>
-                <FloatingPlusButton
-                    bottomInset={buttonBottomInset}
-                    onPress={onPressFloatingButton}
-                />
-            </Animated.View>
-        </View>
+        <Observer>
+            {() => {
+                return (
+                    <View style={{ flex: 1, backgroundColor: themeColor[theme].seegnal_lwhite_gray }}>
+                        <MainTabNav
+                            hideFloatingButton={hideFloatingButton}
+                            showFloatingButton={showFloatingButton}
+                            NativeStack={{ navigation, route }}
+                        />
+                        <HomeFloatingButtonView
+                            absolute
+                            onPress={onPressStatusItem}
+                            isVisible={isVisiableFloatingView}
+                            buttonList={STATUS_BUTTONS['WOMAN']}
+                            onPressBack={onPressFloatingButton}
+                            bottomInset={ViewBottomInset}
+                        />
+                        <Animated.View pointerEvents={fadeValue.value > 0 ? 'auto' : 'none'} style={floatingButtonStyle}>
+                            <FloatingPlusButton
+                                bottomInset={buttonBottomInset}
+                                onPress={onPressFloatingButton}
+                            />
+                        </Animated.View>
+                    </View>
+                )
+            }}
+        </Observer>
+
     )
 })
 
@@ -168,110 +176,120 @@ const TabbarImage = ({ label, active }: { label: string, active: boolean }) => {
 
 const CustomTabBar = ({ showFloatingButton, hideFloatingButton, BottomTabBarProps, NativeStack }: TabBarProps) => {
 
+    const theme = stores.appStateStore.selectedTheme.get()
+
     const { state, descriptors, navigation, insets } = BottomTabBarProps
 
-    const styles = StyleSheet.create({
-        container: {
-            alignItems: 'center',
-            justifyContent: 'center',
-            paddingBottom: insets.bottom,
-        },
-        tabButton: {
-            height: sizeConverter(56),
-            flex: 1,
-            alignItems: 'center',
-            justifyContent: 'center',
-            backgroundColor: themeColor[theme].seegnal_lwhite_gray
-        },
-        adsBar: {
-            height: sizeConverter(46),
-            width: '100%',
-            alignItems: 'center',
-            justifyContent: 'center',
-            backgroundColor: themeColor[theme].seegnal_dark_gray
-        }
-    })
-
     return (
-        <View style={styles.container}>
-            <View style={{ flexDirection: 'row' }}>
-                {state.routes.map((route, index) => {
-                    const { options } = descriptors[route.key];
-                    const label =
-                        options.tabBarLabel !== undefined
-                            ? options.tabBarLabel
-                            : options.title !== undefined
-                                ? options.title
-                                : route.name;
+        <Observer>
+            {() => {
 
-                    const isFocused = state.index === index;
+                const styles = StyleSheet.create({
+                    container: {
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        paddingBottom: insets.bottom,
+                    },
+                    tabButton: {
+                        height: sizeConverter(56),
+                        flex: 1,
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        backgroundColor: themeColor[theme].seegnal_lwhite_gray
+                    },
+                    adsBar: {
+                        height: sizeConverter(46),
+                        width: '100%',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        backgroundColor: themeColor[theme].seegnal_dark_gray
+                    }
+                })
 
-                    const onPress = () => {
-                        const event = navigation.emit({
-                            type: 'tabPress',
-                            target: route.key,
-                            canPreventDefault: true,
-                        });
+                return (
+                    <View style={styles.container}>
+                        <View style={{ flexDirection: 'row' }}>
+                            {state.routes.map((route, index) => {
+                                const { options } = descriptors[route.key];
+                                const label =
+                                    options.tabBarLabel !== undefined
+                                        ? options.tabBarLabel
+                                        : options.title !== undefined
+                                            ? options.title
+                                            : route.name;
 
-                        if (!isFocused && !event.defaultPrevented) {
-                            if (route.name === 'HomeScreen') {
-                                showFloatingButton()
-                            } else {
-                                hideFloatingButton()
-                            }
-                            navigation.navigate(route.name);
-                        }
-                    };
+                                const isFocused = state.index === index;
 
-                    const onLongPress = () => {
-                        navigation.emit({
-                            type: 'tabLongPress',
-                            target: route.key,
-                        });
-                    };
+                                const onPress = () => {
+                                    const event = navigation.emit({
+                                        type: 'tabPress',
+                                        target: route.key,
+                                        canPreventDefault: true,
+                                    });
 
-                    return (
-                        <TouchableOpacity
-                            key={`${route?.name}-${index}-keys`}
-                            accessibilityRole="button"
-                            accessibilityState={isFocused ? { selected: true } : {}}
-                            accessibilityLabel={options.tabBarAccessibilityLabel}
-                            testID={options.tabBarTestID}
-                            onPress={onPress}
-                            onLongPress={onLongPress}
-                            style={styles.tabButton}
-                        >
-                            <TabbarImage label={`${label}`} active={isFocused} />
-                        </TouchableOpacity>
-                    );
-                })}
+                                    if (!isFocused && !event.defaultPrevented) {
+                                        if (route.name === 'HomeScreen') {
+                                            showFloatingButton()
+                                        } else {
+                                            hideFloatingButton()
+                                        }
+                                        navigation.navigate(route.name);
+                                    }
+                                };
 
-            </View>
-            <Observer>
-                {() => {
-                    if (stores.appStateStore.isHomeAds.get())
-                        return (
-                            <TouchableOpacity onPress={() => {
-                                if (stores.appStateStore.isHomeAds.get()) {
-                                    runInAction(() => {
-                                        NativeStack.navigation.navigate('AdvertisementScreen')
-                                    
-                                        // stores.appStateStore.isHomeAds.set(false)
-                                    })
-                                    return
-                                }
-                                runInAction(() => {
-                                    NativeStack.navigation.navigate('AdvertisementScreen')
-                                    // stores.appStateStore.isHomeAds.set(true)
-                                })
-                            }} style={styles.adsBar}>
-                                <Text style={{ ...themeFonts.notosans_medium_16, color: themeColor[theme].seegnal_white }}>광고</Text>
-                            </TouchableOpacity>
-                        )
-                    return <View />
-                }}
-            </Observer>
-        </View>
+                                const onLongPress = () => {
+                                    navigation.emit({
+                                        type: 'tabLongPress',
+                                        target: route.key,
+                                    });
+                                };
+
+                                return (
+                                    <TouchableOpacity
+                                        key={`${route?.name}-${index}-keys`}
+                                        accessibilityRole="button"
+                                        accessibilityState={isFocused ? { selected: true } : {}}
+                                        accessibilityLabel={options.tabBarAccessibilityLabel}
+                                        testID={options.tabBarTestID}
+                                        onPress={onPress}
+                                        onLongPress={onLongPress}
+                                        style={styles.tabButton}
+                                    >
+                                        <TabbarImage label={`${label}`} active={isFocused} />
+                                    </TouchableOpacity>
+                                );
+                            })}
+
+                        </View>
+                        <Observer>
+                            {() => {
+                                if (stores.appStateStore.isHomeAds.get())
+                                    return (
+                                        <TouchableOpacity onPress={() => {
+                                            if (stores.appStateStore.isHomeAds.get()) {
+                                                runInAction(() => {
+                                                    NativeStack.navigation.navigate('AdvertisementScreen')
+
+                                                    // stores.appStateStore.isHomeAds.set(false)
+                                                })
+                                                return
+                                            }
+                                            runInAction(() => {
+                                                NativeStack.navigation.navigate('AdvertisementScreen')
+                                                // stores.appStateStore.isHomeAds.set(true)
+                                            })
+                                        }} style={styles.adsBar}>
+                                            <Text style={{ ...themeFonts.notosans_medium_16, color: themeColor[theme].seegnal_white }}>광고</Text>
+                                        </TouchableOpacity>
+                                    )
+                                return <View />
+                            }}
+                        </Observer>
+                    </View>
+                )
+            }}
+        </Observer>
+
     );
 }
 

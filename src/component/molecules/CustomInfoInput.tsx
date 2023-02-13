@@ -1,3 +1,4 @@
+import { observer } from 'mobx-react-lite'
 import React from 'react'
 import { KeyboardType, StyleProp, StyleSheet, Text, TextStyle, View, ViewStyle } from 'react-native'
 import { themeColor, themeFonts } from '../../resources'
@@ -16,9 +17,11 @@ type CustomInfoInputProps = {
 }
 
 const store = createRootStore()
-const theme = store.appStateStore.selectedTheme.get()
 
 const CustomInfoInput = ({ value, title, titleStyle, textStyle, viewStyle, onChangeText, keyboardType }: CustomInfoInputProps) => {
+
+    const theme = store.appStateStore.selectedTheme.get()
+
     const styles = StyleSheet.create({
         subTitleText: {
             ...themeFonts.notosans_bold_16,
@@ -39,4 +42,4 @@ CustomInfoInput.defaultProps = {
     keyboardType: 'default'
 }
 
-export default CustomInfoInput
+export default observer(CustomInfoInput)

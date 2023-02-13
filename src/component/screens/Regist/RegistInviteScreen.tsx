@@ -1,5 +1,6 @@
 import { CompositeScreenProps } from '@react-navigation/native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
+import { observer } from 'mobx-react-lite';
 import React, { useRef } from 'react'
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import FastImage from 'react-native-fast-image';
@@ -17,9 +18,10 @@ type Props = CompositeScreenProps<
 >;
 
 const store = createRootStore()
-const theme = store.appStateStore.selectedTheme.get()
 
 const RegistInviteScreen = ({ navigation, route }: Props) => {
+
+    const theme = store.appStateStore.selectedTheme.get()
 
     const isLoading = useRef(false)
 
@@ -110,4 +112,4 @@ const RegistInviteScreen = ({ navigation, route }: Props) => {
     )
 }
 
-export default RegistInviteScreen
+export default observer(RegistInviteScreen)

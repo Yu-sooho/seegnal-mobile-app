@@ -1,4 +1,5 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
+import { observer } from 'mobx-react-lite'
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { LoginStackParamList } from '../../../navigation'
@@ -8,12 +9,13 @@ import { sizeConverter } from '../../../utils'
 import { CustomSafeAreaView } from '../../atoms'
 import { CustomHeader, FloatingNextButton } from '../../molecules'
 
-type Props = NativeStackScreenProps<LoginStackParamList, 'RegistCalendarScreen' >
+type Props = NativeStackScreenProps<LoginStackParamList, 'RegistCalendarScreen'>
 
 const stores = createRootStore()
-const theme = stores.appStateStore.selectedTheme.get()
 
 const RegistCalendarScreen = ({ navigation, route }: Props) => {
+
+    const theme = stores.appStateStore.selectedTheme.get()
 
     const styles = StyleSheet.create({
         titleView: {
@@ -47,4 +49,4 @@ const RegistCalendarScreen = ({ navigation, route }: Props) => {
     )
 }
 
-export default RegistCalendarScreen
+export default observer(RegistCalendarScreen)

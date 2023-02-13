@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react'
-import { Dimensions, FlatList, ListRenderItem, ListRenderItemInfo, StyleSheet, Text, View } from 'react-native'
+import { observer } from 'mobx-react-lite'
+import React from 'react'
+import { Dimensions, StyleSheet, View } from 'react-native'
 import { DAYS, themeColor, themeFonts } from '../../resources'
 import createRootStore from '../../stores'
 import { sizeConverter } from '../../utils'
@@ -11,7 +12,6 @@ type SquareCalendarProps = {
 }
 
 const store = createRootStore()
-const theme = store.appStateStore.selectedTheme.get()
 
 const paddingSize = sizeConverter(16)
 const buttonSize = (Dimensions.get('window').width - (paddingSize * 2)) / 7
@@ -19,6 +19,8 @@ const calendarHeight = sizeConverter(270)
 
 
 const SquareCalendar = ({ dateList }: SquareCalendarProps) => {
+
+    const theme = store.appStateStore.selectedTheme.get()
 
     const styles = StyleSheet.create({
         container: {
@@ -73,4 +75,4 @@ const SquareCalendar = ({ dateList }: SquareCalendarProps) => {
     )
 }
 
-export default SquareCalendar
+export default observer(SquareCalendar)

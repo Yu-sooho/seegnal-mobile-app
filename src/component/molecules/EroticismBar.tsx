@@ -1,3 +1,4 @@
+import { observer } from 'mobx-react-lite'
 import React, { useState } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { themeColor, themeFonts } from '../../resources'
@@ -13,7 +14,6 @@ type EroticismBarProps = {
 }
 
 const store = createRootStore()
-const theme = store.appStateStore.selectedTheme.get()
 
 const EroticismBar = ({
     width,
@@ -22,13 +22,15 @@ const EroticismBar = ({
     initValue
 }: EroticismBarProps) => {
 
+    const theme = store.appStateStore.selectedTheme.get()
+
     const styles = StyleSheet.create({
         container: {
             width: sizeConverter(328),
             height: sizeConverter(100),
             borderRadius: sizeConverter(12),
             padding: sizeConverter(16),
-            justifyContent:'space-between',
+            justifyContent: 'space-between',
             backgroundColor: themeColor[theme].seegnal_lwhite_gray
         },
         titleText: {
@@ -55,4 +57,4 @@ const EroticismBar = ({
     )
 }
 
-export default EroticismBar
+export default observer(EroticismBar)

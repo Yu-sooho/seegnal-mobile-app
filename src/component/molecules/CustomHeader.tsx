@@ -1,11 +1,9 @@
 
 import React, { ReactNode } from 'react';
 import { Dimensions, View } from 'react-native';
-import { themeColor } from '../../resources';
 import createRootStore from '../../stores';
 import { sizeConverter } from '../../utils';
-import { CustomButton, LeftArrowButton } from '../atoms';
-import { Icon24ArrowLeft } from '../icons';
+import { LeftArrowButton } from '../atoms';
 
 type CustomHeaderProps = {
     style?: object,
@@ -13,9 +11,6 @@ type CustomHeaderProps = {
     centerContent?: () => ReactNode,
     rightContent?: () => ReactNode,
 };
-
-const stores = createRootStore()
-const theme = stores.appStateStore.selectedTheme.get()
 
 const CustomHeader = ({ style, leftContent, centerContent, rightContent }: CustomHeaderProps) => {
     return (

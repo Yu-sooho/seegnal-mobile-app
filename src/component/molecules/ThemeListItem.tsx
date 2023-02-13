@@ -1,3 +1,4 @@
+import { observer } from 'mobx-react-lite'
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import FastImage from 'react-native-fast-image'
@@ -13,9 +14,9 @@ type Props = {
 }
 
 const stores = createRootStore()
-const theme = stores.appStateStore.selectedTheme.get()
 
 const ThemeListItem = ({ item, index, onPress }: Props) => {
+    const theme = stores.appStateStore.selectedTheme.get()
 
     const styles = StyleSheet.create({
         contentContainer: {
@@ -67,4 +68,4 @@ const ThemeListItem = ({ item, index, onPress }: Props) => {
     )
 }
 
-export default ThemeListItem
+export default observer(ThemeListItem)

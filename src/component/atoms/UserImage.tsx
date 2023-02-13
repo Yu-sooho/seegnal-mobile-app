@@ -1,13 +1,13 @@
+import { observer } from 'mobx-react-lite'
 import React from 'react'
 import { StyleProp, StyleSheet, Text, TextStyle, TouchableOpacity, View } from 'react-native'
 import FastImage from 'react-native-fast-image'
 import { images, themeColor, themeFonts } from '../../resources'
 import createRootStore from '../../stores'
 import { sizeConverter } from '../../utils'
-import { Icon16ArrowRight, Icon24ArrowRight } from '../icons'
+import { Icon16ArrowRight } from '../icons'
 
 const stores = createRootStore()
-const theme = stores.appStateStore.selectedTheme.get()
 
 type Props = {
     isText?: boolean,
@@ -20,6 +20,9 @@ type Props = {
 }
 
 const UserImage = ({ isText, isEmail, size, textStyle, emailTextStyle, rightArrow, user }: Props) => {
+
+    const theme = stores.appStateStore.selectedTheme.get()
+
     const styles = StyleSheet.create({
         container: {
             flexDirection: 'row',
@@ -84,4 +87,4 @@ UserImage.defaultProps = {
     size: sizeConverter(24)
 }
 
-export default UserImage
+export default observer(UserImage)

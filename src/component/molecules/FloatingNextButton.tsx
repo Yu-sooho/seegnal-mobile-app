@@ -1,3 +1,4 @@
+import { observer } from 'mobx-react-lite'
 import React from 'react'
 import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
@@ -17,7 +18,6 @@ type FloatingNextButtonProps = {
 }
 
 const stores = createRootStore()
-const theme = stores.appStateStore.selectedTheme.get()
 
 const FloatingNextButton = ({
     onPress,
@@ -28,6 +28,8 @@ const FloatingNextButton = ({
     disabled,
     bottomInset
 }: FloatingNextButtonProps) => {
+
+    const theme = stores.appStateStore.selectedTheme.get()
 
     const insets = useSafeAreaInsets()
 
@@ -64,4 +66,4 @@ FloatingNextButton.defaultProps = {
 }
 
 
-export default FloatingNextButton
+export default observer(FloatingNextButton)

@@ -1,5 +1,5 @@
-import { useIsFocused } from '@react-navigation/native'
-import React, { useState } from 'react'
+import { observer } from 'mobx-react-lite'
+import React from 'react'
 import { StyleProp, StyleSheet, Text, View, ViewStyle } from 'react-native'
 import { themeColor, themeFonts } from '../../../resources'
 import createRootStore from '../../../stores'
@@ -7,7 +7,6 @@ import { sizeConverter } from '../../../utils'
 import { TitleText } from '../../atoms'
 
 const stores = createRootStore()
-const theme = stores.appStateStore.selectedTheme.get()
 
 type Props = {
   title1: string
@@ -16,6 +15,8 @@ type Props = {
 }
 
 const StatisticsPhysiology = ({ title1, title2, contentContainerStyle }: Props) => {
+
+const theme = stores.appStateStore.selectedTheme.get()
   
   const styles = StyleSheet.create({
     container: {
@@ -62,4 +63,4 @@ const StatisticsPhysiology = ({ title1, title2, contentContainerStyle }: Props) 
   )
 }
 
-export default StatisticsPhysiology
+export default observer(StatisticsPhysiology)

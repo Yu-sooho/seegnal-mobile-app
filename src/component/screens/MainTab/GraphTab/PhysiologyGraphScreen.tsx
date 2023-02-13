@@ -8,7 +8,7 @@ import {
   View,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import { GraphTabParamList, MainTabParamList } from '../../../../navigation';
+import { GraphTabParamList } from '../../../../navigation';
 import { themeColor } from '../../../../resources';
 import createRootStore from '../../../../stores';
 import { sizeConverter } from '../../../../utils';
@@ -19,9 +19,10 @@ type Props = NativeStackScreenProps<GraphTabParamList, 'PhysiologyGraphScreen'>;
 
 
 const stores = createRootStore()
-const theme = stores.appStateStore.selectedTheme.get()
 
 const PhysiologyGraphScreen = ({ navigation, route }: Props) => {
+
+const theme = stores.appStateStore.selectedTheme.get()
 
   const styles = StyleSheet.create({
     container: {
@@ -67,15 +68,11 @@ const PhysiologyGraphScreen = ({ navigation, route }: Props) => {
           />
         </View>
       </ScrollView>
-      <LinearGradient colors={[`${themeColor[theme].seegnal_light_gray1}`, `${themeColor[theme].seegnal_light_gray1}00`]} style={styles.linearGradient}>
+      {/* <LinearGradient colors={[`${themeColor[theme].seegnal_light_gray1}`, `${themeColor[theme].seegnal_light_gray1}00`]} style={styles.linearGradient}>
         <View style={styles.linearView} />
-      </LinearGradient>
+      </LinearGradient> */}
     </CustomSafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-
-});
 
 export default PhysiologyGraphScreen

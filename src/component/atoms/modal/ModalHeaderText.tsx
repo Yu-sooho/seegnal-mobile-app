@@ -1,30 +1,32 @@
 
+import { observer } from 'mobx-react-lite';
 import React, { PropsWithChildren } from 'react';
-import { Text } from 'react-native';
+import { StyleProp, StyleSheet, Text, TextStyle } from 'react-native';
 import { themeColor, themeFonts } from '../../../resources';
 import createRootStore from '../../../stores';
 
 const stores = createRootStore()
-const theme = stores.appStateStore.selectedTheme.get()
 
 const MadalHeaderText: React.FC<
     PropsWithChildren<{
-        style?: object,
+        style?: StyleProp<TextStyle>,
         text: string,
     }>
 > = ({ style, text }) => {
+
+    const theme = stores.appStateStore.selectedTheme.get()
+
+    const styles = StyleSheet.create({
+        textStyle: {
+            color: themeColor[theme].seegnal_dark_gray,
+            ...themeFonts.santokki_bold_20
+        }
+    })
     return (
-        <Text style={style}>
+        <Text style={[styles.textStyle, style]}>
             {text}
         </Text>
     );
 };
 
-MadalHeaderText.defaultProps = {
-    style: {
-        color: themeColor[theme].seegnal_dark_gray,
-        ...themeFonts.santokki_bold_20
-    }
-}
-
-export default MadalHeaderText
+export default observer(MadalHeaderText)

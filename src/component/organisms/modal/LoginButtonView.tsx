@@ -1,4 +1,5 @@
 
+import { observer } from 'mobx-react-lite';
 import React from 'react';
 import {
     Platform,
@@ -21,10 +22,66 @@ type LoginButtonViewProps = {
 };
 
 const stores = createRootStore()
-const theme = stores.appStateStore.selectedTheme.get()
 
 const LoginButtonView = ({ onPressKakao, onPressGoogle, onPressApple, onPressBack }: LoginButtonViewProps) => {
+
+    const theme = stores.appStateStore.selectedTheme.get()
+
     const insets = useSafeAreaInsets()
+
+    const styles = StyleSheet.create({
+        containerView: {
+            justifyContent: 'flex-end',
+            alignItems: 'center',
+        },
+        buttonView: {
+            minWidth: sizeConverter(360),
+            backgroundColor: themeColor[theme].seegnal_lwhite_gray,
+            alignItems: 'center',
+            justifyContent: 'center',
+            borderTopLeftRadius: sizeConverter(20),
+            borderTopRightRadius: sizeConverter(20),
+        },
+        kakaoButton: {
+            backgroundColor: '#FEE500',
+            borderColor: '#FEE500',
+            marginBottom: sizeConverter(16)
+        },
+        googleButton: {
+            marginBottom: sizeConverter(16),
+            width: sizeConverter(328),
+            height: sizeConverter(44),
+            justifyContent: 'center',
+            alignItems: 'center',
+            borderWidth: sizeConverter(1),
+            borderRadius: sizeConverter(12),
+            backgroundColor: themeColor[theme].seegnal_white,
+            borderColor: themeColor[theme].seegnal_google_login
+        },
+        googleText: {
+            ...themeFonts.notosans_bold_14,
+            color: themeColor[theme].seegnal_black
+        },
+        kakaoText: {
+            ...themeFonts.notosans_bold_14,
+            color: themeColor[theme].seegnal_black
+        },
+        appleText: {
+            ...themeFonts.notosans_bold_14,
+            color: themeColor[theme].seegnal_white
+        },
+        appleButton: {
+            marginBottom: sizeConverter(16),
+            width: sizeConverter(328),
+            height: sizeConverter(44),
+            justifyContent: 'center',
+            alignItems: 'center',
+            borderWidth: sizeConverter(1),
+            borderRadius: sizeConverter(12),
+            backgroundColor: themeColor[theme].seegnal_apple_login,
+            borderColor: themeColor[theme].seegnal_apple_login
+        },
+    });
 
     return (
         <View style={styles.containerView}>
@@ -58,58 +115,5 @@ LoginButtonView.defaultProps = {
     onPressApple: () => { },
 }
 
-const styles = StyleSheet.create({
-    containerView: {
-        justifyContent: 'flex-end',
-        alignItems: 'center',
-    },
-    buttonView: {
-        minWidth: sizeConverter(360),
-        backgroundColor: themeColor[theme].seegnal_lwhite_gray,
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderTopLeftRadius: sizeConverter(20),
-        borderTopRightRadius: sizeConverter(20),
-    },
-    kakaoButton: {
-        backgroundColor: '#FEE500',
-        borderColor: '#FEE500',
-        marginBottom: sizeConverter(16)
-    },
-    googleButton: {
-        marginBottom: sizeConverter(16),
-        width: sizeConverter(328),
-        height: sizeConverter(44),
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderWidth: sizeConverter(1),
-        borderRadius: sizeConverter(12),
-        backgroundColor:themeColor[theme].seegnal_white,
-        borderColor:themeColor[theme].seegnal_google_login
-    },
-    googleText:{
-        ...themeFonts.notosans_bold_14,
-        color:themeColor[theme].seegnal_black
-    },
-    kakaoText:{
-        ...themeFonts.notosans_bold_14,
-        color:themeColor[theme].seegnal_black
-    },
-    appleText:{
-        ...themeFonts.notosans_bold_14,
-        color:themeColor[theme].seegnal_white
-    },
-    appleButton: {
-        marginBottom: sizeConverter(16),
-        width: sizeConverter(328),
-        height: sizeConverter(44),
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderWidth: sizeConverter(1),
-        borderRadius: sizeConverter(12),
-        backgroundColor:themeColor[theme].seegnal_apple_login,
-        borderColor:themeColor[theme].seegnal_apple_login
-    },
-});
 
-export default LoginButtonView
+export default observer(LoginButtonView)

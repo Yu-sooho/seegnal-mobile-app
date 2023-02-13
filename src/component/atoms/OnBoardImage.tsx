@@ -5,18 +5,38 @@ import { themeColor } from '../../resources';
 import { sizeConverter } from '../../utils';
 import createRootStore from '../../stores';
 import FastImage from 'react-native-fast-image';
+import { observer } from 'mobx-react-lite';
 
 type OnBoardImageProps = {
     imageUri: string
 };
 
 const stores = createRootStore()
-const theme = stores.appStateStore.selectedTheme.get()
 
 const OnBoardImage = ({ imageUri }: OnBoardImageProps) => {
+    
+    const theme = stores.appStateStore.selectedTheme.get()
+
+    const styles = StyleSheet.create({
+        onBoardImage: {
+            width: sizeConverter(280),
+            height: sizeConverter(280),
+            justifyContent: 'center',
+            alignItems: 'center',
+            backgroundColor: themeColor[theme].seegnal_white
+        },
+        onBoardImageView: {
+            width: sizeConverter(280),
+            height: sizeConverter(280),
+            justifyContent: 'center',
+            alignItems: 'center',
+            backgroundColor: themeColor[theme].seegnal_light_gray1
+        }
+    });
+
     return (
         <View style={styles.onBoardImageView}>
-            <FastImage source={{uri:imageUri}}  style={styles.onBoardImage}/>
+            <FastImage source={{ uri: imageUri }} style={styles.onBoardImage} />
         </View>
     );
 };
@@ -25,21 +45,5 @@ OnBoardImage.defaultProps = {
     imageUri: null
 }
 
-const styles = StyleSheet.create({
-    onBoardImage: {
-        width: sizeConverter(280),
-        height: sizeConverter(280),
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: themeColor[theme].seegnal_white
-    },
-    onBoardImageView: {
-        width: sizeConverter(280),
-        height: sizeConverter(280),
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: themeColor[theme].seegnal_light_gray1
-    }
-});
 
-export default OnBoardImage
+export default observer(OnBoardImage)

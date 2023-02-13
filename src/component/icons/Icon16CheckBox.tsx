@@ -1,11 +1,11 @@
 
 import React from 'react';
-import { Image } from 'react-native';
+import { Image, ImageStyle, StyleProp } from 'react-native';
 import { images } from '../../resources';
 import { sizeConverter } from '../../utils';
 
 type Icon16CheckBoxProps = {
-    imageStyle?: object
+    imageStyle?: StyleProp<ImageStyle>
 };
 
 const Icon16CheckBox = ({ imageStyle }: Icon16CheckBoxProps) => {

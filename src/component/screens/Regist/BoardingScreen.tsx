@@ -9,6 +9,7 @@ import { OnBoardImageView } from '../../organisms';
 import { LoginStackParamList, RootStackParamList } from '../../../navigation';
 import { CustomButton, CustomSafeAreaView } from '../../atoms';
 import { CompositeScreenProps } from '@react-navigation/native';
+import { observer } from 'mobx-react-lite';
 
 type Props = CompositeScreenProps<
   NativeStackScreenProps<LoginStackParamList, 'BoardingScreen'>,
@@ -16,7 +17,6 @@ type Props = CompositeScreenProps<
 >;
 
 const stores = createRootStore()
-const theme = stores.appStateStore.selectedTheme.get()
 
 const dummyData = [
   { imageUri: 'https://item.kakaocdn.net/do/493188dee481260d5c89790036be0e66f604e7b0e6900f9ac53a43965300eb9a', text: '아 하기 싫다', title: '생각없는 아무1', id: 1 },
@@ -24,6 +24,39 @@ const dummyData = [
   { imageUri: 'https://item.kakaocdn.net/do/493188dee481260d5c89790036be0e66effd194bae87d73dd00522794070855d', text: '다 귀찮아', title: '생각없는 아무3', id: 3 }]
 
 const BoardingScreen = ({ navigation, route }: Props) => {
+
+  const theme = stores.appStateStore.selectedTheme.get()
+
+
+  const styles = StyleSheet.create({
+    container: {
+      alignItems: 'center',
+      flex: 1,
+      justifyContent: 'space-between',
+    },
+    onBoardImage: {
+      width: sizeConverter(280),
+      height: sizeConverter(280),
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: themeColor[theme].seegnal_light_gray1
+    },
+    loginButtonViewStyle: {
+      marginBottom: sizeConverter(24)
+    },
+    loginButton: {
+      width: sizeConverter(328),
+      height: sizeConverter(48),
+      borderRadius: sizeConverter(12),
+      borderColor: themeColor[theme].seegnal_main,
+      backgroundColor: themeColor[theme].seegnal_main,
+    },
+    loginButtonText: {
+      color: themeColor[theme].seegnal_white,
+      ...themeFonts.notosans_bold_16
+    }
+  });
+
 
   const onPressLogin = () => {
     navigation.navigate('LoginModalScreen')
@@ -42,33 +75,4 @@ const BoardingScreen = ({ navigation, route }: Props) => {
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    alignItems: 'center',
-    flex: 1,
-    justifyContent: 'space-between',
-  },
-  onBoardImage: {
-    width: sizeConverter(280),
-    height: sizeConverter(280),
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: themeColor[theme].seegnal_light_gray1
-  },
-  loginButtonViewStyle: {
-    marginBottom: sizeConverter(24)
-  },
-  loginButton: {
-    width: sizeConverter(328),
-    height: sizeConverter(48),
-    borderRadius: sizeConverter(12),
-    borderColor: themeColor[theme].seegnal_main,
-    backgroundColor: themeColor[theme].seegnal_main,
-  },
-  loginButtonText: {
-    color: themeColor[theme].seegnal_white,
-    ...themeFonts.notosans_bold_16
-  }
-});
-
-export default BoardingScreen
+export default observer(BoardingScreen)

@@ -1,19 +1,13 @@
 
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { Observer } from 'mobx-react-lite';
+import { observer} from 'mobx-react-lite';
 import React from 'react';
-import {
-    FlatList,
-    ScrollView,
-    StyleSheet,
-    Text,
-    View,
-} from 'react-native';
+import { FlatList, StyleSheet, View } from 'react-native';
 import { RootStackParamList } from '../../../navigation';
-import { images, themeColor, themeFonts, themeType } from '../../../resources';
+import { themeColor, themeFonts, themeType } from '../../../resources';
 import createRootStore from '../../../stores';
 import { sizeConverter } from '../../../utils';
-import { CustomButton, CustomSafeAreaView, ImageButton, RightArrowButton, TitleText, UserImage } from '../../atoms';
+import { CustomSafeAreaView, TitleText } from '../../atoms';
 import { CustomHeader, ThemeListItem } from '../../molecules';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'ThemeSettingScreen'>;
@@ -22,12 +16,7 @@ const stores = createRootStore()
 
 const ThemeSettingScreen = ({ navigation, route }: Props) => {
 
-    const styles = StyleSheet.create({
-        contentContainer: {
-            paddingHorizontal: sizeConverter(16),
-            marginTop: sizeConverter(16)
-        },
-    })
+    const theme = stores.appStateStore.selectedTheme.get()
 
     const onPressItem = async ({ item }: {
         item: themeType
@@ -55,6 +44,15 @@ const ThemeSettingScreen = ({ navigation, route }: Props) => {
             <View style={{ height: sizeConverter(16) }} />
         )
     }
+    const styles = StyleSheet.create({
+        contentContainer: {
+            paddingHorizontal: sizeConverter(16),
+            marginTop: sizeConverter(16)
+        },
+        color: {
+            backgroundColor: themeColor[theme].seegnal_apple_login
+        }
+    })
 
     return (
         <CustomSafeAreaView>
@@ -65,7 +63,6 @@ const ThemeSettingScreen = ({ navigation, route }: Props) => {
         </CustomSafeAreaView>
     )
 }
-
 
 const dummy = [
     {
@@ -94,4 +91,4 @@ const dummy = [
     }
 ]
 
-export default ThemeSettingScreen
+export default observer(ThemeSettingScreen)

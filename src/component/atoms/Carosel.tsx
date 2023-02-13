@@ -10,6 +10,7 @@ import {
 import { themeColor } from '../../resources';
 import { sizeConverter } from '../../utils';
 import createRootStore from '../../stores';
+import { observer } from 'mobx-react-lite';
 
 type CaroselProps = {
     animatedValue: Animated.Value,
@@ -20,9 +21,9 @@ type CaroselProps = {
 };
 
 const stores = createRootStore()
-const theme = stores.appStateStore.selectedTheme.get()
 
 const Carosel = ({ animatedValue, data, sliderWidth, caroselStyle, caroselActiveStyle }: CaroselProps) => {
+    const theme = stores.appStateStore.selectedTheme.get()
 
     const animArray: any[] = []
 
@@ -57,6 +58,20 @@ const Carosel = ({ animatedValue, data, sliderWidth, caroselStyle, caroselActive
         caroselView: {
             flexDirection: 'row',
             alignItems: 'center',
+        },
+        caroselStyle: {
+            width: sizeConverter(8),
+            height: sizeConverter(8),
+            backgroundColor: themeColor[theme].seegnal_lwhite_gray,
+            marginHorizontal: sizeConverter(10),
+            borderRadius: sizeConverter(4)
+        },
+        caroselActiveStyle: {
+            width: sizeConverter(16),
+            height: sizeConverter(8),
+            backgroundColor: themeColor[theme].seegnal_gray,
+            marginHorizontal: sizeConverter(10),
+            borderRadius: sizeConverter(4)
         }
     });
 
@@ -78,7 +93,7 @@ const Carosel = ({ animatedValue, data, sliderWidth, caroselStyle, caroselActive
                         <Animated.View
                             style={[{
                                 opacity: opacityR
-                            }, caroselStyle]}
+                            }, styles.caroselStyle, caroselStyle]}
                         />
                         <Animated.View
                             style={[{
@@ -87,7 +102,7 @@ const Carosel = ({ animatedValue, data, sliderWidth, caroselStyle, caroselActive
                                 backgroundColor: themeColor[theme].seegnal_main,
                                 opacity: opacity,
                                 transform: [{ scaleX: animArray[index] }]
-                            }, caroselActiveStyle]}
+                            }, styles.caroselActiveStyle, caroselActiveStyle]}
                         />
                     </View>
                 )
@@ -100,21 +115,7 @@ Carosel.defaultProps = {
     animatedValue: new Animated.Value(0),
     data: [],
     sliderWidth: sizeConverter(280),
-    caroselStyle: {
-        width: sizeConverter(8),
-        height: sizeConverter(8),
-        backgroundColor: themeColor[theme].seegnal_lwhite_gray,
-        marginHorizontal: sizeConverter(10),
-        borderRadius: sizeConverter(4)
-    },
-    caroselActiveStyle: {
-        width: sizeConverter(16),
-        height: sizeConverter(8),
-        backgroundColor: themeColor[theme].seegnal_gray,
-        marginHorizontal: sizeConverter(10),
-        borderRadius: sizeConverter(4)
-    }
 }
 
 
-export default Carosel
+export default observer(Carosel)

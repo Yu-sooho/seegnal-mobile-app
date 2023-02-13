@@ -1,3 +1,4 @@
+import { observer } from 'mobx-react-lite'
 import React from 'react'
 import { Image, ImageStyle, StyleProp, StyleSheet, Text, TextStyle, TouchableOpacity, View, ViewStyle } from 'react-native'
 import { EMOTION_TYPE, themeColor, themeFonts } from '../../../resources'
@@ -18,7 +19,6 @@ type ImageButtonProps = {
 }
 
 const stores = createRootStore()
-const theme = stores.appStateStore.selectedTheme.get()
 
 const ImageButton = ({
     item,
@@ -32,6 +32,7 @@ const ImageButton = ({
     text,
     onPress,
 }: ImageButtonProps) => {
+    const theme = stores.appStateStore.selectedTheme.get()
 
     const styles = StyleSheet.create({
         container: {
@@ -92,4 +93,4 @@ ImageButton.defaultProps = {
     disabled: false,
 }
 
-export default ImageButton
+export default observer(ImageButton)

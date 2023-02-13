@@ -1,4 +1,5 @@
 
+import { observer } from 'mobx-react-lite';
 import React, { PropsWithChildren } from 'react';
 import {
   Keyboard,
@@ -14,7 +15,6 @@ import { themeColor } from '../../../resources';
 import createRootStore from '../../../stores';
 
 const stores = createRootStore()
-const theme = stores.appStateStore.selectedTheme.get()
 
 const CustomSafeAreaView: React.FC<
   PropsWithChildren<{
@@ -29,6 +29,7 @@ const CustomSafeAreaView: React.FC<
 > = ({ children, containerStyle, disabled, style, edges }) => {
   const isDarkMode = useColorScheme() === 'dark';
   const insets = useSafeAreaInsets()
+  const theme = stores.appStateStore.selectedTheme.get()
 
   const styles = StyleSheet.create({
     containerStyle: {
@@ -70,4 +71,4 @@ CustomSafeAreaView.defaultProps = {
 }
 
 
-export default CustomSafeAreaView
+export default observer(CustomSafeAreaView)

@@ -1,4 +1,5 @@
 
+import { observer } from 'mobx-react-lite'
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import FastImage from 'react-native-fast-image'
@@ -8,12 +9,13 @@ import { sizeConverter } from '../../utils'
 import { FloatingNextButton } from '../molecules'
 
 const stores = createRootStore()
-const theme = stores.appStateStore.selectedTheme.get()
 
 type Props = {
     onPressSendSeegnal: () => void
 }
 const HistoryEmptyView = ({ onPressSendSeegnal }: Props) => {
+
+    const theme = stores.appStateStore.selectedTheme.get()
 
     const styles = StyleSheet.create({
         container: {
@@ -43,4 +45,4 @@ const HistoryEmptyView = ({ onPressSendSeegnal }: Props) => {
     )
 }
 
-export default HistoryEmptyView
+export default observer(HistoryEmptyView)

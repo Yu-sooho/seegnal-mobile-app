@@ -1,5 +1,5 @@
-import { CompositeScreenProps } from '@react-navigation/native'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
+import { observer } from 'mobx-react-lite'
 import React from 'react'
 import { Dimensions, StyleSheet, Text, View } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
@@ -14,9 +14,11 @@ type Props = NativeStackScreenProps<LoginStackParamList, 'RegistTosDetailScreen'
 
 
 const stores = createRootStore()
-const theme = stores.appStateStore.selectedTheme.get()
 
 const RegistTosDetailScreen = ({ navigation, route }: Props) => {
+
+    const theme = stores.appStateStore.selectedTheme.get()
+
     const { type } = route?.params
     const styles = StyleSheet.create({
         container: {
@@ -47,4 +49,4 @@ const RegistTosDetailScreen = ({ navigation, route }: Props) => {
     )
 }
 
-export default RegistTosDetailScreen
+export default observer(RegistTosDetailScreen)
