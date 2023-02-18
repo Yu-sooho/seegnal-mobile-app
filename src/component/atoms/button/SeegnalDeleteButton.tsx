@@ -17,7 +17,7 @@ const SeegnalDeleteButton = () => {
             height:sizeConverter(20),
             justifyContent:'center',
             alignItems:'center',
-            backgroundColor:themeColor[theme].seegnal_light_gray1,
+            backgroundColor: themeColor[theme].seegnal_light_gray1,
             borderRadius:sizeConverter(4)
         },
         textStyle:{

@@ -35,7 +35,7 @@ export const themeColor = [
         seegnal_lwhite_gray: 'yellow',
         seegnal_white: '#ffffff',
         seegnal_gray: '#7c7c94',
-        seegnal_dark_gray: '#47467D',
+        seegnal_dark_gray: '#orange',
         seegnal_deep_gray: '#4f4e71',
         seegnal_main: '#9896f3',
 
