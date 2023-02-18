@@ -23,7 +23,7 @@ const ThemeSettingScreen = ({ navigation, route }: Props) => {
     }) => {
         stores.appStateStore.setIsMounted(false)
         stores.appStateStore.setTheme(item.id)
-        stores.appStateStore.persistSelectedTheme = item?.id
+        // stores.appStateStore.persistSelectedTheme = item?.id
         stores.appStateStore.setIsMounted(true)
     }
 

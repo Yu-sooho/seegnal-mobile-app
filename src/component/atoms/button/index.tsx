@@ -5,6 +5,7 @@ export { default as ImageButton } from './ImageButton'
 export { default as LeftArrowButton } from './LeftArrowButton'
 export { default as RightArrowButton } from './RightArrowButton'
 export { default as SubscribeButton } from './SubscribeButton'
+export { default as HeaderActiveButton } from './HeaderActiveButton'
 
 //calendars
 export { default as MonthTitleButton } from './MonthTitleButton'

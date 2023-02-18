@@ -13,7 +13,7 @@ type CustomTextInputProps = {
     viewStyle?: StyleProp<ViewStyle>,
     onChangeText?: (...args: any[]) => any,
     keyboardType?: KeyboardType,
-    placeholder?:string
+    placeholder?: string
 };
 
 const stores = createRootStore()
@@ -38,20 +38,27 @@ const CustomTextInput = ({ value, textStyle, viewStyle, keyboardType, placeholde
             height: sizeConverter(32),
             paddingTop: 0,
             paddingBottom: 0,
-            includeFontPadding:false
+            includeFontPadding: false
         }
     })
 
     return (
         <View style={[styles.viewStyle, viewStyle]}>
-            <TextInput placeholder={placeholder} keyboardType={keyboardType} value={value} onChangeText={onChangeText} style={[styles.textStyle, textStyle]} />
+            <TextInput
+                placeholder={placeholder}
+                placeholderTextColor={themeColor[theme].seegnal_gray}
+                keyboardType={keyboardType}
+                value={value}
+                onChangeText={onChangeText}
+                style={[styles.textStyle, textStyle]}
+            />
         </View>
     );
 };
 
 CustomTextInput.defaultProps = {
     keyboardType: 'default',
-    placeholder:''
+    placeholder: ''
 }
 
 

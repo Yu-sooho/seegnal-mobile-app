@@ -15,7 +15,8 @@ export {
     SettingScreen,
     AppInfoScreen,
     AlarmSettingScreen,
-    ThemeSettingScreen
+    ThemeSettingScreen,
+    MyInfoScreen
 } from './MainTab'
 
 export {

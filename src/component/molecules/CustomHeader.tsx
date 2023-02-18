@@ -1,6 +1,6 @@
 
 import React, { ReactNode } from 'react';
-import { Dimensions, View } from 'react-native';
+import { Dimensions, StyleSheet, View } from 'react-native';
 import createRootStore from '../../stores';
 import { sizeConverter } from '../../utils';
 import { LeftArrowButton } from '../atoms';
@@ -13,8 +13,19 @@ type CustomHeaderProps = {
 };
 
 const CustomHeader = ({ style, leftContent, centerContent, rightContent }: CustomHeaderProps) => {
+
+    const styles = StyleSheet.create({
+        container:{
+            width: Dimensions.get('window').width,
+            height: sizeConverter(56),
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            paddingHorizontal: sizeConverter(16)
+        }
+    })
     return (
-        <View style={style}>
+        <View style={[styles.container,style]}>
             <View style={{ }}>{leftContent?.()}</View>
             <View>{centerContent?.()}</View>
             <View style={{}}>{rightContent?.()}</View>

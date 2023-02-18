@@ -5,5 +5,6 @@ export { default as  SettingScreen} from './SettingScreen'
 export {
     AppInfoScreen,
     AlarmSettingScreen,
-    ThemeSettingScreen
+    ThemeSettingScreen,
+    MyInfoScreen
 } from '../Setting'

@@ -10,9 +10,10 @@ import {
     AlarmSettingScreen,
     AppInfoScreen,
     ThemeSettingScreen,
+    MyInfoScreen
 } from '../component';
 
-const SettingStackNavigator = (SettingStack:any) => {
+const SettingStackNavigator = (SettingStack: any) => {
     return (
         <SettingStack.Group
             screenOptions={{
@@ -22,6 +23,7 @@ const SettingStackNavigator = (SettingStack:any) => {
             <SettingStack.Screen name="ThemeSettingScreen" options={{ headerShown: false, gestureEnabled: false }} component={ThemeSettingScreen} />
             <SettingStack.Screen name="AppInfoScreen" options={{ headerShown: false, gestureEnabled: false }} component={AppInfoScreen} />
             <SettingStack.Screen name="AlarmSettingScreen" options={{ headerShown: false, gestureEnabled: false }} component={AlarmSettingScreen} />
+            <SettingStack.Screen name="MyInfoScreen" options={{ headerShown: false, gestureEnabled: false }} component={MyInfoScreen} />
         </SettingStack.Group>
     );
 };

@@ -117,6 +117,9 @@ const SettingScreen = ({ navigation, route }: Props) => {
         />
         <View style={styles.viewDivide}>
           <UserImage
+            onPress={() => {
+              navigation.navigate('MyInfoScreen')
+            }}
             isEmail
             rightArrow
             size={sizeConverter(64)}
@@ -125,7 +128,8 @@ const SettingScreen = ({ navigation, route }: Props) => {
           />
         </View>
         <View style={styles.viewDivide}>
-          <CustomButton text={'씨그날메이트 초대하기'} />
+          <CustomButton
+            text={'씨그날메이트 초대하기'} />
         </View>
         <View style={styles.imageButtonView}>
           <ImageButton

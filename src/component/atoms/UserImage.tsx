@@ -17,9 +17,10 @@ type Props = {
     emailTextStyle?: StyleProp<TextStyle>,
     user?: object,
     size: number,
+    onPress?: () => void
 }
 
-const UserImage = ({ isText, isEmail, size, textStyle, emailTextStyle, rightArrow, user }: Props) => {
+const UserImage = ({ isText, isEmail, size, textStyle, emailTextStyle, rightArrow, user, onPress }: Props) => {
 
     const theme = stores.appStateStore.selectedTheme.get()
 
@@ -57,7 +58,7 @@ const UserImage = ({ isText, isEmail, size, textStyle, emailTextStyle, rightArro
         }
     })
     return (
-        <TouchableOpacity style={styles.container}>
+        <TouchableOpacity onPress={onPress} style={styles.container}>
             <FastImage source={images.icon_profile_default} style={styles.imageStyle} />
             <View style={{ height: size, justifyContent: 'center' }}>
                 {

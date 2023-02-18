@@ -35,6 +35,7 @@ export type RootStackParamList = {
     ThemeSettingScreen:undefined
     AlarmSettingScreen:undefined
     AppInfoScreen:undefined
+    MyInfoScreen:undefined
 
     //Modal
     LoginModalScreen: undefined,

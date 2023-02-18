@@ -23,6 +23,7 @@ export {
     AppInfoScreen,
     AlarmSettingScreen,
     ThemeSettingScreen,
+    MyInfoScreen,
 
     //그래프 탭
     PhysiologyGraphScreen,
