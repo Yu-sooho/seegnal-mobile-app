@@ -3,7 +3,6 @@ export type themeType = {
     imageUrl?: string,
     title?: string,
     description?: string,
-    isActive?: boolean,
     isSubscribe?: boolean
 }
 

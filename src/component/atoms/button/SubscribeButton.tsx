@@ -15,8 +15,9 @@ const stores = createRootStore()
 const SubscribeButton = ({ item, onPress }: Props) => {
 
     const theme = stores.appStateStore.selectedTheme.get()
+    const isActive = stores.appStateStore.selectedTheme.get() === item?.id
 
-    const { isActive, isSubscribe } = item
+    const { isSubscribe } = item
 
     const styles = StyleSheet.create({
         contentContainer: {

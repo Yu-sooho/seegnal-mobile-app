@@ -23,7 +23,7 @@ const ThemeSettingScreen = ({ navigation, route }: Props) => {
     }) => {
         stores.appStateStore.setIsMounted(false)
         stores.appStateStore.setTheme(item.id)
-        // stores.appStateStore.persistSelectedTheme = item?.id
+        stores.appStateStore.persistSelectedTheme = item?.id
         stores.appStateStore.setIsMounted(true)
     }
 
@@ -70,23 +70,20 @@ const dummy = [
         imageUrl: 'www.naver.com',
         title: 'Title',
         description: 'body',
-        isActive: false,
-        isSubscribe: false
+        isSubscribe: true
     },
     {
         id: 1,
         imageUrl: 'www.naver.com',
         title: 'Title',
         description: 'body',
-        isActive: true,
-        isSubscribe: false
+        isSubscribe: true
     },
     {
         id: 2,
         imageUrl: 'www.naver.com',
         title: 'Title',
         description: 'body',
-        isActive: false,
         isSubscribe: true
     }
 ]
