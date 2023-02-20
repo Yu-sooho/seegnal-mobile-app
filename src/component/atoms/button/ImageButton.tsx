@@ -43,6 +43,7 @@ const ImageButton = ({
         imageActive: {
             height: sizeConverter(80),
             width: sizeConverter(80),
+            borderRadius:sizeConverter(40)
         },
         imageDefault: {
             height: sizeConverter(80),

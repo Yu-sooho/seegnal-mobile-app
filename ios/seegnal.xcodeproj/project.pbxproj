@@ -11,13 +11,13 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		16139512C1A507E50908DFE8 /* libPods-seegnal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E9359366E5D6A5FFC429F94 /* libPods-seegnal.a */; };
 		18CF9DBD153941C2BC2F703A /* NotoSansCJKkr-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1B7878E265E54430A9CEA29A /* NotoSansCJKkr-Bold.otf */; };
 		3FD18BAB829A46F6A81B765C /* HSSantokki.otf in Resources */ = {isa = PBXBuildFile; fileRef = 750EF3ECF302426895BFD178 /* HSSantokki.otf */; };
 		4351E7E251904825AFBE5F4C /* NotoSansCJKkr-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 504809E92F9347259E45DFD8 /* NotoSansCJKkr-Regular.otf */; };
-		50812F9D422CC33E5FC98ADB /* libPods-seegnal-seegnalTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B39B7ED5821DB8BBE2504ADE /* libPods-seegnal-seegnalTests.a */; };
+		6AE760CECDEE487505EED9DD /* libPods-seegnal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 32F87A865757D5133C69B81F /* libPods-seegnal.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		EE75AE691A5A4C15A30B7D0F /* NotoSansCJKkr-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = AAEFE72998124B8DBE001BA8 /* NotoSansCJKkr-Medium.otf */; };
+		FE0A906458682640D2ACABBA /* libPods-seegnal-seegnalTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 853FFEDCBCA8FCBC3C7BC631 /* libPods-seegnal-seegnalTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,7 +34,6 @@
 		00E356EE1AD99517003FC87E /* seegnalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = seegnalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* seegnalTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = seegnalTests.m; sourceTree = "<group>"; };
-		0E9359366E5D6A5FFC429F94 /* libPods-seegnal.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-seegnal.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07F961A680F5B00A75B9A /* seegnal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = seegnal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = seegnal/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = seegnal/AppDelegate.mm; sourceTree = "<group>"; };
@@ -42,15 +41,16 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = seegnal/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = seegnal/main.m; sourceTree = "<group>"; };
 		1B7878E265E54430A9CEA29A /* NotoSansCJKkr-Bold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "NotoSansCJKkr-Bold.otf"; path = "../assets/fonts/NotoSansCJKkr-Bold.otf"; sourceTree = "<group>"; };
-		46975B72609266BC3A6E4590 /* Pods-seegnal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-seegnal.release.xcconfig"; path = "Target Support Files/Pods-seegnal/Pods-seegnal.release.xcconfig"; sourceTree = "<group>"; };
+		32B502FA65728D265AAC17C4 /* Pods-seegnal-seegnalTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-seegnal-seegnalTests.debug.xcconfig"; path = "Target Support Files/Pods-seegnal-seegnalTests/Pods-seegnal-seegnalTests.debug.xcconfig"; sourceTree = "<group>"; };
+		32F87A865757D5133C69B81F /* libPods-seegnal.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-seegnal.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		390C3CF0831A39DB3EA1A4B7 /* Pods-seegnal-seegnalTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-seegnal-seegnalTests.release.xcconfig"; path = "Target Support Files/Pods-seegnal-seegnalTests/Pods-seegnal-seegnalTests.release.xcconfig"; sourceTree = "<group>"; };
 		504809E92F9347259E45DFD8 /* NotoSansCJKkr-Regular.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "NotoSansCJKkr-Regular.otf"; path = "../assets/fonts/NotoSansCJKkr-Regular.otf"; sourceTree = "<group>"; };
-		5F51B4284549BA1F8E3EC467 /* Pods-seegnal-seegnalTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-seegnal-seegnalTests.debug.xcconfig"; path = "Target Support Files/Pods-seegnal-seegnalTests/Pods-seegnal-seegnalTests.debug.xcconfig"; sourceTree = "<group>"; };
+		65A951A65A012C64DFD33FCB /* Pods-seegnal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-seegnal.release.xcconfig"; path = "Target Support Files/Pods-seegnal/Pods-seegnal.release.xcconfig"; sourceTree = "<group>"; };
+		660CB5E06FF6840A9F1B2090 /* Pods-seegnal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-seegnal.debug.xcconfig"; path = "Target Support Files/Pods-seegnal/Pods-seegnal.debug.xcconfig"; sourceTree = "<group>"; };
 		750EF3ECF302426895BFD178 /* HSSantokki.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = HSSantokki.otf; path = ../assets/fonts/HSSantokki.otf; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = seegnal/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		8DE15B08E7F8E9CE24DA6BB2 /* Pods-seegnal-seegnalTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-seegnal-seegnalTests.release.xcconfig"; path = "Target Support Files/Pods-seegnal-seegnalTests/Pods-seegnal-seegnalTests.release.xcconfig"; sourceTree = "<group>"; };
+		853FFEDCBCA8FCBC3C7BC631 /* libPods-seegnal-seegnalTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-seegnal-seegnalTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAEFE72998124B8DBE001BA8 /* NotoSansCJKkr-Medium.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "NotoSansCJKkr-Medium.otf"; path = "../assets/fonts/NotoSansCJKkr-Medium.otf"; sourceTree = "<group>"; };
-		B39B7ED5821DB8BBE2504ADE /* libPods-seegnal-seegnalTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-seegnal-seegnalTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		BA3C7400B3E8A3715A240016 /* Pods-seegnal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-seegnal.debug.xcconfig"; path = "Target Support Files/Pods-seegnal/Pods-seegnal.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -59,7 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				50812F9D422CC33E5FC98ADB /* libPods-seegnal-seegnalTests.a in Frameworks */,
+				FE0A906458682640D2ACABBA /* libPods-seegnal-seegnalTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,7 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				16139512C1A507E50908DFE8 /* libPods-seegnal.a in Frameworks */,
+				6AE760CECDEE487505EED9DD /* libPods-seegnal.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,8 +108,8 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				0E9359366E5D6A5FFC429F94 /* libPods-seegnal.a */,
-				B39B7ED5821DB8BBE2504ADE /* libPods-seegnal-seegnalTests.a */,
+				32F87A865757D5133C69B81F /* libPods-seegnal.a */,
+				853FFEDCBCA8FCBC3C7BC631 /* libPods-seegnal-seegnalTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -160,10 +160,10 @@
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				BA3C7400B3E8A3715A240016 /* Pods-seegnal.debug.xcconfig */,
-				46975B72609266BC3A6E4590 /* Pods-seegnal.release.xcconfig */,
-				5F51B4284549BA1F8E3EC467 /* Pods-seegnal-seegnalTests.debug.xcconfig */,
-				8DE15B08E7F8E9CE24DA6BB2 /* Pods-seegnal-seegnalTests.release.xcconfig */,
+				660CB5E06FF6840A9F1B2090 /* Pods-seegnal.debug.xcconfig */,
+				65A951A65A012C64DFD33FCB /* Pods-seegnal.release.xcconfig */,
+				32B502FA65728D265AAC17C4 /* Pods-seegnal-seegnalTests.debug.xcconfig */,
+				390C3CF0831A39DB3EA1A4B7 /* Pods-seegnal-seegnalTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -175,12 +175,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "seegnalTests" */;
 			buildPhases = (
-				05D6D8229B82370E5E77A3BB /* [CP] Check Pods Manifest.lock */,
+				434B8B579E3D973951673C2B /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				2DD1A8DA29667EE2C90C2C7C /* [CP] Embed Pods Frameworks */,
-				20E882F5D513660786058BA0 /* [CP] Copy Pods Resources */,
+				60520225FC9DBB77A083403C /* [CP] Embed Pods Frameworks */,
+				AE1EAD543EDB6347181FDB50 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -196,14 +196,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "seegnal" */;
 			buildPhases = (
-				9744E8B8B548F565C8D7BF7A /* [CP] Check Pods Manifest.lock */,
+				C3E68D36CFF27B397F459B4A /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				0B9B87D6A6A1B02DF89EB1C5 /* [CP] Embed Pods Frameworks */,
-				823A61095DAE9770B82FBC15 /* [CP] Copy Pods Resources */,
+				64B6372527947D4C4DD90547 /* [CP] Embed Pods Frameworks */,
+				B61FB13DD37561FFB5616E85 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -290,7 +290,7 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"../node_modules/react-native/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"../node_modules/react-native/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
 		};
-		05D6D8229B82370E5E77A3BB /* [CP] Check Pods Manifest.lock */ = {
+		434B8B579E3D973951673C2B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -312,41 +312,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		0B9B87D6A6A1B02DF89EB1C5 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-seegnal/Pods-seegnal-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-seegnal/Pods-seegnal-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-seegnal/Pods-seegnal-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		20E882F5D513660786058BA0 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-seegnal-seegnalTests/Pods-seegnal-seegnalTests-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-seegnal-seegnalTests/Pods-seegnal-seegnalTests-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-seegnal-seegnalTests/Pods-seegnal-seegnalTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		2DD1A8DA29667EE2C90C2C7C /* [CP] Embed Pods Frameworks */ = {
+		60520225FC9DBB77A083403C /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -363,7 +329,41 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-seegnal-seegnalTests/Pods-seegnal-seegnalTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		823A61095DAE9770B82FBC15 /* [CP] Copy Pods Resources */ = {
+		64B6372527947D4C4DD90547 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-seegnal/Pods-seegnal-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-seegnal/Pods-seegnal-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-seegnal/Pods-seegnal-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AE1EAD543EDB6347181FDB50 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-seegnal-seegnalTests/Pods-seegnal-seegnalTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-seegnal-seegnalTests/Pods-seegnal-seegnalTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-seegnal-seegnalTests/Pods-seegnal-seegnalTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B61FB13DD37561FFB5616E85 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -380,7 +380,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-seegnal/Pods-seegnal-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9744E8B8B548F565C8D7BF7A /* [CP] Check Pods Manifest.lock */ = {
+		C3E68D36CFF27B397F459B4A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -454,7 +454,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5F51B4284549BA1F8E3EC467 /* Pods-seegnal-seegnalTests.debug.xcconfig */;
+			baseConfigurationReference = 32B502FA65728D265AAC17C4 /* Pods-seegnal-seegnalTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -481,7 +481,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8DE15B08E7F8E9CE24DA6BB2 /* Pods-seegnal-seegnalTests.release.xcconfig */;
+			baseConfigurationReference = 390C3CF0831A39DB3EA1A4B7 /* Pods-seegnal-seegnalTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -505,7 +505,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BA3C7400B3E8A3715A240016 /* Pods-seegnal.debug.xcconfig */;
+			baseConfigurationReference = 660CB5E06FF6840A9F1B2090 /* Pods-seegnal.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -531,7 +531,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 46975B72609266BC3A6E4590 /* Pods-seegnal.release.xcconfig */;
+			baseConfigurationReference = 65A951A65A012C64DFD33FCB /* Pods-seegnal.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
