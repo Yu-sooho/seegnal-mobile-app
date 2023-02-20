@@ -71,7 +71,7 @@ const MyInfoScreen = () => {
         }).then(image => {
             if (image?.path)
                 setUserImage(image.path)
-        }).catch((error)=>{
+        }).catch((error) => {
             console.log(error)
         });
     }
@@ -112,6 +112,9 @@ const MyInfoScreen = () => {
                     style={styles.imageView}
                     text='프로필 사진 바꾸기'
                     textStyle={styles.textStyle}
+                    imageStyle={{
+                        borderRadius: sizeConverter(40)
+                    }}
                 />
             </View>
             <View style={styles.inputView}>

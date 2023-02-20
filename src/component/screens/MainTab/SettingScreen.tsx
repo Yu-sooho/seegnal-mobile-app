@@ -64,6 +64,7 @@ const SettingScreen = ({ navigation, route }: Props) => {
     buttonImageStyle: {
       width: sizeConverter(80),
       height: sizeConverter(80),
+      borderRadius:sizeConverter(40)
     },
     buttonTextStyle: {
       ...themeFonts.santokki_bold_20,
