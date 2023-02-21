@@ -16,6 +16,11 @@ PODS:
   - Firebase/Messaging (10.5.0):
     - Firebase/CoreOnly
     - FirebaseMessaging (~> 10.5.0)
+  - Firebase/Storage (10.5.0):
+    - Firebase/CoreOnly
+    - FirebaseStorage (~> 10.5.0)
+  - FirebaseAppCheckInterop (10.5.0)
+  - FirebaseAuthInterop (10.5.0)
   - FirebaseCore (10.5.0):
     - FirebaseCoreInternal (~> 10.0)
     - GoogleUtilities/Environment (~> 7.8)
@@ -38,6 +43,12 @@ PODS:
     - GoogleUtilities/Reachability (~> 7.8)
     - GoogleUtilities/UserDefaults (~> 7.8)
     - nanopb (< 2.30910.0, >= 2.30908.0)
+  - FirebaseStorage (10.5.0):
+    - FirebaseAppCheckInterop (~> 10.0)
+    - FirebaseAuthInterop (~> 10.0)
+    - FirebaseCore (~> 10.0)
+    - FirebaseCoreExtension (~> 10.0)
+    - GTMSessionFetcher/Core (< 4.0, >= 2.1)
   - fmt (6.2.1)
   - glog (0.3.5)
   - GoogleDataTransport (9.2.1):
@@ -61,6 +72,7 @@ PODS:
     - GoogleUtilities/Logger
   - GoogleUtilities/UserDefaults (7.11.0):
     - GoogleUtilities/Logger
+  - GTMSessionFetcher/Core (3.1.0)
   - libwebp (1.2.3):
     - libwebp/demux (= 1.2.3)
     - libwebp/mux (= 1.2.3)
@@ -383,6 +395,10 @@ PODS:
     - FirebaseCoreExtension (= 10.5.0)
     - React-Core
     - RNFBApp
+  - RNFBStorage (17.3.0):
+    - Firebase/Storage (= 10.5.0)
+    - React-Core
+    - RNFBApp
   - RNGestureHandler (2.8.0):
     - React-Core
   - RNImageCropPicker (0.39.0):
@@ -484,6 +500,7 @@ DEPENDENCIES:
   - RNFastImage (from `../node_modules/react-native-fast-image`)
   - "RNFBApp (from `../node_modules/@react-native-firebase/app`)"
   - "RNFBMessaging (from `../node_modules/@react-native-firebase/messaging`)"
+  - "RNFBStorage (from `../node_modules/@react-native-firebase/storage`)"
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNImageCropPicker (from `../node_modules/react-native-image-crop-picker`)
   - RNPermissions (from `../node_modules/react-native-permissions`)
@@ -496,14 +513,18 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Firebase
+    - FirebaseAppCheckInterop
+    - FirebaseAuthInterop
     - FirebaseCore
     - FirebaseCoreExtension
     - FirebaseCoreInternal
     - FirebaseInstallations
     - FirebaseMessaging
+    - FirebaseStorage
     - fmt
     - GoogleDataTransport
     - GoogleUtilities
+    - GTMSessionFetcher
     - libwebp
     - nanopb
     - PromisesObjC
@@ -598,6 +619,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-firebase/app"
   RNFBMessaging:
     :path: "../node_modules/@react-native-firebase/messaging"
+  RNFBStorage:
+    :path: "../node_modules/@react-native-firebase/storage"
   RNGestureHandler:
     :path: "../node_modules/react-native-gesture-handler"
   RNImageCropPicker:
@@ -622,15 +645,19 @@ SPEC CHECKSUMS:
   FBLazyVector: 6b7f5692909b4300d50e7359cdefbcd09dd30faa
   FBReactNativeSpec: affcf71d996f6b0c01f68883482588297b9d5e6e
   Firebase: 3d6637234ab163e31852834617b4fe1df3b7af6d
+  FirebaseAppCheckInterop: 95bc238f8755d597cad95815b3c448f8617f720f
+  FirebaseAuthInterop: e1a53afba01599095100f92d6d3ecb75da6b5fa8
   FirebaseCore: 324b8d182d9ff7e3f6d1fa2f04b082d1c7a3e366
   FirebaseCoreExtension: d9fa427f1ae1edccf2368ce5e8d567e4c1f0ebc8
   FirebaseCoreInternal: e463f41bb935cd049505bf7e9a5bdd7dcea90df6
   FirebaseInstallations: 935bc4abb6f7a035cab7a0c31cb777b2be3dd254
   FirebaseMessaging: 35ecbbc68ff547fca80f9326c9622e79288c7149
+  FirebaseStorage: 858ba102341232ad8f4e3a457090858200716966
   fmt: ff9d55029c625d3757ed641535fd4a75fedc7ce9
   glog: 3d02b25ca00c2d456734d0bcff864cbc62f6ae1a
   GoogleDataTransport: ea169759df570f4e37bdee1623ec32a7e64e67c4
   GoogleUtilities: c2bdc4cf2ce786c4d2e6b3bcfd599a25ca78f06f
+  GTMSessionFetcher: c9e714f7eec91a55641e2bab9f45fd83a219b882
   libwebp: 60305b2e989864154bd9be3d772730f08fc6a59c
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
   Permission-Camera: bf6791b17c7f614b6826019fcfdcc286d3a107f6
@@ -671,6 +698,7 @@ SPEC CHECKSUMS:
   RNFastImage: 5c9c9fed9c076e521b3f509fe79e790418a544e8
   RNFBApp: 3672911764485c44b6ff947273a0d470477774df
   RNFBMessaging: a0f8a5a5b6646e382bc322225eebcdfb7be2da4f
+  RNFBStorage: b5e20e2f51e3f06a80d3d47af3e6632835e92797
   RNGestureHandler: 62232ba8f562f7dea5ba1b3383494eb5bf97a4d3
   RNImageCropPicker: 14fe1c29298fb4018f3186f455c475ab107da332
   RNPermissions: dcdb7b99796bbeda6975a6e79ad519c41b251b1c

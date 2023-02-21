@@ -18,8 +18,10 @@ import { CustomHeader, FloatingPlusButton, SquareCalendar } from '../../molecule
 import { CustomCalendar, HomeFloatingButtonView } from '../../organisms';
 import createRootStore from '../../../stores';
 import { STATUS_BUTTONS, STATUS_BUTTONS_TYPE } from '../../../resources';
-import { check, PERMISSIONS, RESULTS, checkNotifications, requestNotifications } from 'react-native-permissions';
+import { check, PERMISSIONS, RESULTS, checkNotifications, requestNotifications,request } from 'react-native-permissions';
+import ImagePicker from 'react-native-image-crop-picker';
 import messaging from '@react-native-firebase/messaging';
+import storage from '@react-native-firebase/storage';
 
 type Props = CompositeScreenProps<
   BottomTabScreenProps<MainTabParamList, 'HomeScreen'>,
@@ -33,7 +35,8 @@ const HomeScreen = ({ navigation, route }: Props) => {
 
 
   useEffect(() => {
-    checkNofiPermission()
+    // checkNofiPermission()
+    checkPermission()
   }, [])
 
   useEffect(() => {
@@ -66,6 +69,51 @@ const HomeScreen = ({ navigation, route }: Props) => {
         break;
     }
   }
+
+  const checkPermission = async () => {
+    const permissionMedia = Platform.OS === 'ios' ? PERMISSIONS.IOS.PHOTO_LIBRARY : PERMISSIONS.ANDROID.READ_MEDIA_IMAGES
+    const result = await check(permissionMedia)
+    switch (result) {
+        case RESULTS.UNAVAILABLE:
+            console.log('This feature is not available (on this device / in this context)');
+            break;
+        case RESULTS.DENIED:
+            console.log('The permission has not been requested / is denied but requestable');
+            request(permissionMedia)
+            break;
+        case RESULTS.LIMITED:
+            openImagePicker()
+            break;
+        case RESULTS.GRANTED:
+            openImagePicker()
+            break;
+        case RESULTS.BLOCKED:
+            console.log('The permission is denied and not requestable anymore');
+            break;
+    }
+}
+
+const openImagePicker = async () => {
+    ImagePicker.openPicker({
+        cropping: true,
+        cropperCircleOverlay: true
+    }).then(image => {
+        if (image?.path){
+          put(image?.path)
+        }
+    }).catch((error) => {
+        console.log(error)
+    });
+}
+
+const put = async(file) =>{
+
+  storage().ref('/images/t-shirts/black-t-shirt-sm.png').putFile(file).then((result)=>{
+    console.log(result,1)
+  }).catch((err)=>{
+    console.log(err,2)
+  })
+}
 
   const requNofiPermission = async() =>{
     const result = await requestNotifications(['alert', 'sound'])
