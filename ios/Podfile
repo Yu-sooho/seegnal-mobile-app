@@ -35,7 +35,7 @@ target 'seegnal' do
   # pod 'Permission-MediaLibrary', :path => "#{permissions_path}/MediaLibrary"
   pod 'Permission-Microphone', :path => "#{permissions_path}/Microphone"
   # pod 'Permission-Motion', :path => "#{permissions_path}/Motion"
-  # pod 'Permission-Notifications', :path => "#{permissions_path}/Notifications"
+  pod 'Permission-Notifications', :path => "#{permissions_path}/Notifications"
   pod 'Permission-PhotoLibrary', :path => "#{permissions_path}/PhotoLibrary"
   # pod 'Permission-PhotoLibraryAddOnly', :path => "#{permissions_path}/PhotoLibraryAddOnly"
   # pod 'Permission-Reminders', :path => "#{permissions_path}/Reminders"
@@ -57,7 +57,6 @@ target 'seegnal' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
-  
   target 'seegnalTests' do
     inherit! :complete
     # Pods for testing
@@ -69,7 +68,16 @@ target 'seegnal' do
   # you should disable the next line.
   # use_flipper!()
 
+
   post_install do |installer|
+    installer.pods_project.targets.each do |target|
+      if target.respond_to?(:product_type) and target.product_type == "com.apple.product-type.bundle"
+        target.build_configurations.each do |config|
+            config.build_settings['CODE_SIGNING_ALLOWED'] = 'NO'
+        end
+      end
+    end
+
     react_native_post_install(installer)
     __apply_Xcode_12_5_M1_post_install_workaround(installer)
   end

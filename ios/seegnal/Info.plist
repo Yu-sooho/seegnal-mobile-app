@@ -35,6 +35,10 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>UIBackgroundModes</key>
+    <array>
+        <string>remote-notification</string>
+    </array>
 	<key>NSCameraUsageDescription</key>
 	<string>유저 프로필 이미지 변경을 위해서만 사용되는 권한입니다.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
@@ -49,6 +53,11 @@
 		<string>NotoSansCJKkr-Bold.otf</string>
 		<string>NotoSansCJKkr-Medium.otf</string>
 		<string>NotoSansCJKkr-Regular.otf</string>
+	</array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>remote-notification</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

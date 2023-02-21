@@ -1,4 +1,4 @@
-import { Dimensions } from 'react-native'
+import { Dimensions, Platform } from 'react-native'
 
 export const sizeConverter = (inputSize:number) => {
   return (Dimensions.get('window').width * inputSize) / 360
