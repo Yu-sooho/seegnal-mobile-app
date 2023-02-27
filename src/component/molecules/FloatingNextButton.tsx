@@ -9,62 +9,58 @@ import { sizeConverter } from '../../utils'
 import { CustomButton } from '../atoms'
 
 type FloatingNextButtonProps = {
-    onPress?: (...args: any[]) => any,
-    text: string,
-    containerStyle?: StyleProp<ViewStyle>,
-    style?: StyleProp<ViewStyle>,
-    textStyle?: object,
-    disabled?: boolean,
-    bottomInset?:number
+  onPress?: (...args: any[]) => any
+  text: string
+  containerStyle?: StyleProp<ViewStyle>
+  style?: StyleProp<ViewStyle>
+  textStyle?: object
+  disabled?: boolean
+  bottomInset?: number
 }
 
-
-
 const FloatingNextButton = ({
-    onPress,
-    text,
-    style,
-    textStyle,
-    containerStyle,
-    disabled,
-    bottomInset
+  onPress,
+  text,
+  style,
+  textStyle,
+  containerStyle,
+  disabled,
+  bottomInset,
 }: FloatingNextButtonProps) => {
+  const [theme] = useAtom(selectedTheme)
 
-    const [theme] = useAtom(selectedTheme)
+  const insets = useSafeAreaInsets()
 
-    const insets = useSafeAreaInsets()
+  const styles = StyleSheet.create({
+    loginButtonViewStyle: {
+      bottom: bottomInset ? bottomInset : insets.bottom + sizeConverter(24),
+      position: 'absolute',
+      width: sizeConverter(360),
+      alignItems: 'center',
+    },
+    loginButtonText: {
+      color: themeColor[theme].seegnal_white,
+      ...themeFonts.notosans_bold_16,
+    },
+  })
 
-    const styles = StyleSheet.create({
-        loginButtonViewStyle: {
-            bottom: bottomInset ? bottomInset : insets.bottom + sizeConverter(24),
-            position: 'absolute',
-            width: sizeConverter(360),
-            alignItems: 'center'
-        },
-        loginButtonText: {
-            color: themeColor[theme].seegnal_white,
-            ...themeFonts.notosans_bold_16
-        }
-    })
-
-    return (
-        <View style={[styles.loginButtonViewStyle, containerStyle]}>
-            <CustomButton
-                buttonStyle={style}
-                textStyle={textStyle}
-                onPress={onPress}
-                text={text}
-                disabled={disabled}
-            />
-        </View>
-    )
+  return (
+    <View style={[styles.loginButtonViewStyle, containerStyle]}>
+      <CustomButton
+        buttonStyle={style}
+        textStyle={textStyle}
+        onPress={onPress}
+        text={text}
+        disabled={disabled}
+      />
+    </View>
+  )
 }
 
 FloatingNextButton.defaultProps = {
-    onPress: () => { },
-    text: '다음',
-    disabled: false
+  onPress: () => {},
+  text: '다음',
+  disabled: false,
 }
-
 
 export default FloatingNextButton

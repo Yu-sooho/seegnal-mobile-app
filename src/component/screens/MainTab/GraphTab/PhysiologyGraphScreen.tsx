@@ -1,54 +1,53 @@
-
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { useAtom } from 'jotai';
-import React from 'react';
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
+import { useAtom } from 'jotai'
+import React from 'react'
+import { ScrollView, StyleSheet, View } from 'react-native'
+import { GraphTabParamList } from '../../../../navigation'
+import { themeColor } from '../../../../resources'
+import { selectedTheme } from '../../../../stores'
+import { sizeConverter } from '../../../../utils'
+import { CustomSafeAreaView } from '../../../atoms'
 import {
-  ScrollView,
-  StyleSheet,
-  View,
-} from 'react-native';
-import { GraphTabParamList } from '../../../../navigation';
-import { themeColor } from '../../../../resources';
-import { selectedTheme } from '../../../../stores';
-import { sizeConverter } from '../../../../utils';
-import { CustomSafeAreaView } from '../../../atoms';
-import { StatisticsColorBar, StatisticsGraph, StatisticsPhysiology } from '../../../organisms/graph';
+  StatisticsColorBar,
+  StatisticsGraph,
+  StatisticsPhysiology,
+} from '../../../organisms/graph'
 
-type Props = NativeStackScreenProps<GraphTabParamList, 'PhysiologyGraphScreen'>;
-
-
-
+type Props = NativeStackScreenProps<GraphTabParamList, 'PhysiologyGraphScreen'>
 
 const PhysiologyGraphScreen = ({ navigation, route }: Props) => {
-
   const [theme] = useAtom(selectedTheme)
 
   const styles = StyleSheet.create({
     container: {
       paddingHorizontal: sizeConverter(16),
     },
-    graphView: {
-
-    },
+    graphView: {},
     scrollContainer: {
-      paddingBottom: sizeConverter(24) + sizeConverter(16)
+      paddingBottom: sizeConverter(24) + sizeConverter(16),
     },
     linearGradient: {
       height: sizeConverter(24),
       width: sizeConverter(360),
-      position: 'absolute'
+      position: 'absolute',
     },
     linearView: {
       height: sizeConverter(24),
       width: sizeConverter(360),
-    }
+    },
   })
 
   return (
     <CustomSafeAreaView edges={{ top: false, bottom: false }}>
-      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContainer}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={styles.scrollContainer}
+      >
         <View style={styles.container}>
-          <StatisticsPhysiology title1={'평균 생리 기간'} title2={'평균 생리 주기'} />
+          <StatisticsPhysiology
+            title1={'평균 생리 기간'}
+            title2={'평균 생리 주기'}
+          />
         </View>
         <View style={{ marginTop: sizeConverter(22) }}>
           <StatisticsGraph title={'지난 생리 기간'} />
@@ -71,7 +70,7 @@ const PhysiologyGraphScreen = ({ navigation, route }: Props) => {
         <View style={styles.linearView} />
       </LinearGradient> */}
     </CustomSafeAreaView>
-  );
-};
+  )
+}
 
 export default PhysiologyGraphScreen

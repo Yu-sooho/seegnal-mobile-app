@@ -8,19 +8,16 @@ import { selectedTheme } from '../../../stores'
 import { sizeConverter } from '../../../utils'
 import { TitleText, UserImage } from '../../atoms'
 
-
-
 const StatisticsEroticism = () => {
-
   const [theme] = useAtom(selectedTheme)
 
-  const isFocused = useIsFocused();
+  const isFocused = useIsFocused()
 
   const [maxWidth, setMaxWidth] = useState(sizeConverter(296))
 
   const styles = StyleSheet.create({
     container: {
-      marginTop: sizeConverter(24)
+      marginTop: sizeConverter(24),
     },
     contentView: {
       paddingTop: sizeConverter(12),
@@ -30,19 +27,18 @@ const StatisticsEroticism = () => {
       width: sizeConverter(156),
       height: sizeConverter(96),
       backgroundColor: themeColor[theme].seegnal_lwhite_gray,
-      borderRadius: sizeConverter(12)
+      borderRadius: sizeConverter(12),
     },
-    textView:{
-      marginTop:sizeConverter(16),
-      alignItems:'center'
+    textView: {
+      marginTop: sizeConverter(16),
+      alignItems: 'center',
     },
-    textStyle:{
-      fontSize:sizeConverter(24),
-      letterSpacing:-sizeConverter(0.06),
-      lineHeight:sizeConverter(24)
-    }
+    textStyle: {
+      fontSize: sizeConverter(24),
+      letterSpacing: -sizeConverter(0.06),
+      lineHeight: sizeConverter(24),
+    },
   })
-
 
   return (
     <View style={styles.container}>

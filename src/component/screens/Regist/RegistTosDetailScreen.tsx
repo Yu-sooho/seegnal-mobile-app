@@ -11,43 +11,42 @@ import { sizeConverter } from '../../../utils'
 import { CustomSafeAreaView } from '../../atoms'
 import { CustomHeader } from '../../molecules'
 
-type Props = NativeStackScreenProps<LoginStackParamList, 'RegistTosDetailScreen'>
-
-
-
+type Props = NativeStackScreenProps<
+  LoginStackParamList,
+  'RegistTosDetailScreen'
+>
 
 const RegistTosDetailScreen = ({ navigation, route }: Props) => {
+  const [theme] = useAtom(selectedTheme)
 
-    const [theme] = useAtom(selectedTheme)
+  const { type } = route?.params
+  const styles = StyleSheet.create({
+    container: {
+      paddingHorizontal: sizeConverter(16),
+      paddingTop: sizeConverter(16),
+      minHeight: Dimensions.get('window').height,
+    },
+    titleText: {
+      ...themeFonts.santokki_bold_24,
+      color: themeColor[theme].seegnal_dark_gray,
+    },
+    contentText: {
+      ...themeFonts.notosans_regular_14,
+      color: themeColor[theme].seegnal_dark_gray,
+    },
+  })
 
-    const { type } = route?.params
-    const styles = StyleSheet.create({
-        container: {
-            paddingHorizontal: sizeConverter(16),
-            paddingTop: sizeConverter(16),
-            minHeight: Dimensions.get('window').height
-        },
-        titleText: {
-            ...themeFonts.santokki_bold_24,
-            color: themeColor[theme].seegnal_dark_gray
-        },
-        contentText: {
-            ...themeFonts.notosans_regular_14,
-            color: themeColor[theme].seegnal_dark_gray
-        }
-    })
-
-    return (
-        <CustomSafeAreaView>
-            <CustomHeader />
-            <ScrollView style={styles.container}>
-                <Text style={styles.titleText}>Title</Text>
-                <View style={{ marginTop: sizeConverter(16) }}>
-                    <Text style={styles.contentText}>{type}</Text>
-                </View>
-            </ScrollView>
-        </CustomSafeAreaView>
-    )
+  return (
+    <CustomSafeAreaView>
+      <CustomHeader />
+      <ScrollView style={styles.container}>
+        <Text style={styles.titleText}>Title</Text>
+        <View style={{ marginTop: sizeConverter(16) }}>
+          <Text style={styles.contentText}>{type}</Text>
+        </View>
+      </ScrollView>
+    </CustomSafeAreaView>
+  )
 }
 
 export default RegistTosDetailScreen

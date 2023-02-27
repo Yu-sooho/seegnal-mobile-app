@@ -8,75 +8,66 @@ import { sizeConverter } from '../../utils'
 import { ImageButton } from '../atoms'
 
 type Props = {
-    title?: string,
-    text?: string,
-    item?: EMOTION_TYPE,
-    onPress?: () => void,
-    disabled: boolean,
-    count: number
+  title?: string
+  text?: string
+  item?: EMOTION_TYPE
+  onPress?: () => void
+  disabled: boolean
+  count: number
 }
 
-
-
 const SendImageButton = ({
-    title,
-    text,
-    item,
-    onPress,
-    disabled,
-    count
+  title,
+  text,
+  item,
+  onPress,
+  disabled,
+  count,
 }: Props) => {
+  const [theme] = useAtom(selectedTheme)
 
-    const [theme] = useAtom(selectedTheme)
+  const styles = StyleSheet.create({
+    container: {
+      width: sizeConverter(156),
+      height: sizeConverter(176),
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      backgroundColor: themeColor[theme].seegnal_lwhite_gray,
+      borderRadius: sizeConverter(12),
+      paddingVertical: sizeConverter(16),
+    },
+    titleText: {
+      ...themeFonts.santokki_bold_20,
+      color: themeColor[theme].seegnal_dark_gray,
+    },
+    activeText: {
+      ...themeFonts.notosans_medium_14,
+      color: themeColor[theme].seegnal_dark_gray,
+    },
+    defaultText: {
+      ...themeFonts.notosans_medium_14,
+      color: themeColor[theme].seegnal_gray,
+    },
+  })
 
-    const styles = StyleSheet.create({
-        container: {
-            width: sizeConverter(156),
-            height: sizeConverter(176),
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            backgroundColor: themeColor[theme].seegnal_lwhite_gray,
-            borderRadius: sizeConverter(12),
-            paddingVertical: sizeConverter(16)
-        },
-        titleText: {
-            ...themeFonts.santokki_bold_20,
-            color: themeColor[theme].seegnal_dark_gray,
-        },
-        activeText: {
-            ...themeFonts.notosans_medium_14,
-            color: themeColor[theme].seegnal_dark_gray
-        },
-        defaultText: {
-            ...themeFonts.notosans_medium_14,
-            color: themeColor[theme].seegnal_gray
-        }
-    })
-
-    return (
-        <TouchableOpacity disabled={disabled} onPress={onPress} style={styles.container}>
-            {
-                title && (
-                    <Text style={styles.titleText}>{title}</Text>
-                )
-            }
-            <ImageButton disabled item={item} image={images.img_emotion_soso} />
-            {
-                count && (
-                    <Text style={styles.titleText}>{`${count}번`}</Text>
-                )
-            }
-            {!item?.keyword &&
-                <Text style={styles.defaultText}>{text}</Text>
-            }
-        </TouchableOpacity>
-    )
+  return (
+    <TouchableOpacity
+      disabled={disabled}
+      onPress={onPress}
+      style={styles.container}
+    >
+      {title && <Text style={styles.titleText}>{title}</Text>}
+      <ImageButton disabled item={item} image={images.img_emotion_soso} />
+      {count && <Text style={styles.titleText}>{`${count}번`}</Text>}
+      {!item?.keyword && <Text style={styles.defaultText}>{text}</Text>}
+    </TouchableOpacity>
+  )
 }
 
 SendImageButton.defaultProps = {
-    item: null,
-    disabled: false,
-    count: null
+  item: null,
+  disabled: false,
+  count: null,
 }
 
 export default SendImageButton

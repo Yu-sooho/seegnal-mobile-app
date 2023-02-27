@@ -1,7 +1,6 @@
+import { useAtom } from 'jotai'
 
-import { useAtom } from 'jotai';
-
-import React, { PropsWithChildren } from 'react';
+import React, { PropsWithChildren } from 'react'
 import {
   Keyboard,
   StyleProp,
@@ -10,25 +9,23 @@ import {
   useColorScheme,
   View,
   ViewStyle,
-} from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { themeColor } from '../../../resources';
-import { selectedTheme } from '../../../stores';
-
-
+} from 'react-native'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
+import { themeColor } from '../../../resources'
+import { selectedTheme } from '../../../stores'
 
 const CustomSafeAreaView: React.FC<
   PropsWithChildren<{
-    containerStyle?: StyleProp<ViewStyle>,
-    disabled?: boolean,
-    style?: StyleProp<ViewStyle>,
+    containerStyle?: StyleProp<ViewStyle>
+    disabled?: boolean
+    style?: StyleProp<ViewStyle>
     edges?: {
-      top?: boolean,
+      top?: boolean
       bottom?: boolean
     }
   }>
 > = ({ children, containerStyle, disabled, style, edges }) => {
-  const isDarkMode = useColorScheme() === 'dark';
+  const isDarkMode = useColorScheme() === 'dark'
   const insets = useSafeAreaInsets()
   const [theme] = useAtom(selectedTheme)
 
@@ -44,7 +41,7 @@ const CustomSafeAreaView: React.FC<
       paddingTop: edges?.top ? insets.top : 0,
       paddingBottom: edges?.bottom ? insets.bottom : 0,
       flex: 1,
-    }
+    },
   })
 
   const onPress = () => {
@@ -53,23 +50,23 @@ const CustomSafeAreaView: React.FC<
 
   return (
     <View style={[styles.containerStyle, containerStyle]}>
-      <TouchableWithoutFeedback disabled={disabled} onPress={onPress} style={styles.buttonView}>
-        <View style={[styles.style, style]}>
-          {children}
-        </View>
+      <TouchableWithoutFeedback
+        disabled={disabled}
+        onPress={onPress}
+        style={styles.buttonView}
+      >
+        <View style={[styles.style, style]}>{children}</View>
       </TouchableWithoutFeedback>
     </View>
-  );
-};
-
+  )
+}
 
 CustomSafeAreaView.defaultProps = {
   disabled: true,
   edges: {
     top: true,
-    bottom: true
-  }
+    bottom: true,
+  },
 }
-
 
 export default CustomSafeAreaView

@@ -1,32 +1,31 @@
 export {
-    //회원가입
-    RegistAverageScreen,
-    RegistCalendarScreen,
-    RegistGenderScreen,
-    RegistInviteScreen,
-    RegistTosScreen,
-    RegistTosDetailScreen,
-    BoardingScreen,
-    
-    //모달
-    LoginModalScreen,
-    CustomModalScreen,
-    ImageButtonModalScreen,
-    AdvertisementScreen,
+  //회원가입
+  RegistAverageScreen,
+  RegistCalendarScreen,
+  RegistGenderScreen,
+  RegistInviteScreen,
+  RegistTosScreen,
+  RegistTosDetailScreen,
+  BoardingScreen,
 
-    //메인 탭
-    HomeScreen,
-    HistoryScreen,
+  //모달
+  LoginModalScreen,
+  CustomModalScreen,
+  ImageButtonModalScreen,
+  AdvertisementScreen,
 
-    //옵션
-    SettingScreen,
-    AppInfoScreen,
-    AlarmSettingScreen,
-    ThemeSettingScreen,
-    MyInfoScreen,
+  //메인 탭
+  HomeScreen,
+  HistoryScreen,
 
-    //그래프 탭
-    PhysiologyGraphScreen,
-    SeegnalGraphScreen
+  //옵션
+  SettingScreen,
+  AppInfoScreen,
+  AlarmSettingScreen,
+  ThemeSettingScreen,
+  MyInfoScreen,
 
+  //그래프 탭
+  PhysiologyGraphScreen,
+  SeegnalGraphScreen,
 } from './screens'

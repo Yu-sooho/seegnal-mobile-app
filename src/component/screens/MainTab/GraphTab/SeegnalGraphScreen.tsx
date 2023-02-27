@@ -1,27 +1,20 @@
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
+import React, { useState } from 'react'
+import { StyleSheet, ScrollView } from 'react-native'
+import { GraphTabParamList } from '../../../../navigation'
+import { sizeConverter } from '../../../../utils'
+import { CustomSafeAreaView } from '../../../atoms'
+import { StatisticsSeegnal, StatisticsEroticism } from '../../../organisms'
+import { themeColor } from '../../../../resources'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
+import { StatisticsColorBar } from '../../../organisms/graph'
+import { Icon16NonSafe, Icon16Safe } from '../../../icons'
+import { selectedTheme } from '../../../../stores'
+import { useAtom } from 'jotai'
 
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import React, { useState } from 'react';
-import {
-  StyleSheet,
-  ScrollView,
-} from 'react-native';
-import { GraphTabParamList } from '../../../../navigation';
-import { sizeConverter } from '../../../../utils';
-import { CustomSafeAreaView } from '../../../atoms';
-import { StatisticsSeegnal, StatisticsEroticism } from '../../../organisms';
-import { themeColor } from '../../../../resources';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { StatisticsColorBar } from '../../../organisms/graph';
-import { Icon16NonSafe, Icon16Safe } from '../../../icons';
-import { selectedTheme } from '../../../../stores';
-import { useAtom } from 'jotai';
-
-type Props = NativeStackScreenProps<GraphTabParamList, 'SeegnalGraphScreen'>;
-
-
+type Props = NativeStackScreenProps<GraphTabParamList, 'SeegnalGraphScreen'>
 
 const SeegnalGraphScreen = ({ navigation, route }: Props) => {
-
   const [theme] = useAtom(selectedTheme)
 
   const insets = useSafeAreaInsets()
@@ -35,35 +28,45 @@ const SeegnalGraphScreen = ({ navigation, route }: Props) => {
     },
     scrollContainer: {
       marginTop: sizeConverter(16),
-      paddingBottom: sizeConverter(24) + sizeConverter(16)
+      paddingBottom: sizeConverter(24) + sizeConverter(16),
     },
     contentView: {
       marginTop: sizeConverter(16),
       flexDirection: 'row',
-      justifyContent: 'space-between'
+      justifyContent: 'space-between',
     },
     linearGradient: {
       height: sizeConverter(24),
       width: sizeConverter(360),
-      position: 'absolute'
+      position: 'absolute',
     },
     linearView: {
       height: sizeConverter(24),
       width: sizeConverter(360),
-    }
+    },
   })
 
-  const radTemp = Math.floor(Math.random() * 100);
+  const radTemp = Math.floor(Math.random() * 100)
 
   return (
-    <CustomSafeAreaView style={styles.container} edges={{ top: false, bottom: false }}>
-      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContainer}>
+    <CustomSafeAreaView
+      style={styles.container}
+      edges={{ top: false, bottom: false }}
+    >
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={styles.scrollContainer}
+      >
         <StatisticsSeegnal />
         <StatisticsColorBar
           title={'성관계'}
           subTitle={`총 ${0}번`}
-          textImage1={<Icon16Safe imageStyle={{ marginRight: sizeConverter(4) }} />}
-          textImage2={<Icon16NonSafe imageStyle={{ marginRight: sizeConverter(4) }} />}
+          textImage1={
+            <Icon16Safe imageStyle={{ marginRight: sizeConverter(4) }} />
+          }
+          textImage2={
+            <Icon16NonSafe imageStyle={{ marginRight: sizeConverter(4) }} />
+          }
           percent1={radTemp}
           percent2={100 - radTemp}
           color1={themeColor[theme].seegnal_secondary_1}
@@ -78,7 +81,7 @@ const SeegnalGraphScreen = ({ navigation, route }: Props) => {
         <View style={styles.linearView} />
       </LinearGradient> */}
     </CustomSafeAreaView>
-  );
-};
+  )
+}
 
 export default SeegnalGraphScreen

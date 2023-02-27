@@ -8,52 +8,56 @@ import { sizeConverter } from '../../utils'
 import { ProgressBar } from '../atoms'
 
 type EroticismBarProps = {
-    width?: number,
-    height?: number,
-    initValue?: number,
-    onChangeValue: (value: number) => void
+  width?: number
+  height?: number
+  initValue?: number
+  onChangeValue: (value: number) => void
 }
 
 const EroticismBar = ({
-    width,
-    height,
-    onChangeValue,
-    initValue
+  width,
+  height,
+  onChangeValue,
+  initValue,
 }: EroticismBarProps) => {
+  const [theme] = useAtom(selectedTheme)
 
-    const [theme] = useAtom(selectedTheme)
+  const styles = StyleSheet.create({
+    container: {
+      width: sizeConverter(328),
+      height: sizeConverter(100),
+      borderRadius: sizeConverter(12),
+      padding: sizeConverter(16),
+      justifyContent: 'space-between',
+      backgroundColor: themeColor[theme].seegnal_lwhite_gray,
+    },
+    titleText: {
+      ...themeFonts.santokki_bold_24,
+      color: themeColor[theme].seegnal_dark_gray,
+    },
+  })
 
-    const styles = StyleSheet.create({
-        container: {
-            width: sizeConverter(328),
-            height: sizeConverter(100),
-            borderRadius: sizeConverter(12),
-            padding: sizeConverter(16),
-            justifyContent: 'space-between',
-            backgroundColor: themeColor[theme].seegnal_lwhite_gray
-        },
-        titleText: {
-            ...themeFonts.santokki_bold_24,
-            color: themeColor[theme].seegnal_dark_gray,
-        },
-    })
+  const [eroticism, setEroticism] = useState(initValue || 0)
 
-    const [eroticism, setEroticism] = useState(initValue || 0)
+  const onChange = (value: number) => {
+    setEroticism(Math.round(value))
+    if (onChangeValue) onChangeValue(value)
+    return value
+  }
 
-    const onChange = (value: number) => {
-        setEroticism(Math.round(value))
-        if (onChangeValue) onChangeValue(value)
-        return value
-    }
-
-    return (
-        <View style={styles.container}>
-            <Text style={styles.titleText}>{`성욕 ${eroticism}%`}</Text>
-            <View style={{ height: sizeConverter(32) }}>
-                <ProgressBar initValue={initValue} width={width} height={height} onChangeValue={onChange} />
-            </View>
-        </View>
-    )
+  return (
+    <View style={styles.container}>
+      <Text style={styles.titleText}>{`성욕 ${eroticism}%`}</Text>
+      <View style={{ height: sizeConverter(32) }}>
+        <ProgressBar
+          initValue={initValue}
+          width={width}
+          height={height}
+          onChangeValue={onChange}
+        />
+      </View>
+    </View>
+  )
 }
 
 export default EroticismBar

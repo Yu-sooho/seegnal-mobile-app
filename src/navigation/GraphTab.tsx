@@ -1,50 +1,67 @@
-import React from 'react';
-import { GraphTabParamList, RootStackParamList } from '.';
-import { PhysiologyGraphScreen, SeegnalGraphScreen } from '../component';
-import { Animated, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { themeColor, themeFonts } from '../resources';
-import { sizeConverter } from '../utils';
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { createMaterialTopTabNavigator, MaterialTopTabBarProps } from '@react-navigation/material-top-tabs';
-import { CustomSafeAreaView } from '../component/atoms';
-import { CustomHeader } from '../component/molecules';
-import { selectedTheme } from '../stores';
-import { useAtom } from 'jotai';
+import React from 'react'
+import { GraphTabParamList, RootStackParamList } from '.'
+import { PhysiologyGraphScreen, SeegnalGraphScreen } from '../component'
+import {
+    Animated,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    View,
+} from 'react-native'
+import { themeColor, themeFonts } from '../resources'
+import { sizeConverter } from '../utils'
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
+import {
+    createMaterialTopTabNavigator,
+    MaterialTopTabBarProps,
+} from '@react-navigation/material-top-tabs'
+import { CustomSafeAreaView } from '../component/atoms'
+import { CustomHeader } from '../component/molecules'
+import { selectedTheme } from '../stores'
+import { useAtom } from 'jotai'
 
-const GraphTab = createMaterialTopTabNavigator<GraphTabParamList>();
-
-
+const GraphTab = createMaterialTopTabNavigator<GraphTabParamList>()
 
 const GraphTabNav = () => {
     return (
-        <GraphTab.Navigator screenOptions={{ swipeEnabled: false }} tabBar={CustomTabBar}>
-            <GraphTab.Screen options={{ tabBarLabel: '생리' }} name={'PhysiologyGraphScreen'} component={PhysiologyGraphScreen} />
-            <GraphTab.Screen options={{ tabBarLabel: '씨그날' }} name={'SeegnalGraphScreen'} component={SeegnalGraphScreen} />
+        <GraphTab.Navigator
+            screenOptions={{ swipeEnabled: false }}
+            tabBar={CustomTabBar}
+        >
+            <GraphTab.Screen
+                options={{ tabBarLabel: '생리' }}
+                name={'PhysiologyGraphScreen'}
+                component={PhysiologyGraphScreen}
+            />
+            <GraphTab.Screen
+                options={{ tabBarLabel: '씨그날' }}
+                name={'SeegnalGraphScreen'}
+                component={SeegnalGraphScreen}
+            />
         </GraphTab.Navigator>
-    );
-};
+    )
+}
 
 type Props = NativeStackScreenProps<RootStackParamList>
 
-
 const GraphTabNavigator = ({ navigation, route }: Props) => {
-
     const [theme] = useAtom(selectedTheme)
 
     const styles = StyleSheet.create({
         titleText: {
             ...themeFonts.santokki_bold_24,
-            color: themeColor[theme].seegnal_dark_gray
-        }
+            color: themeColor[theme].seegnal_dark_gray,
+        },
     })
 
     const leftContent = () => {
-        return (
-            <Text style={styles.titleText}>통계</Text>
-        )
+        return <Text style={styles.titleText}>통계</Text>
     }
     return (
-        <CustomSafeAreaView edges={{ top: true, bottom: false }} style={{ flex: 1, }}>
+        <CustomSafeAreaView
+            edges={{ top: true, bottom: false }}
+            style={{ flex: 1 }}
+        >
             <CustomHeader leftContent={leftContent} />
             <View style={{ marginTop: sizeConverter(16), flex: 1 }}>
                 <GraphTabNav />
@@ -53,22 +70,28 @@ const GraphTabNavigator = ({ navigation, route }: Props) => {
     )
 }
 
-const CustomTabBar = ({ state, descriptors, navigation, position }: MaterialTopTabBarProps) => {
-
+const CustomTabBar = ({
+    state,
+    descriptors,
+    navigation,
+    position,
+}: MaterialTopTabBarProps) => {
     const [theme] = useAtom(selectedTheme)
 
-    const inputRange = state.routes.map((_, i) => i);
+    const inputRange = state.routes.map((_, i) => i)
     const transformX = position.interpolate({
         inputRange,
-        outputRange: inputRange.map(i => (i * sizeConverter(164)) + sizeConverter(2)),
-    });
+        outputRange: inputRange.map(
+            (i) => i * sizeConverter(164) + sizeConverter(2),
+        ),
+    })
 
     const styles = StyleSheet.create({
         container: {
             width: sizeConverter(360),
             height: sizeConverter(32),
             justifyContent: 'center',
-            alignItems: 'center'
+            alignItems: 'center',
         },
         tabBarView: {
             height: sizeConverter(32),
@@ -76,7 +99,7 @@ const CustomTabBar = ({ state, descriptors, navigation, position }: MaterialTopT
             borderRadius: sizeConverter(15),
             alignItems: 'center',
             backgroundColor: themeColor[theme].seegnal_lwhite_gray,
-            flexDirection: 'row'
+            flexDirection: 'row',
         },
         tabBarButton: {
             height: sizeConverter(28),
@@ -95,62 +118,68 @@ const CustomTabBar = ({ state, descriptors, navigation, position }: MaterialTopT
             alignItems: 'center',
             backgroundColor: themeColor[theme].seegnal_main,
             position: 'absolute',
-
         },
         tabBarText: {
             ...themeFonts.notosans_bold_14,
-            textAlign: 'center'
-        }
+            textAlign: 'center',
+        },
     })
     return (
         <View style={styles.container}>
             <View style={styles.tabBarView}>
-                <Animated.View style={[styles.tabBarBase, {
-                    transform: [{
-                        translateX: transformX
-                    }]
-                }]} />
+                <Animated.View
+                    style={[
+                        styles.tabBarBase,
+                        {
+                            transform: [
+                                {
+                                    translateX: transformX,
+                                },
+                            ],
+                        },
+                    ]}
+                />
                 {state.routes.map((route, index) => {
-                    const { options } = descriptors[route.key];
+                    const { options } = descriptors[route.key]
                     const label =
                         options.tabBarLabel !== undefined
                             ? options.tabBarLabel
                             : options.title !== undefined
                                 ? options.title
-                                : route.name;
+                                : route.name
 
-                    const isFocused = state.index === index;
+                    const isFocused = state.index === index
 
                     const onPress = () => {
                         const event = navigation.emit({
                             type: 'tabPress',
                             target: route.key,
                             canPreventDefault: true,
-                        });
+                        })
 
                         if (!isFocused && !event.defaultPrevented) {
-                            navigation.navigate(`${route?.name}`);
+                            navigation.navigate(`${route?.name}`)
                         }
-                    };
+                    }
 
                     const onLongPress = () => {
                         navigation.emit({
                             type: 'tabLongPress',
                             target: route.key,
-                        });
-                    };
+                        })
+                    }
 
-                    const inputRange = state.routes.map((_, i) => i);
+                    const inputRange = state.routes.map((_, i) => i)
 
                     const opacity = position.interpolate({
                         inputRange,
-                        outputRange: inputRange.map(i => (i === index ? 1 : 0)),
-                    });
+                        outputRange: inputRange.map((i) => (i === index ? 1 : 0)),
+                    })
 
                     const opacityR = position.interpolate({
                         inputRange,
-                        outputRange: inputRange.map(i => (i === index ? 0 : 1)),
-                    });
+                        outputRange: inputRange.map((i) => (i === index ? 0 : 1)),
+                    })
 
                     return (
                         <TouchableOpacity
@@ -163,21 +192,32 @@ const CustomTabBar = ({ state, descriptors, navigation, position }: MaterialTopT
                             onLongPress={onLongPress}
                             style={styles.tabBarButton}
                         >
-                            <Animated.Text style={[styles.tabBarText, { opacity, color: themeColor[theme].seegnal_lwhite_gray }]}>
+                            <Animated.Text
+                                style={[
+                                    styles.tabBarText,
+                                    { opacity, color: themeColor[theme].seegnal_lwhite_gray },
+                                ]}
+                            >
                                 {`${label}`}
                             </Animated.Text>
-                            <Animated.Text style={[styles.tabBarText, { opacity: opacityR, position: 'absolute', color: themeColor[theme].seegnal_gray, }]}>
+                            <Animated.Text
+                                style={[
+                                    styles.tabBarText,
+                                    {
+                                        opacity: opacityR,
+                                        position: 'absolute',
+                                        color: themeColor[theme].seegnal_gray,
+                                    },
+                                ]}
+                            >
                                 {`${label}`}
                             </Animated.Text>
                         </TouchableOpacity>
-                    );
+                    )
                 })}
             </View>
-
         </View>
-
-    );
+    )
 }
-
 
 export default GraphTabNavigator

@@ -1,26 +1,20 @@
-
-import { CompositeScreenProps } from '@react-navigation/native';
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import React from 'react';
-import {
-  StyleSheet,
-} from 'react-native';
-import { MainTabParamList, RootStackParamList } from '../../../navigation';
-import { sizeConverter } from '../../../utils';
-import { CustomSafeAreaView, TitleText } from '../../atoms';
-import { SeegnalView } from '../../organisms';
+import { CompositeScreenProps } from '@react-navigation/native'
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
+import React from 'react'
+import { StyleSheet } from 'react-native'
+import { MainTabParamList, RootStackParamList } from '../../../navigation'
+import { sizeConverter } from '../../../utils'
+import { CustomSafeAreaView, TitleText } from '../../atoms'
+import { SeegnalView } from '../../organisms'
 // import { PersistStoreMap } from 'mobx-persist-store';
-
 
 type Props = CompositeScreenProps<
   NativeStackScreenProps<MainTabParamList, 'HistoryScreen'>,
   NativeStackScreenProps<RootStackParamList>
->;
+>
 // type Props = NativeStackScreenProps<MainTabParamList, 'HistoryScreen'>;
 
-
 const HistoryScreen = ({ navigation, route }: Props) => {
-
   // const onPress = (value: number) => {
   //   Array.from(PersistStoreMap.values()).map((persistStore) => persistStore.getPersistedStore().then((value: any) => {
   //     console.log(value, 'FUUF')
@@ -31,8 +25,8 @@ const HistoryScreen = ({ navigation, route }: Props) => {
     headerStyle: {
       height: sizeConverter(56),
       justifyContent: 'center',
-      paddingHorizontal: sizeConverter(16)
-    }
+      paddingHorizontal: sizeConverter(16),
+    },
   })
 
   const onPressSendSeegnal = () => {
@@ -40,13 +34,12 @@ const HistoryScreen = ({ navigation, route }: Props) => {
   }
 
   return (
-    <CustomSafeAreaView disabled={false} edges={{ top: true, bottom: false }} >
+    <CustomSafeAreaView disabled={false} edges={{ top: true, bottom: false }}>
       <TitleText viewStyle={styles.headerStyle} text={'모아보기'} />
       {/* <HistoryEmptyView onPressSendSeegnal={onPressSendSeegnal} /> */}
-      <SeegnalView /> 
+      <SeegnalView />
     </CustomSafeAreaView>
-  );
-};
-
+  )
+}
 
 export default HistoryScreen

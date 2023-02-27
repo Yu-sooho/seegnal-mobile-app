@@ -1,0 +1,119 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "extends": ["plugin:react/recommended", "airbnb", "prettier"],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "plugins": ["react", "@typescript-eslint"],
+  "rules": {
+    "import/order": 1,
+    "import/named": 1,
+    "import/first": 1,
+    "import/newline-after-import": 1,
+    "import/no-named-as-default": 1,
+    "import/no-named-as-default-member": 1,
+    "import/prefer-default-export": 0,
+    "import/no-cycle": 1,
+    "react/destructuring-assignment": 1,
+    "react/sort-comp": 1,
+    "react/jsx-filename-extension": 0,
+    "react/jsx-no-bind": 1,
+    "react/no-access-state-in-setstate": 1,
+    "react/jsx-props-no-spreading": 1,
+    "react/no-array-index-key": 1,
+    "react/jsx-closing-bracket-location": 1,
+    "react/jsx-wrap-multilines": 0,
+    "react/prop-types": 0,
+    "react/jsx-curly-newline": [
+      "warn",
+      {
+        "multiline": "require",
+        "singleline": "consistent"
+      }
+    ],
+    "react/jsx-indent": ["off"],
+    "react/jsx-indent-props": ["off"],
+    "react/jsx-curly-brace-presence": 0,
+    "react/jsx-one-expression-per-line": 1,
+    "lines-between-class-members": 0,
+    "spaced-comment": 1,
+    "no-unused-expressions": 1,
+    "no-restricted-globals": 1,
+    "no-underscore-dangle": 0,
+    "no-else-return": 1,
+    "no-return-assign": 1,
+    "no-use-before-define": 0,
+    "no-nested-ternary": 1,
+    "no-param-reassign": 1,
+    "no-unused-vars": 1,
+    "no-plusplus": 1,
+    "no-lonely-if": 1,
+    "no-console": 0,
+    "radix": 1,
+    "class-methods-use-this": 1,
+    "dot-notation": 0,
+    "max-classes-per-file": 0,
+    "consistent-return": 1,
+    "prefer-destructuring": 1,
+    "camelcase": 1,
+    "jsx-a11y/accessible-emoji": 0,
+    "array-callback-return": 1,
+    "global-require": 0,
+    "operator-linebreak": ["warn", "before", { "overrides": { "=": "after" } }],
+    "object-curly-newline": ["warn", { "consistent": true }],
+    "indent": [
+      "warn",
+      2,
+      {
+        "SwitchCase": 1,
+        // "VariableDeclarator": 1,
+        // "outerIIFEBody": 1,
+        // MemberExpression: null,
+        // "FunctionDeclaration": {
+        //   "parameters": 1,
+        //   "body": 1
+        // },
+        // "FunctionExpression": {
+        //   "parameters": 1,
+        //   "body": 1
+        // },
+        // "CallExpression": {
+        //   "arguments": 1
+        // },
+        // "ArrayExpression": 1,
+        // "ObjectExpression": 1,
+        // "ImportDeclaration": 1,
+        // "flatTernaryExpressions": false,
+        // list derived from https://github.com/benjamn/ast-types/blob/HEAD/def/jsx.js
+        "ignoredNodes": [
+          // "JSXElement",
+          // "JSXElement > *",
+          // "JSXAttribute",
+          // "JSXIdentifier",
+          // "JSXNamespacedName",
+          // "JSXMemberExpression",
+          // "JSXSpreadAttribute",
+          // "JSXExpressionContainer",
+          // "JSXOpeningElement",
+          // "JSXClosingElement"
+          // "JSXText",
+          // "JSXEmptyExpression"
+          // "JSXSpreadChild"
+        ]
+      }
+    ],
+    "brace-style": ["warn", "stroustrup", { "allowSingleLine": true }]
+  }
+}

@@ -10,20 +10,17 @@ import { ColorBar, TitleText } from '../../atoms'
 import { Icon16NonSafe, Icon16Safe } from '../../icons'
 import { ColorBarView } from '../../molecules'
 
-
-
-
 type Props = {
-  title?: string,
-  subTitle?: string,
-  color1: string,
-  color2: string,
-  percent1: number,
-  percent2: number,
-  textImage1?: ReactNode,
-  textImage2?: ReactNode,
-  text1?:string,
-  text2?:string,
+  title?: string
+  subTitle?: string
+  color1: string
+  color2: string
+  percent1: number
+  percent2: number
+  textImage1?: ReactNode
+  textImage2?: ReactNode
+  text1?: string
+  text2?: string
   contentContainerStyle?: StyleProp<ViewStyle>
 }
 
@@ -38,19 +35,16 @@ const StatisticsColorBar = ({
   textImage2,
   text1,
   text2,
-  contentContainerStyle
+  contentContainerStyle,
 }: Props) => {
-
   const [theme] = useAtom(selectedTheme)
 
-  const isFocused = useIsFocused();
+  const isFocused = useIsFocused()
 
   const [maxWidth, setMaxWidth] = useState(sizeConverter(296))
 
   const styles = StyleSheet.create({
-    container: {
-
-    },
+    container: {},
     contentView: {
       paddingTop: sizeConverter(12),
       paddingBottom: sizeConverter(16),
@@ -59,30 +53,43 @@ const StatisticsColorBar = ({
       width: sizeConverter(328),
       height: sizeConverter(108),
       backgroundColor: themeColor[theme].seegnal_lwhite_gray,
-      borderRadius: sizeConverter(12)
+      borderRadius: sizeConverter(12),
     },
     colorBarView: {
       flexDirection: 'row',
       justifyContent: 'space-between',
       marginTop: sizeConverter(12),
-      width: maxWidth
+      width: maxWidth,
     },
   })
 
-
   return (
-    <View style={[styles.container,contentContainerStyle]}>
-      {
-        title &&
+    <View style={[styles.container, contentContainerStyle]}>
+      {title && (
         <View>
           <TitleText text={title} />
         </View>
-      }
+      )}
       <View style={styles.contentView}>
         <TitleText text={subTitle} />
         <View style={styles.colorBarView}>
-          <ColorBarView textImage={textImage1} action={isFocused} maxWidth={maxWidth} percent={percent1} color={color1} text={text1} />
-          <ColorBarView textImage={textImage2} reverse={true} action={isFocused} maxWidth={maxWidth} percent={percent2} color={color2} text={text2} />
+          <ColorBarView
+            textImage={textImage1}
+            action={isFocused}
+            maxWidth={maxWidth}
+            percent={percent1}
+            color={color1}
+            text={text1}
+          />
+          <ColorBarView
+            textImage={textImage2}
+            reverse={true}
+            action={isFocused}
+            maxWidth={maxWidth}
+            percent={percent2}
+            color={color2}
+            text={text2}
+          />
         </View>
       </View>
     </View>
