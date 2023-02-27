@@ -6,7 +6,7 @@
 
 import { observable, runInAction } from 'mobx';
 import { useEffect } from 'react';
-import appStateStore from './appStateStore';
+import appStateStore from './AppStateStore';
 
 const createStore = () => {
     //스토어 이름

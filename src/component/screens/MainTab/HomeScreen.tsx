@@ -36,7 +36,7 @@ const HomeScreen = ({ navigation, route }: Props) => {
 
   useEffect(() => {
     // checkNofiPermission()
-    checkPermission()
+    // checkPermission()
   }, [])
 
   useEffect(() => {
