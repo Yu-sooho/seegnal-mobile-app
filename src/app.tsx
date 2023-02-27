@@ -2,13 +2,17 @@ import {
   NavigationContainer,
   useNavigationContainerRef,
 } from '@react-navigation/native'
+import { useAtom } from 'jotai'
 import React, { useEffect } from 'react'
 import SplashScreen from 'react-native-splash-screen'
 import MainStackNavigator from './navigation/MainStack'
+import { currentRoute } from './stores'
 
 const App = () => {
   const navigationRef = useNavigationContainerRef()
   const { getCurrentRoute } = navigationRef
+
+  const [routeName, setRouteName] = useAtom(currentRoute)
 
   useEffect(() => {
     SplashScreen.hide()
@@ -17,20 +21,20 @@ const App = () => {
   return (
     <NavigationContainer
       ref={navigationRef}
-      // onReady={() => {
-      //     stores.appStateStore.setCurrentScreen(`${getCurrentRoute()?.['name']}`)
-      //     console.log(`[SH] [app] [screenName] firstScreenName: ${getCurrentRoute()?.['name']}`)
-      // }}
-      // onStateChange={async () => {
-      //     const previousRouteName = stores.appStateStore.currentScreen.get()
-      //     const currentRouteName = getCurrentRoute()?.['name']
+      onReady={() => {
+        setRouteName(`${getCurrentRoute()?.['name']}`)
+        console.log(`[SH] [app] [screenName] firstScreenName: ${getCurrentRoute()?.['name']}`)
+      }}
+      onStateChange={async () => {
+        const previousRouteName = routeName
+        const currentRouteName = getCurrentRoute()?.['name']
 
-      //     if (previousRouteName !== currentRouteName) {
-      //         console.log(`[SH] [app] [screenName] previousRouteName: ${previousRouteName} currentRouteName: ${currentRouteName}`)
-      //     }
+        if (previousRouteName !== currentRouteName) {
+          console.log(`[SH] [app] [screenName] previousRouteName: ${previousRouteName} currentRouteName: ${currentRouteName}`)
+        }
 
-      //     stores.appStateStore.setCurrentScreen(`${currentRouteName}`)
-      // }}
+        setRouteName(`${currentRouteName}`)
+      }}
     >
       <MainStackNavigator />
     </NavigationContainer>

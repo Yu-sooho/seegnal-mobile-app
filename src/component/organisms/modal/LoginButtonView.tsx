@@ -117,15 +117,13 @@ const LoginButtonView = ({
             textStyle={styles.kakaoText}
             text={'카카오로 시작하기'}
           />
-          {Platform.OS === 'ios' && (
-            <CustomButton
-              leftIcon={<Icon24AppleLogin />}
-              onPress={onPressApple}
-              buttonStyle={styles.appleButton}
-              textStyle={styles.appleText}
-              text={'Apple로 시작하기'}
-            />
-          )}
+          <CustomButton
+            leftIcon={<Icon24AppleLogin />}
+            onPress={onPressApple}
+            buttonStyle={styles.appleButton}
+            textStyle={styles.appleText}
+            text={'Apple로 시작하기'}
+          />
         </View>
       </View>
     </View>
@@ -133,9 +131,9 @@ const LoginButtonView = ({
 }
 
 LoginButtonView.defaultProps = {
-  onPressKakao: () => {},
-  onPressGoogle: () => {},
-  onPressApple: () => {},
+  onPressKakao: () => { },
+  onPressGoogle: () => { },
+  onPressApple: () => { },
 }
 
 export default LoginButtonView

@@ -11,6 +11,7 @@ import {
 } from 'react-native-reanimated'
 import { RootStackParamList } from '../../../navigation'
 import { StackScreenProps } from '@react-navigation/stack'
+import { appleLogin } from '../../../stores'
 
 const modalSize = sizeConverter(252)
 
@@ -36,9 +37,10 @@ const LoginModalScreen = ({ navigation, route }: Props) => {
   }
 
   const onPressApple = () => {
-    console.log('AppleLogin!')
-    onPressBack(false)
-    navigation.navigate('LoginStack', { screen: 'RegistTosScreen' })
+    appleLogin()
+    // console.log('AppleLogin!')
+    // onPressBack(false)
+    // navigation.navigate('LoginStack', { screen: 'RegistTosScreen' })
     return true
   }
 

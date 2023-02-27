@@ -2,6 +2,7 @@ import {
   CardStyleInterpolators,
   createStackNavigator,
 } from '@react-navigation/stack'
+import { useAtom } from 'jotai'
 
 import React from 'react'
 import { RootStackParamList } from '.'
@@ -15,6 +16,9 @@ import SettingStackNavigator from './SettingStack'
 const MainStack = createStackNavigator<RootStackParamList>()
 
 const MainStackNavigator = () => {
+
+  const [login] = useAtom(isLogin)
+
   return (
     <MainStack.Navigator
       screenOptions={{
@@ -22,7 +26,7 @@ const MainStackNavigator = () => {
         cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
       }}
     >
-      {isLogin ? (
+      {login ? (
         <MainStack.Screen
           name="MainTab"
           options={{ headerShown: false, gestureEnabled: false }}
