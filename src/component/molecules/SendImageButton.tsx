@@ -1,8 +1,9 @@
-import { observer } from 'mobx-react-lite'
+import { useAtom } from 'jotai'
+
 import React from 'react'
 import { StyleSheet, Text, TouchableOpacity } from 'react-native'
 import { EMOTION_TYPE, images, themeColor, themeFonts } from '../../resources'
-import createRootStore from '../../stores'
+import { selectedTheme } from '../../stores'
 import { sizeConverter } from '../../utils'
 import { ImageButton } from '../atoms'
 
@@ -15,7 +16,7 @@ type Props = {
     count: number
 }
 
-const stores = createRootStore()
+
 
 const SendImageButton = ({
     title,
@@ -26,7 +27,7 @@ const SendImageButton = ({
     count
 }: Props) => {
 
-    const theme = stores.appStateStore.selectedTheme.get()
+    const [theme] = useAtom(selectedTheme)
 
     const styles = StyleSheet.create({
         container: {
@@ -78,4 +79,4 @@ SendImageButton.defaultProps = {
     count: null
 }
 
-export default observer(SendImageButton)
+export default SendImageButton

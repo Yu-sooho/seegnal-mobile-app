@@ -1,8 +1,9 @@
-import { observer } from 'mobx-react-lite'
+import { useAtom } from 'jotai'
+
 import React, { useEffect, useState } from 'react'
 import { View, Text, TouchableOpacity, StyleSheet, StyleProp, ViewStyle, ImageStyle, TextStyle } from 'react-native'
 import { themeColor, themeFonts } from '../../../resources'
-import createRootStore from '../../../stores'
+import { selectedTheme } from '../../../stores'
 import { sizeConverter } from '../../../utils'
 import Icon16CheckBox from '../../icons/Icon16CheckBox'
 
@@ -20,10 +21,11 @@ type CustomRadioProps = {
     textViewStyle?: StyleProp<ViewStyle>,
 }
 
-const stores = createRootStore()
+
 
 const CustomRadio = ({ style, imageStyle, onPress, disabled, isActive, unActiveStyle, text, subText, subTextStyle, textStyle, textViewStyle }: CustomRadioProps) => {
-    const theme = stores.appStateStore.selectedTheme.get()
+
+    const [theme] = useAtom(selectedTheme)
 
     const [active, setActive] = useState(isActive)
 
@@ -110,4 +112,4 @@ CustomRadio.defaultProps = {
     isActive: false,
 }
 
-export default observer(CustomRadio)
+export default CustomRadio

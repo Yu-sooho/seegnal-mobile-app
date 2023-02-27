@@ -1,7 +1,6 @@
 
 import React, { ReactNode } from 'react';
 import { Dimensions, StyleSheet, View } from 'react-native';
-import createRootStore from '../../stores';
 import { sizeConverter } from '../../utils';
 import { LeftArrowButton } from '../atoms';
 

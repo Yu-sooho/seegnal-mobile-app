@@ -2,22 +2,18 @@
 import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 import { CompositeScreenProps } from '@react-navigation/native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect } from 'react';
 import {
   Alert,
-  FlatList,
   Platform,
   ScrollView,
   StyleSheet,
-  Text,
   View,
 } from 'react-native';
 import { MainTabParamList, RootStackParamList } from '../../../navigation';
 import { CustomSafeAreaView } from '../../atoms';
-import { CustomHeader, FloatingPlusButton, SquareCalendar } from '../../molecules';
-import { CustomCalendar, HomeFloatingButtonView } from '../../organisms';
-import createRootStore from '../../../stores';
-import { STATUS_BUTTONS, STATUS_BUTTONS_TYPE } from '../../../resources';
+import { CustomHeader, SquareCalendar } from '../../molecules';
+import { CustomCalendar } from '../../organisms';
 import { check, PERMISSIONS, RESULTS, checkNotifications, requestNotifications,request } from 'react-native-permissions';
 import ImagePicker from 'react-native-image-crop-picker';
 import messaging from '@react-native-firebase/messaging';
@@ -28,8 +24,6 @@ type Props = CompositeScreenProps<
   NativeStackScreenProps<RootStackParamList>
 >;
 
-const stores = createRootStore()
-const theme = stores.appStateStore.selectedTheme.get()
 
 const HomeScreen = ({ navigation, route }: Props) => {
 

@@ -1,9 +1,10 @@
-import { observer } from 'mobx-react-lite'
+import { useAtom } from 'jotai'
+
 import React, { ReactNode } from 'react'
 import { ImageStyle, StyleProp, StyleSheet, Text, TextStyle, View, ViewStyle } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import { themeColor, themeFonts } from '../../resources'
-import createRootStore from '../../stores'
+import { selectedTheme } from '../../stores'
 import { sizeConverter } from '../../utils'
 import { CustomRadio } from '../atoms'
 import { Icon24ArrowRight } from '../icons'
@@ -24,10 +25,11 @@ type RadioTextButtonProps = {
     rightContent?: Function
 }
 
-const stores = createRootStore()
+
 
 const RadioTextButton = ({ containerStyle, style, imageStyle, unActiveStyle, onPress, disabled, isActive, text, subText, textStyle, subTextStyle, rightContent, textViewStyle }: RadioTextButtonProps) => {
-    const theme = stores.appStateStore.selectedTheme.get()
+
+    const [theme] = useAtom(selectedTheme)
 
     const styles = StyleSheet.create({
         rightButton: {
@@ -86,4 +88,4 @@ RadioTextButton.defaultProps = {
 }
 
 
-export default observer(RadioTextButton)
+export default RadioTextButton

@@ -10,23 +10,22 @@
  * 
  */
 import { StackScreenProps } from '@react-navigation/stack';
-import { observer } from 'mobx-react-lite';
+import { useAtom } from 'jotai';
+
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { RootStackParamList } from '../../../navigation';
 import { themeColor, themeFonts } from '../../../resources';
 import { defaultStyles } from '../../../resources/styles';
-import createRootStore from '../../../stores';
+import { selectedTheme } from '../../../stores';
 import { sizeConverter } from '../../../utils';
 import { BackgroundOpacity, CustomButton } from '../../atoms';
 
 type Props = StackScreenProps<RootStackParamList, 'CustomModalScreen'>
 
-const store = createRootStore()
-
 const CustomModalScreen = ({ navigation, route }: Props) => {
 
-    const theme = store.appStateStore.selectedTheme.get()
+    const [theme] = useAtom(selectedTheme)
 
     const { text, title, okButtonText, cancelButtonText, onPressOk, onPressCancel } = route?.params
 
@@ -105,4 +104,4 @@ const CustomModalScreen = ({ navigation, route }: Props) => {
     )
 }
 
-export default observer(CustomModalScreen)
+export default CustomModalScreen

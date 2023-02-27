@@ -1,7 +1,8 @@
 
 import { CompositeScreenProps } from '@react-navigation/native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { observer } from 'mobx-react-lite';
+import { useAtom } from 'jotai';
+
 import React from 'react';
 import {
   ScrollView,
@@ -10,7 +11,7 @@ import {
 } from 'react-native';
 import { MainTabParamList, RootStackParamList } from '../../../navigation';
 import { images, themeColor, themeFonts } from '../../../resources';
-import createRootStore from '../../../stores';
+import { selectedTheme } from '../../../stores';
 import { sizeConverter } from '../../../utils';
 import { CustomButton, CustomSafeAreaView, ImageButton, RightArrowButton, TitleText, UserImage } from '../../atoms';
 
@@ -19,11 +20,11 @@ type Props = CompositeScreenProps<
   NativeStackScreenProps<RootStackParamList>
 >
 
-const stores = createRootStore()
+
 
 const SettingScreen = ({ navigation, route }: Props) => {
 
-  const theme = stores.appStateStore.selectedTheme.get()
+  const [theme] = useAtom(selectedTheme)
 
   const styles = StyleSheet.create({
     headerStyle: {
@@ -166,4 +167,4 @@ const SettingScreen = ({ navigation, route }: Props) => {
   );
 };
 
-export default observer(SettingScreen)
+export default SettingScreen

@@ -2,9 +2,8 @@ import { NavigationContainer, useNavigationContainerRef } from '@react-navigatio
 import React, { useEffect } from 'react';
 import SplashScreen from 'react-native-splash-screen';
 import MainStackNavigator from './navigation/MainStack';
-import createRootStore from './stores';
 
-const stores = createRootStore()
+
 
 const App = () => {
     const navigationRef = useNavigationContainerRef();
@@ -17,20 +16,20 @@ const App = () => {
     return (
         <NavigationContainer
             ref={navigationRef}
-            onReady={() => {
-                stores.appStateStore.setCurrentScreen(`${getCurrentRoute()?.['name']}`)
-                console.log(`[SH] [app] [screenName] firstScreenName: ${getCurrentRoute()?.['name']}`)
-            }}
-            onStateChange={async () => {
-                const previousRouteName = stores.appStateStore.currentScreen.get()
-                const currentRouteName = getCurrentRoute()?.['name']
+            // onReady={() => {
+            //     stores.appStateStore.setCurrentScreen(`${getCurrentRoute()?.['name']}`)
+            //     console.log(`[SH] [app] [screenName] firstScreenName: ${getCurrentRoute()?.['name']}`)
+            // }}
+            // onStateChange={async () => {
+            //     const previousRouteName = stores.appStateStore.currentScreen.get()
+            //     const currentRouteName = getCurrentRoute()?.['name']
 
-                if (previousRouteName !== currentRouteName) {
-                    console.log(`[SH] [app] [screenName] previousRouteName: ${previousRouteName} currentRouteName: ${currentRouteName}`)
-                }
+            //     if (previousRouteName !== currentRouteName) {
+            //         console.log(`[SH] [app] [screenName] previousRouteName: ${previousRouteName} currentRouteName: ${currentRouteName}`)
+            //     }
 
-                stores.appStateStore.setCurrentScreen(`${currentRouteName}`)
-            }}
+            //     stores.appStateStore.setCurrentScreen(`${currentRouteName}`)
+            // }}
         >
             
             <MainStackNavigator />

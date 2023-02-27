@@ -1,6 +1,7 @@
 
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { observer } from 'mobx-react-lite';
+import { useAtom } from 'jotai';
+
 import React from 'react';
 import {
     StyleSheet,
@@ -9,18 +10,18 @@ import {
 } from 'react-native';
 import { RootStackParamList } from '../../../navigation';
 import { themeColor, themeFonts } from '../../../resources';
-import createRootStore from '../../../stores';
+import { selectedTheme } from '../../../stores';
 import { sizeConverter } from '../../../utils';
 import { CustomSafeAreaView, RightArrowButton, TitleText } from '../../atoms';
 import { CustomHeader } from '../../molecules';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'AppInfoScreen'>;
 
-const stores = createRootStore()
+
 
 const AppInfoScreen = ({ navigation, route }: Props) => {
 
-    const theme = stores.appStateStore.selectedTheme.get()
+    const [theme] = useAtom(selectedTheme)
 
     const styles = StyleSheet.create({
         contentContainer: {
@@ -76,4 +77,4 @@ const AppInfoScreen = ({ navigation, route }: Props) => {
     )
 }
 
-export default observer(AppInfoScreen)
+export default AppInfoScreen

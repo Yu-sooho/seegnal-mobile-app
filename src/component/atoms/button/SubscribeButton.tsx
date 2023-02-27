@@ -1,8 +1,9 @@
-import { observer } from "mobx-react-lite";
+import { useAtom } from "jotai";
+
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { themeColor, themeFonts, themeType } from "../../../resources";
-import createRootStore from "../../../stores";
+import { selectedTheme } from "../../../stores";
 import { sizeConverter } from "../../../utils";
 
 type Props = {
@@ -10,12 +11,12 @@ type Props = {
     onPress: ({ item }: { item: themeType }) => void
 }
 
-const stores = createRootStore()
+
 
 const SubscribeButton = ({ item, onPress }: Props) => {
 
-    const theme = stores.appStateStore.selectedTheme.get()
-    const isActive = stores.appStateStore.selectedTheme.get() === item?.id
+    const [theme] = useAtom(selectedTheme)
+    const isActive = theme === item?.id
 
     const { isSubscribe } = item
 
@@ -68,4 +69,4 @@ const SubscribeButton = ({ item, onPress }: Props) => {
     )
 }
 
-export default observer(SubscribeButton)
+export default SubscribeButton

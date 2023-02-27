@@ -3,19 +3,20 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { themeColor } from '../../resources';
 import { sizeConverter } from '../../utils';
-import createRootStore from '../../stores';
 import FastImage from 'react-native-fast-image';
-import { observer } from 'mobx-react-lite';
+
+import { selectedTheme } from '../../stores';
+import { useAtom } from 'jotai';
 
 type OnBoardImageProps = {
     imageUri: string
 };
 
-const stores = createRootStore()
+
 
 const OnBoardImage = ({ imageUri }: OnBoardImageProps) => {
     
-    const theme = stores.appStateStore.selectedTheme.get()
+    const [theme] = useAtom(selectedTheme)
 
     const styles = StyleSheet.create({
         onBoardImage: {
@@ -46,4 +47,4 @@ OnBoardImage.defaultProps = {
 }
 
 
-export default observer(OnBoardImage)
+export default OnBoardImage

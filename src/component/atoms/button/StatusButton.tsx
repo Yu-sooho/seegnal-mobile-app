@@ -1,9 +1,10 @@
-import { observer } from 'mobx-react-lite'
+import { useAtom } from 'jotai'
+
 import React from 'react'
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import FastImage from 'react-native-fast-image'
 import { STATUS_BUTTONS_TYPE, themeColor, themeFonts } from '../../../resources'
-import createRootStore from '../../../stores'
+import { selectedTheme } from '../../../stores'
 import { sizeConverter } from '../../../utils'
 
 type Props = {
@@ -12,11 +13,10 @@ type Props = {
     bottomInset?: number,
 }
 
-const store = createRootStore()
 
 const StatusButton = ({ item, onPress, bottomInset }: Props) => {
 
-    const theme = store.appStateStore.selectedTheme.get()
+    const [theme] = useAtom(selectedTheme)
 
     const styles = StyleSheet.create({
         container: {
@@ -66,4 +66,4 @@ StatusButton.defaultProps = {
     text: '상태입력',
 }
 
-export default observer(StatusButton)
+export default StatusButton

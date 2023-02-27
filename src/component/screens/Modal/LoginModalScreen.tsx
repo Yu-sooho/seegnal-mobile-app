@@ -6,20 +6,15 @@ import {
 } from 'react-native';
 import { sizeConverter } from '../../../utils';
 import { LoginButtonView } from '../../organisms';
-import createRootStore from '../../../stores';
 import { BackgroundOpacity, ModalContent } from '../../atoms';
 import { Easing, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import { RootStackParamList } from '../../../navigation';
 import { StackScreenProps } from '@react-navigation/stack';
 
 
-const stores = createRootStore()
-const theme = stores.appStateStore.selectedTheme.get()
 const modalSize = sizeConverter(252)
 
 type Props = StackScreenProps<RootStackParamList, 'LoginModalScreen'>
-
-
 
 const LoginModalScreen = ({ navigation, route }: Props) => {
 

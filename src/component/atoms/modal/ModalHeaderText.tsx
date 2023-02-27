@@ -1,11 +1,12 @@
 
-import { observer } from 'mobx-react-lite';
+import { useAtom } from 'jotai';
+
 import React, { PropsWithChildren } from 'react';
 import { StyleProp, StyleSheet, Text, TextStyle } from 'react-native';
 import { themeColor, themeFonts } from '../../../resources';
-import createRootStore from '../../../stores';
+import { selectedTheme } from '../../../stores';
 
-const stores = createRootStore()
+
 
 const MadalHeaderText: React.FC<
     PropsWithChildren<{
@@ -14,7 +15,7 @@ const MadalHeaderText: React.FC<
     }>
 > = ({ style, text }) => {
 
-    const theme = stores.appStateStore.selectedTheme.get()
+    const [theme] = useAtom(selectedTheme)
 
     const styles = StyleSheet.create({
         textStyle: {
@@ -29,4 +30,4 @@ const MadalHeaderText: React.FC<
     );
 };
 
-export default observer(MadalHeaderText)
+export default MadalHeaderText

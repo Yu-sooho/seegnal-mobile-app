@@ -1,8 +1,9 @@
-import { observer } from 'mobx-react'
+import { useAtom } from 'jotai'
+
 import React from 'react'
 import { StyleProp, StyleSheet, Text, TextStyle, TouchableOpacity, View, ViewStyle } from 'react-native'
 import { themeColor, themeFonts } from '../../../resources'
-import createRootStore from '../../../stores'
+import { selectedTheme } from '../../../stores'
 import { sizeConverter } from '../../../utils'
 
 type Props = {
@@ -12,11 +13,10 @@ type Props = {
     onPress?: () => void
 }
 
-const store = createRootStore()
 
 const HeaderActiveButton = ({ isActive, text, viewStyle, onPress }: Props) => {
 
-    const theme = store.appStateStore.selectedTheme.get()
+    const [theme] = useAtom(selectedTheme)
 
     const styles = StyleSheet.create({
         container: {
@@ -44,4 +44,4 @@ const HeaderActiveButton = ({ isActive, text, viewStyle, onPress }: Props) => {
     )
 }
 
-export default observer(HeaderActiveButton)
+export default HeaderActiveButton

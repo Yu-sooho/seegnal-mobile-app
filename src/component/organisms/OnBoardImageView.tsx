@@ -7,16 +7,17 @@ import {
 } from 'react-native';
 import { themeColor, themeFonts } from '../../resources';
 import { sizeConverter } from '../../utils';
-import createRootStore from '../../stores';
 import { ImageList, ScrollingText } from '../molecules';
 import { Carosel, OnBoardImage } from '../atoms';
-import { observer } from 'mobx-react-lite';
+
+import { selectedTheme } from '../../stores';
+import { useAtom } from 'jotai';
 
 type OnBoardImageViewProps = {
     data: Array<Object>,
 };
 
-const stores = createRootStore()
+
 
 type onBoardImageItemProps = {
     imageUri: string,
@@ -38,7 +39,7 @@ const renderItem = ({ item, index }: renderItemType) => {
 
 const OnBoardImageView = ({ data }: OnBoardImageViewProps) => {
 
-    const theme = stores.appStateStore.selectedTheme.get()
+    const [theme] = useAtom(selectedTheme)
 
     const styles = StyleSheet.create({
         containerStyle: {
@@ -99,4 +100,4 @@ OnBoardImageView.defaultProps = {
 
 
 
-export default observer(OnBoardImageView)
+export default OnBoardImageView

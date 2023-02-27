@@ -4,19 +4,20 @@ import { StyleSheet, View } from 'react-native';
 import { themeColor, themeFonts } from '../../../resources';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { sizeConverter } from '../../../utils';
-import createRootStore from '../../../stores';
 import { OnBoardImageView } from '../../organisms';
 import { LoginStackParamList, RootStackParamList } from '../../../navigation';
 import { CustomButton, CustomSafeAreaView } from '../../atoms';
 import { CompositeScreenProps } from '@react-navigation/native';
-import { observer } from 'mobx-react-lite';
+
+import { selectedTheme } from '../../../stores';
+import { useAtom } from 'jotai';
 
 type Props = CompositeScreenProps<
   NativeStackScreenProps<LoginStackParamList, 'BoardingScreen'>,
   NativeStackScreenProps<RootStackParamList>
 >;
 
-const stores = createRootStore()
+
 
 const dummyData = [
   { imageUri: 'https://item.kakaocdn.net/do/493188dee481260d5c89790036be0e66f604e7b0e6900f9ac53a43965300eb9a', text: '아 하기 싫다', title: '생각없는 아무1', id: 1 },
@@ -25,7 +26,7 @@ const dummyData = [
 
 const BoardingScreen = ({ navigation, route }: Props) => {
 
-  const theme = stores.appStateStore.selectedTheme.get()
+  const [theme] = useAtom(selectedTheme)
 
 
   const styles = StyleSheet.create({
@@ -75,4 +76,4 @@ const BoardingScreen = ({ navigation, route }: Props) => {
   );
 };
 
-export default observer(BoardingScreen)
+export default BoardingScreen

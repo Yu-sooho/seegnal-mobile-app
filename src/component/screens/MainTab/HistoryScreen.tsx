@@ -6,12 +6,9 @@ import {
   StyleSheet,
 } from 'react-native';
 import { MainTabParamList, RootStackParamList } from '../../../navigation';
-import createRootStore from '../../../stores';
 import { sizeConverter } from '../../../utils';
 import { CustomSafeAreaView, TitleText } from '../../atoms';
-import { FloatingNextButton } from '../../molecules';
 import { SeegnalView } from '../../organisms';
-import { HistoryEmptyView } from '../../templates';
 // import { PersistStoreMap } from 'mobx-persist-store';
 
 
@@ -21,8 +18,6 @@ type Props = CompositeScreenProps<
 >;
 // type Props = NativeStackScreenProps<MainTabParamList, 'HistoryScreen'>;
 
-const stores = createRootStore()
-const theme = stores.appStateStore.selectedTheme.get()
 
 const HistoryScreen = ({ navigation, route }: Props) => {
 

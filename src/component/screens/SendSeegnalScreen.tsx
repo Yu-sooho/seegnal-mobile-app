@@ -1,23 +1,22 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
-import { observer } from 'mobx-react-lite'
+import { useAtom } from 'jotai'
+
 import React, { useRef, useState } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { RootStackParamList } from '../../navigation'
 import { CONDITION, EMOTION, EMOTION_TYPE, themeColor, themeFonts } from '../../resources'
-import createRootStore from '../../stores'
+import { selectedTheme } from '../../stores'
 import { sizeConverter } from '../../utils'
 import { CustomSafeAreaView } from '../atoms'
 import { CustomHeader, FloatingNextButton, SendImageButton } from '../molecules'
 import EroticismBar from '../molecules/EroticismBar'
-
-const store = createRootStore()
 
 type Props = NativeStackScreenProps<RootStackParamList, 'SendSeegnalScreen'>
 
 
 const SendSeegnalScreen = ({ navigation, route }: Props) => {
 
-    const theme = store.appStateStore.selectedTheme.get()
+    const [theme] = useAtom(selectedTheme)
 
     const styles = StyleSheet.create({
         titleView: {
@@ -95,4 +94,4 @@ const SendSeegnalScreen = ({ navigation, route }: Props) => {
     )
 }
 
-export default observer(SendSeegnalScreen)
+export default SendSeegnalScreen

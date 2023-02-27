@@ -6,7 +6,6 @@ import {
     View,
 } from 'react-native';
 import { sizeConverter } from '../../utils';
-import createRootStore from '../../stores';
 import { AnimatedText } from '../atoms';
 
 type ScrollingTextProps = {
@@ -17,9 +16,6 @@ type ScrollingTextProps = {
     textStyle?: object,
     style?: object
 };
-
-const stores = createRootStore()
-const theme = stores.appStateStore.selectedTheme.get()
 
 const ScrollingText = ({ animatedValue, data, sliderWidth, titleStyle, textStyle, style }: ScrollingTextProps) => {
 

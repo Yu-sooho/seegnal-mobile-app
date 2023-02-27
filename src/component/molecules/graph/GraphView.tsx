@@ -1,9 +1,10 @@
 import { useIsFocused } from '@react-navigation/native'
-import { observer } from 'mobx-react-lite'
+import { useAtom } from 'jotai'
+
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
 import { themeColor } from '../../../resources'
-import createRootStore from '../../../stores'
+import { selectedTheme } from '../../../stores'
 import { sizeConverter } from '../../../utils'
 import { ColorBarVertical } from '../../atoms'
 
@@ -12,11 +13,11 @@ type Props = {
 }
 
 
-const stores = createRootStore()
+
 
 const GraphView = ({ item }: Props) => {
 
-    const theme = stores.appStateStore.selectedTheme.get()
+    const [theme] = useAtom(selectedTheme)
 
     const isFocused = useIsFocused();
 
@@ -53,4 +54,4 @@ const GraphView = ({ item }: Props) => {
     )
 }
 
-export default observer(GraphView)
+export default GraphView

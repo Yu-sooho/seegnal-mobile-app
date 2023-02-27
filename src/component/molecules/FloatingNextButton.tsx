@@ -1,9 +1,10 @@
-import { observer } from 'mobx-react-lite'
+import { useAtom } from 'jotai'
+
 import React from 'react'
 import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { themeColor, themeFonts } from '../../resources'
-import createRootStore from '../../stores'
+import { selectedTheme } from '../../stores'
 import { sizeConverter } from '../../utils'
 import { CustomButton } from '../atoms'
 
@@ -17,7 +18,7 @@ type FloatingNextButtonProps = {
     bottomInset?:number
 }
 
-const stores = createRootStore()
+
 
 const FloatingNextButton = ({
     onPress,
@@ -29,7 +30,7 @@ const FloatingNextButton = ({
     bottomInset
 }: FloatingNextButtonProps) => {
 
-    const theme = stores.appStateStore.selectedTheme.get()
+    const [theme] = useAtom(selectedTheme)
 
     const insets = useSafeAreaInsets()
 
@@ -66,4 +67,4 @@ FloatingNextButton.defaultProps = {
 }
 
 
-export default observer(FloatingNextButton)
+export default FloatingNextButton

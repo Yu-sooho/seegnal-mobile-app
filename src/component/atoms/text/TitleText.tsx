@@ -1,8 +1,9 @@
-import { observer } from 'mobx-react-lite'
+import { useAtom } from 'jotai'
+
 import React from 'react'
 import { StyleProp, StyleSheet, Text, TextStyle, View, ViewStyle } from 'react-native'
 import { themeColor, themeFonts } from '../../../resources'
-import createRootStore from '../../../stores'
+import { selectedTheme } from '../../../stores'
 import { sizeConverter } from '../../../utils'
 
 type Props = {
@@ -12,12 +13,12 @@ type Props = {
     textStyle?: StyleProp<TextStyle>
 }
 
-const stores = createRootStore()
+
 
 
 const TitleText = ({ text, viewStyle, textStyle, size }: Props) => {
     
-    const theme = stores.appStateStore.selectedTheme.get()
+    const [theme] = useAtom(selectedTheme)
 
     const styles = StyleSheet.create({
         titleText: {
@@ -39,4 +40,4 @@ TitleText.defaultProps = {
     size:sizeConverter(24)
 }
 
-export default observer(TitleText)
+export default TitleText

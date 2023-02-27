@@ -3,7 +3,6 @@ import React, { useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { sizeConverter } from '../../../utils';
 import { ImageButtonList } from '../../organisms';
-import createRootStore from '../../../stores';
 import { BackgroundOpacity, ModalContent, ModalHeaderButton } from '../../atoms';
 import { Easing, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import { RootStackParamList } from '../../../navigation';
@@ -11,17 +10,19 @@ import { StackScreenProps } from '@react-navigation/stack';
 import { ModalHeader } from '../../molecules';
 import { EMOTION_TYPE, themeColor, themeFonts } from '../../../resources';
 import { Icon24ArrowLeft } from '../../icons';
-import { observer } from 'mobx-react-lite';
+
+import { selectedTheme } from '../../../stores';
+import { useAtom } from 'jotai';
 
 
-const stores = createRootStore()
+
 const modalSize = sizeConverter(252)
 
 type Props = StackScreenProps<RootStackParamList, 'ImageButtonModalScreen'>
 
 const ImageButtonModalScreen = ({ navigation, route }: Props) => {
 
-    const theme = stores.appStateStore.selectedTheme.get()
+    const [theme] = useAtom(selectedTheme)
 
     const styles = StyleSheet.create({
         loginButtonViewStyle: {
@@ -125,4 +126,4 @@ const ImageButtonModalScreen = ({ navigation, route }: Props) => {
     );
 };
 
-export default observer(ImageButtonModalScreen)
+export default ImageButtonModalScreen

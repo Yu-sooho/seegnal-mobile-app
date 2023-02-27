@@ -4,15 +4,16 @@ import { ImageButton } from '../atoms'
 import { images } from '../../resources/images'
 import { sizeConverter } from '../../utils'
 import { themeColor, themeFonts } from '../../resources'
-import createRootStore from '../../stores'
 import { CommentInput, UserHeader } from '../molecules'
-import { observer } from 'mobx-react-lite'
 
-const stores = createRootStore()
+import { useAtom } from 'jotai'
+import { selectedTheme } from '../../stores'
+
+
 
 const SeegnalView = () => {
 
-    const theme = stores.appStateStore.selectedTheme.get()
+    const [theme] = useAtom(selectedTheme)
 
     const styles = StyleSheet.create({
         container: {
@@ -98,4 +99,4 @@ const SeegnalView = () => {
     )
 }
 
-export default observer(SeegnalView)
+export default SeegnalView

@@ -1,8 +1,9 @@
-import { observer } from 'mobx-react-lite'
+import { useAtom } from 'jotai'
+
 import React from 'react'
 import { Image, ImageStyle, StyleProp, StyleSheet, Text, TextStyle, TouchableOpacity, View, ViewStyle } from 'react-native'
 import { EMOTION_TYPE, themeColor, themeFonts } from '../../../resources'
-import createRootStore from '../../../stores'
+import { selectedTheme } from '../../../stores'
 import { sizeConverter } from '../../../utils'
 
 type ImageButtonProps = {
@@ -18,7 +19,7 @@ type ImageButtonProps = {
     onPress?: () => void
 }
 
-const stores = createRootStore()
+
 
 const ImageButton = ({
     item,
@@ -32,7 +33,7 @@ const ImageButton = ({
     text,
     onPress,
 }: ImageButtonProps) => {
-    const theme = stores.appStateStore.selectedTheme.get()
+    const [theme] = useAtom(selectedTheme)
 
     const styles = StyleSheet.create({
         container: {
@@ -93,4 +94,4 @@ ImageButton.defaultProps = {
     disabled: false,
 }
 
-export default observer(ImageButton)
+export default ImageButton

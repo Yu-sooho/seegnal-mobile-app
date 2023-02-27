@@ -8,7 +8,6 @@ import React, { useEffect } from 'react'
 import { AppRegistry } from 'react-native';
 import App from './src/app'
 import { name as appName } from './app.json';
-import { StoreProvider } from './src/utils/context';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import messaging from '@react-native-firebase/messaging';
 
@@ -21,22 +20,20 @@ messaging().setBackgroundMessageHandler(async remoteMessage => {
 
 const Seegnal = () => {
 
-    useEffect(()=>{
+    useEffect(() => {
         getToken()
-    },[])
+    }, [])
 
-    const getToken = async () =>{
+    const getToken = async () => {
         const result = await messaging().getToken()
-        console.log(result,'FUFU')
+        console.log(result, 'FUFU')
     }
-    
-  
+
+
     return (
-        <StoreProvider>
-            <SafeAreaProvider>
-                {isTest ? <Test /> : <App />}
-            </SafeAreaProvider>
-        </StoreProvider>
+        <SafeAreaProvider>
+            {isTest ? <Test /> : <App />}
+        </SafeAreaProvider>
     )
 }
 

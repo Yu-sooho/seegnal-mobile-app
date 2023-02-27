@@ -1,5 +1,6 @@
 
-import { observer } from 'mobx-react-lite';
+import { useAtom } from 'jotai';
+
 import React from 'react';
 import {
     Platform,
@@ -8,7 +9,7 @@ import {
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { themeColor, themeFonts } from '../../../resources';
-import createRootStore from '../../../stores';
+import { selectedTheme } from '../../../stores';
 import { sizeConverter } from '../../../utils';
 import { CustomButton, ModalHeaderButton } from '../../atoms';
 import { Icon24AppleLogin, Icon24ArrowLeft, Icon24GoogleLogin, Icon24KakaoLogin } from '../../icons';
@@ -21,11 +22,11 @@ type LoginButtonViewProps = {
     onPressBack?: (anim: boolean) => {},
 };
 
-const stores = createRootStore()
+
 
 const LoginButtonView = ({ onPressKakao, onPressGoogle, onPressApple, onPressBack }: LoginButtonViewProps) => {
 
-    const theme = stores.appStateStore.selectedTheme.get()
+    const [theme] = useAtom(selectedTheme)
 
     const insets = useSafeAreaInsets()
 
@@ -116,4 +117,4 @@ LoginButtonView.defaultProps = {
 }
 
 
-export default observer(LoginButtonView)
+export default LoginButtonView

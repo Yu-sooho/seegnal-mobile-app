@@ -1,12 +1,13 @@
-import { observer } from 'mobx-react-lite'
+import { useAtom } from 'jotai'
+
 import React from 'react'
 import { StyleProp, StyleSheet, Text, View, ViewStyle } from 'react-native'
 import { themeColor, themeFonts } from '../../../resources'
-import createRootStore from '../../../stores'
+import { selectedTheme } from '../../../stores'
 import { sizeConverter } from '../../../utils'
 import { TitleText } from '../../atoms'
 
-const stores = createRootStore()
+
 
 type Props = {
   title1: string
@@ -16,7 +17,7 @@ type Props = {
 
 const StatisticsPhysiology = ({ title1, title2, contentContainerStyle }: Props) => {
 
-const theme = stores.appStateStore.selectedTheme.get()
+  const [theme] = useAtom(selectedTheme)
   
   const styles = StyleSheet.create({
     container: {
@@ -63,4 +64,4 @@ const theme = stores.appStateStore.selectedTheme.get()
   )
 }
 
-export default observer(StatisticsPhysiology)
+export default StatisticsPhysiology

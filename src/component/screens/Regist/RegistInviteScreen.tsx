@@ -1,13 +1,14 @@
 import { CompositeScreenProps } from '@react-navigation/native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
-import { observer } from 'mobx-react-lite';
+import { useAtom } from 'jotai';
+
 import React, { useRef } from 'react'
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import FastImage from 'react-native-fast-image';
 import Share from 'react-native-share';
 import { LoginStackParamList, RootStackParamList } from '../../../navigation'
 import { images, themeColor, themeFonts } from '../../../resources'
-import createRootStore from '../../../stores'
+import { selectedTheme } from '../../../stores';
 import { sizeConverter } from '../../../utils'
 import { CustomSafeAreaView } from '../../atoms'
 import { CustomHeader, FloatingNextButton } from '../../molecules'
@@ -17,11 +18,9 @@ type Props = CompositeScreenProps<
     NativeStackScreenProps<RootStackParamList>
 >;
 
-const store = createRootStore()
-
 const RegistInviteScreen = ({ navigation, route }: Props) => {
 
-    const theme = store.appStateStore.selectedTheme.get()
+    const [theme] = useAtom(selectedTheme)
 
     const isLoading = useRef(false)
 
@@ -112,4 +111,4 @@ const RegistInviteScreen = ({ navigation, route }: Props) => {
     )
 }
 
-export default observer(RegistInviteScreen)
+export default RegistInviteScreen

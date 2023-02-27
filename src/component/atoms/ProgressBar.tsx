@@ -1,10 +1,11 @@
-import { observer } from 'mobx-react-lite'
+import { useAtom } from 'jotai'
+
 import React from 'react'
 import { View, StyleSheet } from 'react-native'
 import { Gesture, GestureDetector, PanGestureHandler } from 'react-native-gesture-handler'
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated'
 import { themeColor, themeFonts } from '../../resources'
-import createRootStore from '../../stores'
+import { selectedTheme } from '../../stores'
 import { sizeConverter } from '../../utils'
 
 type ProgressBarProps = {
@@ -15,7 +16,6 @@ type ProgressBarProps = {
     onChangeValue: (value: number) => {}
 }
 
-const store = createRootStore()
 
 const ProgressBar = ({
     width,
@@ -25,7 +25,7 @@ const ProgressBar = ({
     initValue,
 }: ProgressBarProps) => {
 
-    const theme = store.appStateStore.selectedTheme.get()
+    const [theme] = useAtom(selectedTheme)
 
     const halfSize = size / 2
     const maxMove = width - size
@@ -132,4 +132,4 @@ ProgressBar.defaultProps = {
     initValue: 0
 }
 
-export default observer(ProgressBar)
+export default ProgressBar

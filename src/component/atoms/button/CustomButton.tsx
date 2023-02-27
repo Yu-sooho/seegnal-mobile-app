@@ -1,5 +1,6 @@
 
-import { observer } from 'mobx-react-lite';
+import { useAtom } from 'jotai';
+
 import React, { ReactNode } from 'react';
 import {
     StyleProp,
@@ -11,7 +12,7 @@ import {
     ViewStyle,
 } from 'react-native';
 import { themeColor, themeFonts } from '../../../resources';
-import createRootStore from '../../../stores';
+import { selectedTheme } from '../../../stores';
 import { sizeConverter } from '../../../utils';
 
 type CustomButtonProps = {
@@ -33,7 +34,7 @@ type CustomButtonProps = {
     buttonImage?: ReactNode
 };
 
-const stores = createRootStore()
+
 
 const CustomButton = ({
     onPress,
@@ -50,7 +51,7 @@ const CustomButton = ({
     buttonImage,
 }: CustomButtonProps) => {
 
-    const theme = stores.appStateStore.selectedTheme.get()
+    const [theme] = useAtom(selectedTheme)
 
     const styles = StyleSheet.create({
         containerStyle: {
@@ -157,4 +158,4 @@ CustomButton.defaultProps = {
 }
 
 
-export default observer(CustomButton)
+export default CustomButton

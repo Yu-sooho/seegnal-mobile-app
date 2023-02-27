@@ -1,7 +1,6 @@
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
-import createRootStore from '../../stores'
 import { sizeConverter } from '../../utils'
 import { CustomButton } from '../atoms'
 import { Icon32Plus } from '../icons'
@@ -13,11 +12,8 @@ type FloatingPlusButtonProps = {
     style?: object,
     textStyle?: object,
     disabled?: boolean,
-    bottomInset?:number
+    bottomInset?: number
 }
-
-const stores = createRootStore()
-const theme = stores.appStateStore.selectedTheme.get()
 
 const FloatingPlusButton = ({
     onPress,
@@ -58,7 +54,7 @@ FloatingPlusButton.defaultProps = {
     onPress: () => { },
     text: '다음',
     disabled: false,
-    bottomInset:sizeConverter(24)
+    bottomInset: sizeConverter(24)
 }
 
 

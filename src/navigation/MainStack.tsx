@@ -1,9 +1,9 @@
 import { CardStyleInterpolators, createStackNavigator } from '@react-navigation/stack';
-import { observer } from 'mobx-react-lite';
+
 import React from 'react';
 import { RootStackParamList } from '.';
 import { SendSeegnalScreen } from '../component/screens';
-import createRootStore from '../stores';
+import { isLogin } from '../stores';
 import LoginStackNavigator from './LoginStack';
 import MainTabNavigator from './MainTab';
 import ModalStackNavigator from './ModalStack';
@@ -11,9 +11,7 @@ import SettingStackNavigator from './SettingStack';
 
 const MainStack = createStackNavigator<RootStackParamList>();
 
-const store = createRootStore()
-
-const MainStackNavigator = observer(() => {
+const MainStackNavigator = () => {
     return (
         <MainStack.Navigator
             screenOptions={{
@@ -22,7 +20,7 @@ const MainStackNavigator = observer(() => {
             }}>
 
             {
-                store.authStore.isLogin.get() ?
+                isLogin ?
                     <MainStack.Screen name="MainTab" options={{ headerShown: false, gestureEnabled: false }} component={MainTabNavigator} />
                     :
                     <MainStack.Screen name="LoginStack" options={{ headerShown: false, gestureEnabled: false }} component={LoginStackNavigator} />
@@ -32,6 +30,6 @@ const MainStackNavigator = observer(() => {
             {SettingStackNavigator(MainStack)}
         </MainStack.Navigator>
     );
-});
+}
 
 export default MainStackNavigator;

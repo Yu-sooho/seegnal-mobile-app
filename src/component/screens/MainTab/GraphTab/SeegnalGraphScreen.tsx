@@ -4,26 +4,25 @@ import React, { useState } from 'react';
 import {
   StyleSheet,
   ScrollView,
-  View
 } from 'react-native';
 import { GraphTabParamList } from '../../../../navigation';
 import { sizeConverter } from '../../../../utils';
 import { CustomSafeAreaView } from '../../../atoms';
 import { StatisticsSeegnal, StatisticsEroticism } from '../../../organisms';
-import LinearGradient from 'react-native-linear-gradient';
 import { themeColor } from '../../../../resources';
-import createRootStore from '../../../../stores';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { StatisticsColorBar } from '../../../organisms/graph';
 import { Icon16NonSafe, Icon16Safe } from '../../../icons';
+import { selectedTheme } from '../../../../stores';
+import { useAtom } from 'jotai';
 
 type Props = NativeStackScreenProps<GraphTabParamList, 'SeegnalGraphScreen'>;
 
-const stores = createRootStore()
+
 
 const SeegnalGraphScreen = ({ navigation, route }: Props) => {
 
-  const theme = stores.appStateStore.selectedTheme.get()
+  const [theme] = useAtom(selectedTheme)
 
   const insets = useSafeAreaInsets()
 

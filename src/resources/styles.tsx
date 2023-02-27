@@ -1,10 +1,6 @@
 import { StyleSheet } from "react-native";
-import createRootStore from "../stores";
 import { sizeConverter } from "../utils";
 import { themeColor } from "./colors";
-
-const store = createRootStore()
-const theme = store.appStateStore.selectedTheme.get()
 
 export const defaultStyles = StyleSheet.create({
     defaultButton: {
@@ -14,7 +10,7 @@ export const defaultStyles = StyleSheet.create({
         height: sizeConverter(32),
         borderRadius: sizeConverter(8),
         borderWidth:0,
-        backgroundColor: themeColor[theme].seegnal_light_gray1
+        // backgroundColor: themeColor[theme].seegnal_light_gray1
     },
     activeButton: {
         justifyContent: 'center',
@@ -23,6 +19,6 @@ export const defaultStyles = StyleSheet.create({
         height: sizeConverter(32),
         borderRadius: sizeConverter(8),
         borderWidth:0,
-        backgroundColor: themeColor[theme].seegnal_main,
+        // backgroundColor: themeColor[theme].seegnal_main,
     }
 })

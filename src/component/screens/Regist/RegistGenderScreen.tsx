@@ -1,22 +1,23 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
-import { observer } from 'mobx-react-lite'
+import { useAtom } from 'jotai'
+
 import React, { useState } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import FastImage from 'react-native-fast-image'
 import { LoginStackParamList } from '../../../navigation'
 import { GENDER, themeColor, themeFonts } from '../../../resources'
-import createRootStore from '../../../stores'
+import { selectedTheme } from '../../../stores'
 import { sizeConverter } from '../../../utils'
 import { CustomButton, CustomSafeAreaView } from '../../atoms'
 import { FloatingNextButton } from '../../molecules'
 
 type Props = NativeStackScreenProps<LoginStackParamList, 'RegistGenderScreen'>;
 
-const stores = createRootStore()
+
 
 const RegistGenderScreen = ({ navigation, route }: Props) => {
 
-    const theme = stores.appStateStore.selectedTheme.get()
+    const [theme] = useAtom(selectedTheme)
 
     const [gender, setGender] = useState('')
 
@@ -99,4 +100,4 @@ const RegistGenderScreen = ({ navigation, route }: Props) => {
     )
 }
 
-export default observer(RegistGenderScreen)
+export default RegistGenderScreen

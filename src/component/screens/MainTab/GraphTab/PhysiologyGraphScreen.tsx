@@ -1,16 +1,15 @@
 
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { useAtom } from 'jotai';
 import React from 'react';
 import {
   ScrollView,
   StyleSheet,
-  Text,
   View,
 } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
 import { GraphTabParamList } from '../../../../navigation';
 import { themeColor } from '../../../../resources';
-import createRootStore from '../../../../stores';
+import { selectedTheme } from '../../../../stores';
 import { sizeConverter } from '../../../../utils';
 import { CustomSafeAreaView } from '../../../atoms';
 import { StatisticsColorBar, StatisticsGraph, StatisticsPhysiology } from '../../../organisms/graph';
@@ -18,11 +17,11 @@ import { StatisticsColorBar, StatisticsGraph, StatisticsPhysiology } from '../..
 type Props = NativeStackScreenProps<GraphTabParamList, 'PhysiologyGraphScreen'>;
 
 
-const stores = createRootStore()
+
 
 const PhysiologyGraphScreen = ({ navigation, route }: Props) => {
 
-const theme = stores.appStateStore.selectedTheme.get()
+  const [theme] = useAtom(selectedTheme)
 
   const styles = StyleSheet.create({
     container: {

@@ -1,8 +1,9 @@
-import { observer } from 'mobx-react-lite'
+import { useAtom } from 'jotai'
+
 import React from 'react'
 import { KeyboardType, StyleProp, StyleSheet, Text, TextStyle, View, ViewStyle } from 'react-native'
 import { themeColor, themeFonts } from '../../resources'
-import createRootStore from '../../stores'
+import { selectedTheme } from '../../stores'
 import { sizeConverter } from '../../utils'
 import { CustomTextInput } from '../atoms'
 
@@ -19,11 +20,10 @@ type CustomInfoInputProps = {
     placeholder?: string,
 }
 
-const store = createRootStore()
 
 const CustomInfoInput = ({ value, title, titleStyle, textStyle, viewStyle, containerStyle, onChangeText, keyboardType, discription, placeholder }: CustomInfoInputProps) => {
 
-    const theme = store.appStateStore.selectedTheme.get()
+    const [theme] = useAtom(selectedTheme)
 
     const styles = StyleSheet.create({
         subTitleText: {
@@ -57,4 +57,4 @@ CustomInfoInput.defaultProps = {
     discription: null
 }
 
-export default observer(CustomInfoInput)
+export default CustomInfoInput

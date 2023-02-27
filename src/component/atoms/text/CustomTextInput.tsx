@@ -1,10 +1,11 @@
 
-import { observer } from 'mobx-react-lite';
+import { useAtom } from 'jotai';
+
 import React from 'react';
 import { KeyboardType, StyleProp, StyleSheet, TextInputProps, TextStyle, View, ViewStyle } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 import { themeColor, themeFonts } from '../../../resources';
-import createRootStore from '../../../stores';
+import { selectedTheme } from '../../../stores';
 import { sizeConverter } from '../../../utils';
 
 type CustomTextInputProps = {
@@ -16,11 +17,11 @@ type CustomTextInputProps = {
     placeholder?: string
 };
 
-const stores = createRootStore()
+
 
 const CustomTextInput = ({ value, textStyle, viewStyle, keyboardType, placeholder, onChangeText }: CustomTextInputProps) => {
 
-    const theme = stores.appStateStore.selectedTheme.get()
+    const [theme] = useAtom(selectedTheme)
 
     const styles = StyleSheet.create({
         viewStyle: {
@@ -62,4 +63,4 @@ CustomTextInput.defaultProps = {
 }
 
 
-export default observer(CustomTextInput)
+export default CustomTextInput

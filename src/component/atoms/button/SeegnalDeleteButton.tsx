@@ -1,15 +1,16 @@
-import { observer } from 'mobx-react-lite'
+import { useAtom } from 'jotai'
+
 import React from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { themeColor, themeFonts } from '../../../resources'
-import createRootStore from '../../../stores'
+import { selectedTheme } from '../../../stores'
 import { sizeConverter } from '../../../utils'
 
-const stores = createRootStore()
+
 
 const SeegnalDeleteButton = () => {
 
-    const theme = stores.appStateStore.selectedTheme.get()
+    const [theme] = useAtom(selectedTheme)
 
     const styles = StyleSheet.create({
         container:{
@@ -33,4 +34,4 @@ const SeegnalDeleteButton = () => {
     )
 }
 
-export default observer(SeegnalDeleteButton)
+export default SeegnalDeleteButton

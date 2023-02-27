@@ -1,9 +1,10 @@
-import { observer } from 'mobx-react-lite'
+import { useAtom } from 'jotai'
+
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import FastImage from 'react-native-fast-image'
 import { themeColor, themeFonts, themeType } from '../../resources'
-import createRootStore from '../../stores'
+import { selectedTheme } from '../../stores'
 import { sizeConverter } from '../../utils'
 import { SubscribeButton } from '../atoms'
 
@@ -13,10 +14,10 @@ type Props = {
     onPress: (({ item }: { item: themeType }) => void)
 }
 
-const stores = createRootStore()
+
 
 const ThemeListItem = ({ item, index, onPress }: Props) => {
-    const theme = stores.appStateStore.selectedTheme.get()
+    const [theme] = useAtom(selectedTheme)
 
     const styles = StyleSheet.create({
         contentContainer: {
@@ -68,4 +69,4 @@ const ThemeListItem = ({ item, index, onPress }: Props) => {
     )
 }
 
-export default observer(ThemeListItem)
+export default ThemeListItem

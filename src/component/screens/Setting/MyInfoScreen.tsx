@@ -1,19 +1,18 @@
-import { observer } from 'mobx-react-lite'
+
 import React, { useState } from 'react'
 import { Text, TouchableOpacity, View, StyleSheet, Platform } from 'react-native'
 import ImagePicker from 'react-native-image-crop-picker';
 import { images, themeColor, themeFonts } from '../../../resources'
-import createRootStore from '../../../stores'
 import { sizeConverter } from '../../../utils'
 import { CustomSafeAreaView, HeaderActiveButton, ImageButton, TitleText } from '../../atoms'
 import { CustomHeader, CustomInfoInput } from '../../molecules'
 import { check, PERMISSIONS, RESULTS } from 'react-native-permissions';
-
-const store = createRootStore()
+import { useAtom } from 'jotai';
+import { selectedTheme } from '../../../stores';
 
 const MyInfoScreen = () => {
 
-    const theme = store.appStateStore.selectedTheme.get()
+    const [theme] = useAtom(selectedTheme)
 
     const [isActive, setIsActive] = useState(false)
     const [name, setName] = useState('')
@@ -138,4 +137,4 @@ const MyInfoScreen = () => {
     )
 }
 
-export default observer(MyInfoScreen)
+export default MyInfoScreen

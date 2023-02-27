@@ -9,8 +9,8 @@ import {
 } from 'react-native';
 import { themeColor } from '../../resources';
 import { sizeConverter } from '../../utils';
-import createRootStore from '../../stores';
-import { observer } from 'mobx-react-lite';
+import { useAtom } from 'jotai';
+import { selectedTheme } from '../../stores';
 
 type CaroselProps = {
     animatedValue: Animated.Value,
@@ -20,10 +20,10 @@ type CaroselProps = {
     caroselActiveStyle?: StyleProp<ViewStyle>,
 };
 
-const stores = createRootStore()
+
 
 const Carosel = ({ animatedValue, data, sliderWidth, caroselStyle, caroselActiveStyle }: CaroselProps) => {
-    const theme = stores.appStateStore.selectedTheme.get()
+    const [theme] = useAtom(selectedTheme)
 
     const animArray: any[] = []
 
@@ -118,4 +118,4 @@ Carosel.defaultProps = {
 }
 
 
-export default observer(Carosel)
+export default Carosel

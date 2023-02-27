@@ -1,9 +1,10 @@
-import { observer } from 'mobx-react-lite'
+import { useAtom } from 'jotai'
+
 import React, { useEffect, useState } from 'react'
 import { Dimensions, StyleProp, StyleSheet, TouchableOpacity, ViewStyle } from 'react-native'
 import Animated, { Easing, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated'
 import { STATUS_BUTTONS_TYPE, themeColor } from '../../resources'
-import createRootStore from '../../stores'
+import { selectedTheme } from '../../stores'
 import { sizeConverter } from '../../utils'
 import { StatusButton } from '../atoms'
 
@@ -16,8 +17,6 @@ type Props = {
     onPress?: (item?:STATUS_BUTTONS_TYPE) => void
 }
 
-const store = createRootStore()
-
 const HomeFloatingButtonView = ({
     absolute,
     onPressBack,
@@ -27,7 +26,7 @@ const HomeFloatingButtonView = ({
     onPress
 }: Props) => {
 
-    const theme = store.appStateStore.selectedTheme.get()
+    const [theme] = useAtom(selectedTheme)
 
     const fade = useSharedValue(0);
 
@@ -138,4 +137,4 @@ HomeFloatingButtonView.defaultProps = {
     bottomInset:0
 }
 
-export default observer(HomeFloatingButtonView)
+export default HomeFloatingButtonView

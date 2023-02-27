@@ -1,21 +1,20 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
-import { observer } from 'mobx-react-lite'
+import { useAtom } from 'jotai'
+
 import React, { useState } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { LoginStackParamList } from '../../../navigation'
 import { themeColor, themeFonts } from '../../../resources'
-import createRootStore from '../../../stores'
+import { selectedTheme } from '../../../stores'
 import { onlyNum, sizeConverter } from '../../../utils'
 import { CustomSafeAreaView } from '../../atoms'
 import { CustomHeader, CustomInfoInput, FloatingNextButton } from '../../molecules'
 
 type Props = NativeStackScreenProps<LoginStackParamList, 'RegistAverageScreen'>
 
-const store = createRootStore()
-
 const RegistAverageScreen = ({ navigation, route }: Props) => {
 
-    const theme = store.appStateStore.selectedTheme.get()
+    const [theme] = useAtom(selectedTheme)
 
     const [period, setPeriod] = useState('')
     const [cycle, setCycle] = useState('')
@@ -80,4 +79,4 @@ const RegistAverageScreen = ({ navigation, route }: Props) => {
     )
 }
 
-export default observer(RegistAverageScreen)
+export default RegistAverageScreen

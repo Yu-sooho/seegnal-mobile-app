@@ -1,8 +1,9 @@
-import { observer } from 'mobx-react-lite'
+import { useAtom } from 'jotai'
+
 import React, { useState } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { themeColor, themeFonts } from '../../resources'
-import createRootStore from '../../stores'
+import { selectedTheme } from '../../stores'
 import { sizeConverter } from '../../utils'
 import { ProgressBar } from '../atoms'
 
@@ -13,8 +14,6 @@ type EroticismBarProps = {
     onChangeValue: (value: number) => void
 }
 
-const store = createRootStore()
-
 const EroticismBar = ({
     width,
     height,
@@ -22,7 +21,7 @@ const EroticismBar = ({
     initValue
 }: EroticismBarProps) => {
 
-    const theme = store.appStateStore.selectedTheme.get()
+    const [theme] = useAtom(selectedTheme)
 
     const styles = StyleSheet.create({
         container: {
@@ -57,4 +56,4 @@ const EroticismBar = ({
     )
 }
 
-export default observer(EroticismBar)
+export default EroticismBar

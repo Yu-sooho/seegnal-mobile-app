@@ -1,8 +1,6 @@
 import { useIsFocused } from '@react-navigation/native'
 import React from 'react'
-import { FlatList, FlatListProps, ListRenderItem, StyleSheet, View } from 'react-native'
-import { EMOTION_TYPE } from '../../../resources'
-import createRootStore from '../../../stores'
+import { FlatList, StyleSheet, View } from 'react-native'
 import { sizeConverter } from '../../../utils'
 import { TitleText } from '../../atoms'
 import { GraphView } from '../../molecules'
@@ -34,8 +32,7 @@ const temp = () => {
 
 const dummy = temp()
 
-const stores = createRootStore()
-const theme = stores.appStateStore.selectedTheme.get()
+
 
 const StatisticsGraph = ({ title }: Props) => {
     const isFocused = useIsFocused();

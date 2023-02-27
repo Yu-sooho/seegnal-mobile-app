@@ -1,16 +1,17 @@
-import { observer } from 'mobx-react-lite'
+import { useAtom } from 'jotai'
+
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
 import { themeColor, themeFonts } from '../../../resources'
-import createRootStore from '../../../stores'
+import { selectedTheme } from '../../../stores'
 import { sizeConverter } from '../../../utils'
 import { CustomTextInput, UserImage } from '../../atoms'
 
-const stores = createRootStore()
+
 
 const CommentInput = () => {
 
-    const theme = stores.appStateStore.selectedTheme.get()
+    const [theme] = useAtom(selectedTheme)
 
     const styles = StyleSheet.create({
         container: {
@@ -42,4 +43,4 @@ const CommentInput = () => {
     )
 }
 
-export default observer(CommentInput)
+export default CommentInput

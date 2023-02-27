@@ -1,5 +1,6 @@
 
-import { observer } from 'mobx-react-lite';
+import { useAtom } from 'jotai';
+
 import React, { PropsWithChildren } from 'react';
 import {
   Keyboard,
@@ -12,9 +13,9 @@ import {
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { themeColor } from '../../../resources';
-import createRootStore from '../../../stores';
+import { selectedTheme } from '../../../stores';
 
-const stores = createRootStore()
+
 
 const CustomSafeAreaView: React.FC<
   PropsWithChildren<{
@@ -29,7 +30,7 @@ const CustomSafeAreaView: React.FC<
 > = ({ children, containerStyle, disabled, style, edges }) => {
   const isDarkMode = useColorScheme() === 'dark';
   const insets = useSafeAreaInsets()
-  const theme = stores.appStateStore.selectedTheme.get()
+  const [theme] = useAtom(selectedTheme)
 
   const styles = StyleSheet.create({
     containerStyle: {
@@ -71,4 +72,4 @@ CustomSafeAreaView.defaultProps = {
 }
 
 
-export default observer(CustomSafeAreaView)
+export default CustomSafeAreaView

@@ -1,9 +1,10 @@
 
-import { observer } from 'mobx-react-lite';
+import { useAtom } from 'jotai';
+
 import React from 'react';
 import { Animated, Dimensions, StyleProp, StyleSheet, TouchableOpacity, ViewStyle } from 'react-native';
 import { themeColor } from '../../../resources';
-import createRootStore from '../../../stores';
+import { selectedTheme } from '../../../stores';
 
 type BackgroundOpacityProps = {
     style?: StyleProp<ViewStyle>,
@@ -11,11 +12,11 @@ type BackgroundOpacityProps = {
     absolute?: boolean
 };
 
-const stores = createRootStore()
+
 
 const BackgroundOpacity = ({ style, onPress, absolute }: BackgroundOpacityProps) => {
 
-    const theme = stores.appStateStore.selectedTheme.get()
+    const [theme] = useAtom(selectedTheme)
 
     const styles = StyleSheet.create({
         style: {
@@ -36,4 +37,4 @@ BackgroundOpacity.defaultProps = {
     onPress: () => { }
 }
 
-export default observer(BackgroundOpacity)
+export default BackgroundOpacity

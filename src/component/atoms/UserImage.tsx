@@ -1,13 +1,14 @@
-import { observer } from 'mobx-react-lite'
+import { useAtom } from 'jotai'
+
 import React from 'react'
 import { StyleProp, StyleSheet, Text, TextStyle, TouchableOpacity, View } from 'react-native'
 import FastImage from 'react-native-fast-image'
 import { images, themeColor, themeFonts } from '../../resources'
-import createRootStore from '../../stores'
+import { selectedTheme } from '../../stores'
 import { sizeConverter } from '../../utils'
 import { Icon16ArrowRight } from '../icons'
 
-const stores = createRootStore()
+
 
 type Props = {
     isText?: boolean,
@@ -22,7 +23,7 @@ type Props = {
 
 const UserImage = ({ isText, isEmail, size, textStyle, emailTextStyle, rightArrow, user, onPress }: Props) => {
 
-    const theme = stores.appStateStore.selectedTheme.get()
+    const [theme] = useAtom(selectedTheme)
 
     const styles = StyleSheet.create({
         container: {
@@ -88,4 +89,4 @@ UserImage.defaultProps = {
     size: sizeConverter(24)
 }
 
-export default observer(UserImage)
+export default UserImage

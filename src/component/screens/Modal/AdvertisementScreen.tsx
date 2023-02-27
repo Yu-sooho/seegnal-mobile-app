@@ -10,22 +10,21 @@
  * 
  */
 import { StackScreenProps } from '@react-navigation/stack';
-import { observer } from 'mobx-react-lite';
+import { useAtom } from 'jotai';
+
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { RootStackParamList } from '../../../navigation';
 import { themeColor, themeFonts } from '../../../resources';
-import createRootStore from '../../../stores';
+import { selectedTheme } from '../../../stores';
 import { sizeConverter } from '../../../utils';
 import { BackgroundOpacity, CustomButton } from '../../atoms';
 
 type Props = StackScreenProps<RootStackParamList, 'AdvertisementScreen'>
 
-const store = createRootStore()
-
 const AdvertisementScreen = ({ navigation, route }: Props) => {
 
-    const theme = store.appStateStore.selectedTheme.get()
+    const [theme] = useAtom(selectedTheme)
 
     const styles = StyleSheet.create({
         container: {
@@ -131,4 +130,4 @@ const AdvertisementScreen = ({ navigation, route }: Props) => {
     )
 }
 
-export default observer(AdvertisementScreen)
+export default AdvertisementScreen

@@ -1,17 +1,18 @@
 import { useIsFocused } from '@react-navigation/native'
-import { observer } from 'mobx-react-lite'
+import { useAtom } from 'jotai'
+
 import React, { useState } from 'react'
 import { StyleSheet, View } from 'react-native'
 import { themeColor } from '../../../resources'
-import createRootStore from '../../../stores'
+import { selectedTheme } from '../../../stores'
 import { sizeConverter } from '../../../utils'
 import { TitleText, UserImage } from '../../atoms'
 
-const stores = createRootStore()
+
 
 const StatisticsEroticism = () => {
 
-  const theme = stores.appStateStore.selectedTheme.get()
+  const [theme] = useAtom(selectedTheme)
 
   const isFocused = useIsFocused();
 
@@ -66,4 +67,4 @@ const StatisticsEroticism = () => {
   )
 }
 
-export default observer(StatisticsEroticism)
+export default StatisticsEroticism

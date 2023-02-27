@@ -1,9 +1,10 @@
 
-import { observer } from 'mobx-react-lite';
+import { useAtom } from 'jotai';
+
 import React, { ReactNode } from 'react';
 import { Dimensions, StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
 import { themeColor } from '../../../resources';
-import createRootStore from '../../../stores';
+import { selectedTheme } from '../../../stores';
 import { sizeConverter } from '../../../utils';
 import { ModalHeaderButton, ModalHeaderText } from '../../atoms';
 import { Icon24ArrowLeft } from '../../icons';
@@ -15,11 +16,11 @@ type ModalHeaderProps = {
     rightContent?: () => ReactNode,
 };
 
-const stores = createRootStore()
+
 
 const ModalHeader = ({ style, leftContent, centerContent, rightContent }: ModalHeaderProps) => {
 
-    const theme = stores.appStateStore.selectedTheme.get()
+    const [theme] = useAtom(selectedTheme)
 
     const styles = StyleSheet.create({
         style: {
@@ -64,4 +65,4 @@ ModalHeader.defaultProps = {
 
 }
 
-export default observer(ModalHeader)
+export default ModalHeader

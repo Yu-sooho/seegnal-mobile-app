@@ -1,22 +1,23 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
-import { observer } from 'mobx-react-lite'
+import { useAtom } from 'jotai'
+
 import React, { useState } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import FastImage from 'react-native-fast-image'
 import { LoginStackParamList } from '../../../navigation'
 import { AGREELIST, images, themeColor, themeFonts } from '../../../resources'
-import createRootStore from '../../../stores'
+import { selectedTheme } from '../../../stores'
 import { sizeConverter } from '../../../utils'
 import { CustomSafeAreaView, RightArrowButton } from '../../atoms'
 import { FloatingNextButton, RadioTextButton } from '../../molecules'
 
 type Props = NativeStackScreenProps<LoginStackParamList, 'RegistTosScreen'>;
 
-const stores = createRootStore()
+
 
 const RegistTosScreen = ({ navigation, route }: Props) => {
 
-    const theme = stores.appStateStore.selectedTheme.get()
+    const [theme] = useAtom(selectedTheme)
 
     const styles = StyleSheet.create({
         imageView: {
@@ -185,4 +186,4 @@ const RegistTosScreen = ({ navigation, route }: Props) => {
     )
 }
 
-export default observer(RegistTosScreen)
+export default RegistTosScreen

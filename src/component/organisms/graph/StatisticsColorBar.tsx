@@ -1,15 +1,16 @@
 import { useIsFocused } from '@react-navigation/native'
-import { observer } from 'mobx-react-lite'
+import { useAtom } from 'jotai'
+
 import React, { ReactNode, useState } from 'react'
 import { StyleProp, StyleSheet, Text, View, ViewStyle } from 'react-native'
 import { themeColor, themeFonts } from '../../../resources'
-import createRootStore from '../../../stores'
+import { selectedTheme } from '../../../stores'
 import { sizeConverter } from '../../../utils'
 import { ColorBar, TitleText } from '../../atoms'
 import { Icon16NonSafe, Icon16Safe } from '../../icons'
 import { ColorBarView } from '../../molecules'
 
-const stores = createRootStore()
+
 
 
 type Props = {
@@ -40,7 +41,7 @@ const StatisticsColorBar = ({
   contentContainerStyle
 }: Props) => {
 
-  const theme = stores.appStateStore.selectedTheme.get()
+  const [theme] = useAtom(selectedTheme)
 
   const isFocused = useIsFocused();
 
@@ -88,4 +89,4 @@ const StatisticsColorBar = ({
   )
 }
 
-export default observer(StatisticsColorBar)
+export default StatisticsColorBar

@@ -1,30 +1,31 @@
 
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { observer} from 'mobx-react-lite';
+import { useAtom } from 'jotai';
 import React from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
 import { RootStackParamList } from '../../../navigation';
 import { themeColor, themeFonts, themeType } from '../../../resources';
-import createRootStore from '../../../stores';
+import { selectedTheme } from '../../../stores';
 import { sizeConverter } from '../../../utils';
 import { CustomSafeAreaView, TitleText } from '../../atoms';
 import { CustomHeader, ThemeListItem } from '../../molecules';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'ThemeSettingScreen'>;
 
-const stores = createRootStore()
+
 
 const ThemeSettingScreen = ({ navigation, route }: Props) => {
 
-    const theme = stores.appStateStore.selectedTheme.get()
+    const [theme,setTheme] = useAtom(selectedTheme)
 
     const onPressItem = async ({ item }: {
         item: themeType
     }) => {
-        stores.appStateStore.setIsMounted(false)
-        stores.appStateStore.setTheme(item.id)
-        // stores.appStateStore.persistSelectedTheme = item?.id
-        stores.appStateStore.setIsMounted(true)
+        setTheme(item.id)
+        // stores.appStateStore.setIsMounted(false)
+        // stores.appStateStore.setTheme(item.id)
+        // // stores.appStateStore.persistSelectedTheme = item?.id
+        // stores.appStateStore.setIsMounted(true)
     }
 
     const Header = () => {
@@ -88,4 +89,4 @@ const dummy = [
     }
 ]
 
-export default observer(ThemeSettingScreen)
+export default ThemeSettingScreen
