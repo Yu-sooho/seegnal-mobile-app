@@ -7,7 +7,7 @@ import {
     GoogleSigninButton,
     statusCodes,
 } from '@react-native-google-signin/google-signin';
-import { KakaoOAuthToken, login } from '@react-native-seoul/kakao-login';
+import { getProfile, KakaoOAuthToken, login, logout } from '@react-native-seoul/kakao-login';
 
 //login
 export const isLogin = atom(false)
@@ -15,9 +15,14 @@ export const isLogin = atom(false)
 
 export const kakaoLogin = async () => {
 
-    const token: KakaoOAuthToken = await login();
+    try {
+        const token: KakaoOAuthToken = await login();
+        const profile = await getProfile(JSON.stringify(token))
+        console.log(token, profile,)
+    } catch (error) {
+        console.log(error)
+    }
 
-    console.log(JSON.stringify(token))
 }
 
 export const googleLogin = async () => {
@@ -26,6 +31,7 @@ export const googleLogin = async () => {
         const con = await GoogleSignin.configure();
         const has = await GoogleSignin.hasPlayServices();
         const userInfo = await GoogleSignin.signIn();
+        console.log(userInfo)
     } catch (error) {
         if (error.code === statusCodes.SIGN_IN_CANCELLED) {
             // user cancelled the login flow
@@ -51,6 +57,7 @@ export const appleLogin = async () => {
         if (credentialState === appleAuth.State.AUTHORIZED) {
             // user is authenticated
         }
+        console.log(appleAuthRequestResponse, credentialState, appleAuthRequestResponse.user)
         return
     }
 

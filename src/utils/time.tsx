@@ -96,7 +96,6 @@ export const getNextMonth = (startMonth: Date, count: number) => {
   const nextDate = addMonths(startMonth, count)
   const month = getMonth(nextDate)
   const nextMonth = getMonthDays(nextDate, month)
-  console.log(month, startMonth, 'FUFU')
 
   return nextMonth
 }

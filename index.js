@@ -26,7 +26,6 @@ const Seegnal = () => {
 
     const getToken = async () => {
         const result = await messaging().getToken()
-        console.log(result, 'FUFU')
     }
 
 

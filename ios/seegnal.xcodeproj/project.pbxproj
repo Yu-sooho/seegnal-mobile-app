@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* seegnalTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* seegnalTests.m */; };
-		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		18CF9DBD153941C2BC2F703A /* NotoSansCJKkr-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1B7878E265E54430A9CEA29A /* NotoSansCJKkr-Bold.otf */; };
@@ -17,6 +16,8 @@
 		6715D7FB8D27E769CE001C09 /* Pods_seegnal_seegnalTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81852F658AAB58411125E166 /* Pods_seegnal_seegnalTests.framework */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		B432E64B29A3B26A002E5E3C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B432E64A29A3B26A002E5E3C /* GoogleService-Info.plist */; };
+		B45C8CD829B46BDD00C70819 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B45C8CD729B46BDD00C70819 /* AppDelegate.m */; };
+		B45C8CDF29B481C800C70819 /* SwiftBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45C8CDE29B481C800C70819 /* SwiftBridge.swift */; };
 		E7DABE4143E85839590020A1 /* Pods_seegnal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4793FDC36F5B68058AE2F748 /* Pods_seegnal.framework */; };
 		EE75AE691A5A4C15A30B7D0F /* NotoSansCJKkr-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = AAEFE72998124B8DBE001BA8 /* NotoSansCJKkr-Medium.otf */; };
 /* End PBXBuildFile section */
@@ -38,7 +39,6 @@
 		0B82A0B18A1B1326AD880D93 /* Pods-seegnal-seegnalTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-seegnal-seegnalTests.debug.xcconfig"; path = "Target Support Files/Pods-seegnal-seegnalTests/Pods-seegnal-seegnalTests.debug.xcconfig"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* seegnal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = seegnal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = seegnal/AppDelegate.h; sourceTree = "<group>"; };
-		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = seegnal/AppDelegate.mm; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = seegnal/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = seegnal/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = seegnal/main.m; sourceTree = "<group>"; };
@@ -53,6 +53,9 @@
 		AAEFE72998124B8DBE001BA8 /* NotoSansCJKkr-Medium.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "NotoSansCJKkr-Medium.otf"; path = "../assets/fonts/NotoSansCJKkr-Medium.otf"; sourceTree = "<group>"; };
 		B432E64A29A3B26A002E5E3C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B432E64C29A4DD6F002E5E3C /* seegnal.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = seegnal.entitlements; path = seegnal/seegnal.entitlements; sourceTree = "<group>"; };
+		B45C8CD729B46BDD00C70819 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		B45C8CDD29B481C800C70819 /* seegnal-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "seegnal-Bridging-Header.h"; sourceTree = "<group>"; };
+		B45C8CDE29B481C800C70819 /* SwiftBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftBridge.swift; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F5B76BDA5FE54F8F15939C46 /* Pods-seegnal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-seegnal.release.xcconfig"; path = "Target Support Files/Pods-seegnal/Pods-seegnal.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -100,11 +103,11 @@
 				B432E64C29A4DD6F002E5E3C /* seegnal.entitlements */,
 				B432E64A29A3B26A002E5E3C /* GoogleService-Info.plist */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
-				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				B45C8CD729B46BDD00C70819 /* AppDelegate.m */,
 			);
 			name = seegnal;
 			sourceTree = "<group>";
@@ -140,6 +143,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				B45C8CDE29B481C800C70819 /* SwiftBridge.swift */,
 				13B07FAE1A68108700A75B9A /* seegnal */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* seegnalTests */,
@@ -147,6 +151,7 @@
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
 				2F86EB829FE64CD09AAC5375 /* Resources */,
+				B45C8CDD29B481C800C70819 /* seegnal-Bridging-Header.h */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -231,7 +236,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						LastSwiftMigration = 1120;
+						LastSwiftMigration = 1420;
 					};
 				};
 			};
@@ -420,8 +425,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
+				B45C8CD829B46BDD00C70819 /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				B45C8CDF29B481C800C70819 /* SwiftBridge.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -440,6 +446,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0B82A0B18A1B1326AD880D93 /* Pods-seegnal-seegnalTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -467,6 +474,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4822115E2F456E11A00A7A6C /* Pods-seegnal-seegnalTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = seegnalTests/Info.plist;
@@ -513,6 +521,7 @@
 				PRODUCT_NAME = seegnal;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = seegnalProfile;
+				SWIFT_OBJC_BRIDGING_HEADER = "seegnal-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -544,6 +553,7 @@
 				PRODUCT_NAME = seegnal;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = seegnalProfile;
+				SWIFT_OBJC_BRIDGING_HEADER = "seegnal-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
