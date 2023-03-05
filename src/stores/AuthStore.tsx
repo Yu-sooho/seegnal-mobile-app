@@ -46,11 +46,11 @@ export const appleLogin = async () => {
     // Configure the request
     appleAuthAndroid.configure({
         // The Service ID you registered with Apple
-        clientId: 'com.seegnal',
+        clientId: 'com.seegnal.sign',
 
         // Return URL added to your Apple dev console. We intercept this redirect, but it must still match
         // the URL you provided to Apple. It can be an empty route on your backend as it's never called.
-        redirectUri: 'https://www.naver.com',
+        redirectUri: 'https://seegnal.page.link/XktS',
 
         // The type of response requested - code, id_token, or both.
         responseType: appleAuthAndroid.ResponseType.ALL,
@@ -67,6 +67,8 @@ export const appleLogin = async () => {
 
     // Open the browser window for user sign in
     const response = await appleAuthAndroid.signIn();
+
+    console.log(response)
 
     // Send the authorization code to your backend for verification
 
