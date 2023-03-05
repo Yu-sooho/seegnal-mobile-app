@@ -21,7 +21,22 @@ export const kakaoLogin = async () => {
 }
 
 export const googleLogin = async () => {
-    GoogleSignin.configure();
+
+    try {
+        const con = await GoogleSignin.configure();
+        const has = await GoogleSignin.hasPlayServices();
+        const userInfo = await GoogleSignin.signIn();
+    } catch (error) {
+        if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+            // user cancelled the login flow
+        } else if (error.code === statusCodes.IN_PROGRESS) {
+            // operation (e.g. sign in) is in progress already
+        } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+            // play services not available or outdated
+        } else {
+            // some other error happened
+        }
+    }
 }
 
 export const appleLogin = async () => {
