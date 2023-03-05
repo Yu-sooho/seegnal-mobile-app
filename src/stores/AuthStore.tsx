@@ -2,9 +2,27 @@ import { atom } from 'jotai'
 import { appleAuth, appleAuthAndroid } from '@invertase/react-native-apple-authentication';
 import { Platform } from 'react-native';
 import { v4 as uuid } from 'uuid'
+import {
+    GoogleSignin,
+    GoogleSigninButton,
+    statusCodes,
+} from '@react-native-google-signin/google-signin';
+import { KakaoOAuthToken, login } from '@react-native-seoul/kakao-login';
 
 //login
 export const isLogin = atom(false)
+
+
+export const kakaoLogin = async () => {
+
+    const token: KakaoOAuthToken = await login();
+
+    console.log(JSON.stringify(token))
+}
+
+export const googleLogin = async () => {
+    GoogleSignin.configure();
+}
 
 export const appleLogin = async () => {
     if (Platform.OS === 'ios') {

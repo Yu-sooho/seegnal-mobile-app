@@ -11,7 +11,7 @@ import {
 } from 'react-native-reanimated'
 import { RootStackParamList } from '../../../navigation'
 import { StackScreenProps } from '@react-navigation/stack'
-import { appleLogin } from '../../../stores'
+import { appleLogin, googleLogin, kakaoLogin } from '../../../stores'
 
 const modalSize = sizeConverter(252)
 
@@ -23,16 +23,18 @@ const LoginModalScreen = ({ navigation, route }: Props) => {
   }, [])
 
   const onPressKakao = () => {
-    console.log('KakaoLogin!')
-    onPressBack(false)
-    navigation.navigate('LoginStack', { screen: 'RegistTosScreen' })
+    kakaoLogin()
+    // console.log('KakaoLogin!')
+    // onPressBack(false)
+    // navigation.navigate('LoginStack', { screen: 'RegistTosScreen' })
     return true
   }
 
   const onPressGoogle = () => {
-    console.log('GoogleLogin!')
-    onPressBack(false)
-    navigation.navigate('LoginStack', { screen: 'RegistTosScreen' })
+    googleLogin()
+    // console.log('GoogleLogin!')
+    // onPressBack(false)
+    // navigation.navigate('LoginStack', { screen: 'RegistTosScreen' })
     return true
   }
 
