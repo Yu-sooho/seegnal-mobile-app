@@ -14,15 +14,13 @@ export const isLogin = atom(false)
 
 
 export const kakaoLogin = async () => {
-
     try {
         const token: KakaoOAuthToken = await login();
-        const profile = await getProfile(JSON.stringify(token))
+        const profile = await getProfile()
         console.log(token, profile,)
     } catch (error) {
         console.log(error)
     }
-
 }
 
 export const googleLogin = async () => {
@@ -95,3 +93,4 @@ export const appleLogin = async () => {
     // Send the authorization code to your backend for verification
 
 }
+
