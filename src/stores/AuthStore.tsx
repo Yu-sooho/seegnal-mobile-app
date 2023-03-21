@@ -8,6 +8,9 @@ import {
     statusCodes,
 } from '@react-native-google-signin/google-signin';
 import { getProfile, KakaoOAuthToken, login, logout } from '@react-native-seoul/kakao-login';
+import auth from '@react-native-firebase/auth';
+
+auth().useEmulator('http://localhost:9099')
 
 //login
 export const isLogin = atom(false)
@@ -17,7 +20,10 @@ export const kakaoLogin = async () => {
     try {
         const token: KakaoOAuthToken = await login();
         const profile = await getProfile()
-        console.log(token, profile,)
+        if (!profile?.email || !token?.accessToken) return false
+        console.log(token?.accessToken, token, 'FUFU')
+        const result = await auth().createUserWithEmailAndPassword(profile.email, token?.accessToken)
+        return result
     } catch (error) {
         console.log(error)
     }
@@ -27,9 +33,12 @@ export const googleLogin = async () => {
 
     try {
         const con = await GoogleSignin.configure();
-        const has = await GoogleSignin.hasPlayServices();
+        const has = await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
         const userInfo = await GoogleSignin.signIn();
-        console.log(userInfo)
+        const { idToken } = userInfo
+        const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+        const result = await auth().signInWithCredential(googleCredential);
+        return result
     } catch (error) {
         if (error.code === statusCodes.SIGN_IN_CANCELLED) {
             // user cancelled the login flow
@@ -54,9 +63,14 @@ export const appleLogin = async () => {
 
         if (credentialState === appleAuth.State.AUTHORIZED) {
             // user is authenticated
+            const { identityToken, nonce } = appleAuthRequestResponse
+            const appleCredential = auth.AppleAuthProvider.credential(identityToken, nonce);
+            const result = await auth().signInWithCredential(appleCredential);
+            console.log(result, 'appleLogin')
+            return result
         }
-        console.log(appleAuthRequestResponse, credentialState, appleAuthRequestResponse.user)
-        return
+        // Sign the user in with the credential
+        return false
     }
 
     // Generate secure, random values for state and nonce
@@ -87,6 +101,7 @@ export const appleLogin = async () => {
 
     // Open the browser window for user sign in
     const response = await appleAuthAndroid.signIn();
+
 
     console.log(response)
 
